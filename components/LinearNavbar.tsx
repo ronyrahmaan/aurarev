@@ -348,13 +348,15 @@ export default function LinearNavbar() {
             >
               Sign in
             </Link>
-            <Button
-              size="sm"
-              className="gradient-primary text-white border-0 btn-lift"
-            >
-              Get Started
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link href="/signup">
+              <Button
+                size="sm"
+                className="bg-primary hover:bg-primary/90 text-white border-0 px-4 py-1.5 h-auto font-medium"
+              >
+                Get Started
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -428,13 +430,14 @@ export default function LinearNavbar() {
                     >
                       Sign in
                     </Link>
-                    <Button
-                      size="sm"
-                      className="w-full gradient-primary text-white border-0"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Get Started
-                    </Button>
+                    <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Button
+                        size="sm"
+                        className="w-full bg-primary hover:bg-primary/90 text-white border-0"
+                      >
+                        Get Started
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
