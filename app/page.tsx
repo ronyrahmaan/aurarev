@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
+import { GlowBox } from '@/components/ui/glow-box'
 import {
   ArrowRight,
   Star,
@@ -132,7 +133,7 @@ export default function HomePage() {
 
         <div className="relative mx-auto max-w-7xl py-24 sm:py-32">
           <div className="mx-auto max-w-5xl">
-            <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 text-center ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+            <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 text-center ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             {/* Main headline */}
             <h1 className={cn(
               "text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.02em] mb-6 leading-[1.1]",
@@ -178,7 +179,7 @@ export default function HomePage() {
           {/* Dashboard preview mockup */}
           <div className="mt-16 relative animate-fade-in-up animation-delay-500">
             <div className="mx-auto max-w-5xl">
-              <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] p-1 backdrop-blur-sm ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)]">
+              <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] p-1 backdrop-blur-sm ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)]">
                 <div className="rounded-xl bg-[#0f1011] p-4">
                   <div className="flex gap-1.5 mb-4">
                     <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
@@ -223,7 +224,7 @@ export default function HomePage() {
       {/* Trust Bar - Subtle background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-8 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-8 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <p className="text-center text-[13px] text-[#6b7280] mb-8 font-medium uppercase tracking-wider">
               Trusted by industry leaders
             </p>
@@ -252,7 +253,7 @@ export default function HomePage() {
       {/* Made for Modern Businesses - Primary dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
                 Made for modern businesses
@@ -318,7 +319,7 @@ export default function HomePage() {
       {/* Product Feature Section A: Review Collection Hub - Lighter background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
@@ -424,7 +425,7 @@ export default function HomePage() {
       {/* Product Feature Section B: AI Trust Blurb Generator - Dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
               <div className="rounded-xl bg-gray-900 border border-gray-800 overflow-hidden">
@@ -543,7 +544,7 @@ export default function HomePage() {
       {/* Product Feature Section C: Smart Widget Display - Lighter background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
@@ -677,7 +678,7 @@ export default function HomePage() {
       {/* Product Feature Section D: Automated Outreach - Dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
               <div className="rounded-xl bg-gray-900 border border-gray-800 overflow-hidden">
@@ -791,7 +792,7 @@ export default function HomePage() {
       {/* Product Feature Section E: Weekly Intelligence - Lighter background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
@@ -916,7 +917,7 @@ export default function HomePage() {
       {/* Workflow Visualization Section - Dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
                 See how AuraRev works
@@ -1011,7 +1012,7 @@ export default function HomePage() {
       {/* Metrics Section - Gradient background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
@@ -1039,7 +1040,7 @@ export default function HomePage() {
       {/* Integrations Showcase - Lighter background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
                 Works with your existing tools
@@ -1122,7 +1123,7 @@ export default function HomePage() {
       {/* Testimonials - Dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
                 Loved by businesses everywhere
@@ -1167,7 +1168,7 @@ export default function HomePage() {
       {/* Pricing Section - Lighter background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
                 Simple, transparent pricing
@@ -1307,7 +1308,7 @@ export default function HomePage() {
       {/* Final CTA Section - Dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 text-center ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 text-center ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-4 tracking-[-0.02em]">
               Ready to transform your review management?
             </h2>
