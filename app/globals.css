@@ -6,66 +6,82 @@
 @theme inline {
   /* Linear-inspired Dark Theme Colors */
   --color-background: 10 11 13;
+  --color-background-secondary: 17 19 24;
+  --color-background-tertiary: 26 29 35;
   --color-foreground: 255 255 255;
 
-  /* Primary brand colors */
-  --color-primary: 94 106 210;
+  /* Primary brand colors - AuraRev Blue */
+  --color-primary: 59 130 246;
   --color-primary-foreground: 255 255 255;
-  --color-primary-purple: 139 92 246;
+  --color-primary-dark: 37 99 235;
+  --color-primary-light: 96 165 250;
 
-  /* Surface colors */
-  --color-card: 26 29 35;
+  /* Surface colors with Linear aesthetic */
+  --color-card: 17 19 24;
+  --color-card-hover: 26 29 35;
   --color-card-foreground: 255 255 255;
   --color-popover: 26 29 35;
   --color-popover-foreground: 255 255 255;
 
-  /* Secondary colors */
-  --color-secondary: 42 45 53;
+  /* Secondary and muted colors */
+  --color-secondary: 31 33 40;
   --color-secondary-foreground: 255 255 255;
   --color-muted: 110 111 122;
-  --color-muted-foreground: 168 169 180;
+  --color-muted-foreground: 156 163 175;
+
+  /* Text hierarchy */
+  --color-text-primary: 255 255 255;
+  --color-text-secondary: 156 163 175;
+  --color-text-tertiary: 107 114 128;
 
   /* Accent colors */
-  --color-accent: 94 106 210;
+  --color-accent: 59 130 246;
   --color-accent-foreground: 255 255 255;
-  --color-destructive: 248 113 113;
+  --color-destructive: 239 68 68;
+  --color-success: 34 197 94;
+  --color-warning: 251 191 36;
 
   /* Borders and inputs */
-  --color-border: 42 45 53;
-  --color-input: 26 29 35;
-  --color-ring: 94 106 210;
+  --color-border: 31 41 55;
+  --color-border-hover: 59 130 246;
+  --color-input: 17 24 39;
+  --color-ring: 59 130 246;
 
   /* Fonts */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: 'SF Mono', Monaco, Consolas, monospace;
+  --font-mono: 'SF Mono', 'JetBrains Mono', Monaco, Consolas, monospace;
 
   /* Radius */
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.75rem;
   --background: rgb(10 11 13);
+  --background-secondary: rgb(17 19 24);
+  --background-tertiary: rgb(26 29 35);
   --foreground: rgb(255 255 255);
-  --card: rgb(26 29 35);
+  --card: rgb(17 19 24);
+  --card-hover: rgb(26 29 35);
   --card-foreground: rgb(255 255 255);
   --popover: rgb(26 29 35);
   --popover-foreground: rgb(255 255 255);
-  --primary: rgb(94 106 210);
+  --primary: rgb(59 130 246);
   --primary-foreground: rgb(255 255 255);
-  --secondary: rgb(42 45 53);
+  --secondary: rgb(31 33 40);
   --secondary-foreground: rgb(255 255 255);
   --muted: rgb(110 111 122);
-  --muted-foreground: rgb(168 169 180);
-  --accent: rgb(94 106 210);
+  --muted-foreground: rgb(156 163 175);
+  --accent: rgb(59 130 246);
   --accent-foreground: rgb(255 255 255);
-  --destructive: rgb(248 113 113);
-  --border: rgb(42 45 53);
-  --input: rgb(26 29 35);
-  --ring: rgb(94 106 210);
+  --destructive: rgb(239 68 68);
+  --border: rgb(31 41 55);
+  --input: rgb(17 24 39);
+  --ring: rgb(59 130 246);
 }
 
 @layer base {
@@ -77,6 +93,10 @@
     @apply bg-[rgb(10,11,13)] text-white antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-feature-settings: 'ss01', 'ss02', 'cv01', 'cv02';
+    background-image:
+      radial-gradient(at 0% 0%, rgb(59 130 246 / 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgb(139 92 246 / 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgb(59 130 246 / 0.05) 0px, transparent 50%);
   }
 
   /* Smooth scrolling */
@@ -111,7 +131,7 @@
 @layer utilities {
   /* Gradient text */
   .gradient-text {
-    background: linear-gradient(135deg, rgb(94 106 210) 0%, rgb(139 92 246) 100%);
+    background: linear-gradient(135deg, rgb(59 130 246) 0%, rgb(96 165 250) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -119,17 +139,72 @@
 
   /* Primary gradient background */
   .gradient-primary {
-    background: linear-gradient(135deg, rgb(94 106 210) 0%, rgb(139 92 246) 100%);
+    background: linear-gradient(135deg, rgb(59 130 246) 0%, rgb(37 99 235) 100%);
   }
 
-  /* Glass morphism effect */
+  /* Glass morphism effects - Linear style */
   .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
+    @apply bg-gradient-to-b from-white/[0.04] to-white/[0.02] backdrop-blur-xl border border-white/[0.05];
+  }
+
+  .glass-card {
+    @apply bg-gradient-to-b from-gray-900/50 to-gray-950/50 backdrop-blur-xl border border-gray-800/50;
+  }
+
+  .glass-hover {
+    @apply transition-all duration-300 hover:bg-gradient-to-b hover:from-white/[0.06] hover:to-white/[0.03] hover:border-white/[0.08];
+  }
+
+  /* Linear-style box backgrounds */
+  .linear-box {
+    @apply bg-gradient-to-b from-[rgb(17,19,24)] to-[rgb(10,11,13)] rounded-xl border border-gray-800/50;
+  }
+
+  .linear-box-hover {
+    @apply linear-box transition-all duration-300 hover:border-blue-600/30 hover:shadow-[0_0_0_1px_rgb(59,130,246,0.1),0_10px_40px_rgba(59,130,246,0.05)];
   }
 
   /* Card hover effect */
   .card-hover {
-    @apply transition-all duration-300 hover:border-[rgb(94,106,210)] hover:shadow-[0_0_0_1px_rgb(94,106,210),0_10px_40px_rgba(94,106,210,0.1)] hover:-translate-y-1;
+    @apply transition-all duration-300 hover:border-blue-600/50 hover:shadow-[0_0_0_1px_rgb(59,130,246),0_10px_40px_rgba(59,130,246,0.1)] hover:-translate-y-0.5;
+  }
+
+  /* Glow effects */
+  .glow-blue {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.3),
+                0 0 80px rgba(59, 130, 246, 0.15),
+                inset 0 0 20px rgba(59, 130, 246, 0.05);
+  }
+
+  .glow-subtle {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* Text colors matching Linear */
+  .text-primary {
+    @apply text-white;
+  }
+
+  .text-secondary {
+    @apply text-gray-400;
+  }
+
+  .text-tertiary {
+    @apply text-gray-500;
+  }
+
+  /* Background variants */
+  .bg-linear-dark {
+    @apply bg-[rgb(10,11,13)];
+  }
+
+  .bg-linear-lighter {
+    @apply bg-[rgb(17,19,24)];
+  }
+
+  .bg-linear-card {
+    @apply bg-[rgb(26,29,35)];
   }
 
   /* Button hover lift */

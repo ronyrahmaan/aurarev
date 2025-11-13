@@ -106,19 +106,19 @@ export default function LinearNavbar() {
   return (
     <nav
       className={cn(
-        'fixed top-0 w-full z-50 transition-all duration-200',
+        'fixed top-0 w-full z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-black/80 backdrop-blur-xl border-b border-white/10'
-          : 'bg-black/60 backdrop-blur-lg border-b border-white/5'
+          ? 'glass-card shadow-lg shadow-black/20'
+          : 'glass border-b border-white/[0.03]'
       )}
     >
       <div className="max-w-screen-xl mx-auto px-6">
         <div className="flex h-14 items-center justify-between">
           {/* Logo and Navigation */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center gap-2 mr-10">
-              <div className="h-6 w-6 rounded bg-white flex items-center justify-center">
-                <Star className="h-3.5 w-3.5 text-black" />
+            <Link href="/" className="flex items-center gap-2 mr-10 group">
+              <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-sm shadow-blue-500/20 group-hover:shadow-md group-hover:shadow-blue-500/30 transition-all">
+                <Star className="h-4 w-4 text-white" />
               </div>
               <span className="text-[15px] font-medium text-white">AuraRev</span>
             </Link>
@@ -128,11 +128,11 @@ export default function LinearNavbar() {
               <NavigationMenuList className="flex gap-1">
                 {/* Product Dropdown */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-white/60 hover:text-white/90 text-[14px] font-normal px-3 py-2 h-8 data-[state=open]:text-white [&>svg]:hidden">
+                  <NavigationMenuTrigger className="bg-transparent text-gray-400 hover:text-white text-[14px] font-normal px-3 py-2 h-8 data-[state=open]:text-white transition-colors [&>svg]:hidden">
                     Product
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2 bg-[#1A1B1E] border border-white/10 rounded-lg shadow-xl">
+                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2 linear-box shadow-2xl shadow-black/50 backdrop-blur-xl">
                       {productItems.map((item) => {
                         const Icon = item.icon
                         return (
@@ -140,17 +140,17 @@ export default function LinearNavbar() {
                             <NavigationMenuLink asChild>
                               <Link
                                 href={item.href}
-                                className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-white/5"
+                                className="block select-none rounded-lg p-3 leading-none no-underline outline-none transition-all hover:bg-gradient-to-b hover:from-blue-600/10 hover:to-transparent hover:border hover:border-blue-600/20 border border-transparent group"
                               >
                                 <div className="flex items-center gap-3">
-                                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-white/10">
-                                    <Icon className="h-4 w-4 text-white/70" />
+                                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-700 group-hover:border-blue-600/30 transition-colors">
+                                    <Icon className="h-4 w-4 text-gray-400 group-hover:text-blue-400 transition-colors" />
                                   </div>
                                   <div>
-                                    <div className="text-[13px] font-medium text-white/90 mb-0.5">
+                                    <div className="text-[13px] font-medium text-white mb-0.5">
                                       {item.title}
                                     </div>
-                                    <p className="text-[12px] text-white/50 leading-relaxed">
+                                    <p className="text-[12px] text-gray-500 leading-relaxed">
                                       {item.description}
                                     </p>
                                   </div>
@@ -167,11 +167,11 @@ export default function LinearNavbar() {
 
                 {/* Resources Dropdown */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-white/60 hover:text-white/90 text-[14px] font-normal px-3 py-2 h-8 data-[state=open]:text-white [&>svg]:hidden">
+                  <NavigationMenuTrigger className="bg-transparent text-gray-400 hover:text-white text-[14px] font-normal px-3 py-2 h-8 data-[state=open]:text-white transition-colors [&>svg]:hidden">
                     Resources
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2 bg-[#1A1B1E] border border-white/10 rounded-lg shadow-xl">
+                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2 linear-box shadow-2xl shadow-black/50 backdrop-blur-xl">
                       {resourceItems.map((item) => {
                         const Icon = item.icon
                         return (
@@ -179,17 +179,17 @@ export default function LinearNavbar() {
                             <NavigationMenuLink asChild>
                               <Link
                                 href={item.href}
-                                className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-white/5"
+                                className="block select-none rounded-lg p-3 leading-none no-underline outline-none transition-all hover:bg-gradient-to-b hover:from-blue-600/10 hover:to-transparent hover:border hover:border-blue-600/20 border border-transparent group"
                               >
                                 <div className="flex items-center gap-3">
-                                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-white/10">
-                                    <Icon className="h-4 w-4 text-white/70" />
+                                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-700 group-hover:border-blue-600/30 transition-colors">
+                                    <Icon className="h-4 w-4 text-gray-400 group-hover:text-blue-400 transition-colors" />
                                   </div>
                                   <div>
-                                    <div className="text-[13px] font-medium text-white/90 mb-0.5">
+                                    <div className="text-[13px] font-medium text-white mb-0.5">
                                       {item.title}
                                     </div>
-                                    <p className="text-[12px] text-white/50 leading-relaxed">
+                                    <p className="text-[12px] text-gray-500 leading-relaxed">
                                       {item.description}
                                     </p>
                                   </div>
@@ -207,7 +207,7 @@ export default function LinearNavbar() {
                 <NavigationMenuItem>
                   <Link
                     href="/pricing"
-                    className="inline-flex h-8 w-max items-center justify-center rounded-md px-3 py-2 text-[14px] font-normal text-white/60 transition-colors hover:text-white/90"
+                    className="inline-flex h-8 w-max items-center justify-center rounded-md px-3 py-2 text-[14px] font-normal text-gray-400 transition-colors hover:text-white"
                   >
                     Pricing
                   </Link>
@@ -217,7 +217,7 @@ export default function LinearNavbar() {
                 <NavigationMenuItem>
                   <Link
                     href="/customers"
-                    className="inline-flex h-8 w-max items-center justify-center rounded-md px-3 py-2 text-[14px] font-normal text-white/60 transition-colors hover:text-white/90"
+                    className="inline-flex h-8 w-max items-center justify-center rounded-md px-3 py-2 text-[14px] font-normal text-gray-400 transition-colors hover:text-white"
                   >
                     Customers
                   </Link>
@@ -227,7 +227,7 @@ export default function LinearNavbar() {
                 <NavigationMenuItem>
                   <Link
                     href="/now"
-                    className="inline-flex h-8 w-max items-center justify-center rounded-md px-3 py-2 text-[14px] font-normal text-white/60 transition-colors hover:text-white/90"
+                    className="inline-flex h-8 w-max items-center justify-center rounded-md px-3 py-2 text-[14px] font-normal text-gray-400 transition-colors hover:text-white"
                   >
                     Now
                   </Link>
@@ -237,7 +237,7 @@ export default function LinearNavbar() {
                 <NavigationMenuItem>
                   <Link
                     href="/contact"
-                    className="inline-flex h-8 w-max items-center justify-center rounded-md px-3 py-2 text-[14px] font-normal text-white/60 transition-colors hover:text-white/90"
+                    className="inline-flex h-8 w-max items-center justify-center rounded-md px-3 py-2 text-[14px] font-normal text-gray-400 transition-colors hover:text-white"
                   >
                     Contact
                   </Link>
@@ -250,26 +250,26 @@ export default function LinearNavbar() {
           <div className="hidden lg:flex items-center gap-5">
             <Link
               href="/docs"
-              className="text-[14px] font-normal text-white/60 hover:text-white/90 transition-colors"
+              className="text-[14px] font-normal text-gray-400 hover:text-white transition-colors"
             >
               Docs
             </Link>
             <Link
               href="/app"
-              className="text-[14px] font-normal text-white/60 hover:text-white/90 transition-colors"
+              className="text-[14px] font-normal text-gray-400 hover:text-white transition-colors"
             >
               Open app
             </Link>
             <Link
               href="/login"
-              className="text-[14px] font-normal text-white/60 hover:text-white/90 transition-colors"
+              className="text-[14px] font-normal text-gray-400 hover:text-white transition-colors"
             >
               Log in
             </Link>
             <Link href="/signup">
               <Button
                 size="sm"
-                className="bg-white hover:bg-gray-200 text-black border-0 px-4 py-1.5 h-[32px] text-[14px] font-medium rounded-md transition-all duration-150"
+                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white border-0 px-4 py-1.5 h-[32px] text-[14px] font-medium rounded-lg transition-all shadow-sm shadow-blue-500/25 hover:shadow-md hover:shadow-blue-500/30"
               >
                 Sign up
               </Button>
@@ -283,7 +283,7 @@ export default function LinearNavbar() {
                 <Menu className="h-5 w-5 text-white/60" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full max-w-sm bg-[#1A1B1E] border-white/10">
+            <SheetContent side="right" className="w-full max-w-sm linear-box border-gray-800">
               <div className="mt-8 flex flex-col gap-4">
                 {/* Mobile menu items */}
                 <div className="space-y-4">
