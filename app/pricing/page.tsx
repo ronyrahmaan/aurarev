@@ -136,7 +136,7 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-[#08090a] py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+        <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm ring-1 ring-white/10 shadow-glow-blue hover:shadow-glow-blue-lg transition-all duration-300">
       {/* Hero Section */}
       <section className="relative overflow-hidden p-12">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary-purple/5" />
