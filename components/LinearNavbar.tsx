@@ -16,22 +16,14 @@ import {
 import {
   Star,
   Menu,
-  X,
-  ChevronDown,
   Zap,
   Shield,
   TrendingUp,
-  Users,
-  Building2,
-  Heart,
-  Store,
-  Briefcase,
   BookOpen,
   FileText,
   HelpCircle,
   MessageSquare,
-  Server,
-  ArrowRight
+  Server
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -62,38 +54,6 @@ const productItems = [
   },
 ]
 
-const solutionItems = [
-  {
-    title: 'For Restaurants',
-    href: '/solutions/restaurants',
-    description: 'Manage dining reviews',
-    icon: Store,
-  },
-  {
-    title: 'For Healthcare',
-    href: '/solutions/healthcare',
-    description: 'Patient feedback management',
-    icon: Heart,
-  },
-  {
-    title: 'For Retail',
-    href: '/solutions/retail',
-    description: 'E-commerce and store reviews',
-    icon: Building2,
-  },
-  {
-    title: 'For Services',
-    href: '/solutions/services',
-    description: 'Professional service reviews',
-    icon: Briefcase,
-  },
-  {
-    title: 'For Enterprise',
-    href: '/solutions/enterprise',
-    description: 'Large-scale deployments',
-    icon: Users,
-  },
-]
 
 const resourceItems = [
   {
@@ -155,20 +115,20 @@ export default function LinearNavbar() {
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-12">
             <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="h-7 w-7 rounded-md bg-white/90 flex items-center justify-center group-hover:bg-white transition-all duration-200">
+              <div className="h-7 w-7 rounded bg-white flex items-center justify-center">
                 <Star className="h-4 w-4 text-black" />
               </div>
-              <span className="text-[16px] font-semibold text-white/90">AuraRev</span>
+              <span className="text-[17px] font-medium text-white">AuraRev</span>
             </Link>
 
             {/* Desktop Navigation */}
             <NavigationMenu className="hidden lg:block">
-              <NavigationMenuList className="flex gap-1">
+              <NavigationMenuList className="flex gap-2">
                 {/* Product Dropdown */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-white/60 hover:text-white/90 text-[14px] font-medium px-3 py-2 h-9 data-[state=open]:text-white">
+                  <NavigationMenuTrigger className="bg-transparent text-white/70 hover:text-white text-[15px] px-4 py-2 h-9 data-[state=open]:text-white">
                     Product
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -204,47 +164,10 @@ export default function LinearNavbar() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
-                {/* Solutions Dropdown */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-white/60 hover:text-white/90 text-[14px] font-medium px-3 py-2 h-9 data-[state=open]:text-white">
-                    Solutions
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-1 p-2 md:w-[600px] md:grid-cols-2 lg:grid-cols-3 bg-[#1A1B1E] border border-white/10 rounded-lg shadow-xl">
-                      {solutionItems.map((item) => {
-                        const Icon = item.icon
-                        return (
-                          <li key={item.href}>
-                            <NavigationMenuLink asChild>
-                              <Link
-                                href={item.href}
-                                className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-white/5"
-                              >
-                                <div className="flex items-center gap-3">
-                                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-white/10">
-                                    <Icon className="h-4 w-4 text-white/70" />
-                                  </div>
-                                  <div>
-                                    <div className="text-[13px] font-medium text-white/90 mb-0.5">
-                                      {item.title}
-                                    </div>
-                                    <p className="text-[12px] text-white/50 leading-relaxed">
-                                      {item.description}
-                                    </p>
-                                  </div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                        )
-                      })}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
 
                 {/* Resources Dropdown */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-white/60 hover:text-white/90 text-[14px] font-medium px-3 py-2 h-9 data-[state=open]:text-white">
+                  <NavigationMenuTrigger className="bg-transparent text-white/70 hover:text-white text-[15px] px-4 py-2 h-9 data-[state=open]:text-white">
                     Resources
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -284,68 +207,57 @@ export default function LinearNavbar() {
                 <NavigationMenuItem>
                   <Link
                     href="/pricing"
-                    className="inline-flex h-9 w-max items-center justify-center rounded-md px-3 py-2 text-[14px] font-medium text-white/60 transition-colors hover:text-white/90"
+                    className="inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-[15px] text-white/70 transition-colors hover:text-white"
                   >
                     Pricing
                   </Link>
                 </NavigationMenuItem>
 
-                {/* Company Dropdown */}
+                {/* Customers Link */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-white/60 hover:text-white/90 text-[14px] font-medium px-3 py-2 h-9 data-[state=open]:text-white">
-                    Company
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-1 p-2 bg-[#1A1B1E] border border-white/10 rounded-lg shadow-xl">
-                      <li>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            href="/about"
-                            className="block select-none rounded-md px-3 py-2 text-[13px] leading-none no-underline outline-none transition-colors hover:bg-white/5 text-white/60 hover:text-white/90"
-                          >
-                            About
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                      <li>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            href="/contact"
-                            className="block select-none rounded-md px-3 py-2 text-[13px] leading-none no-underline outline-none transition-colors hover:bg-white/5 text-white/60 hover:text-white/90"
-                          >
-                            Contact
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                      <li>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            href="/careers"
-                            className="block select-none rounded-md px-3 py-2 text-[13px] leading-none no-underline outline-none transition-colors hover:bg-white/5 text-white/60 hover:text-white/90"
-                          >
-                            Careers
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                    </ul>
-                  </NavigationMenuContent>
+                  <Link
+                    href="/customers"
+                    className="inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-[15px] text-white/70 transition-colors hover:text-white"
+                  >
+                    Customers
+                  </Link>
+                </NavigationMenuItem>
+
+                {/* Now Link */}
+                <NavigationMenuItem>
+                  <Link
+                    href="/now"
+                    className="inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-[15px] text-white/70 transition-colors hover:text-white"
+                  >
+                    Now
+                  </Link>
+                </NavigationMenuItem>
+
+                {/* Contact Link */}
+                <NavigationMenuItem>
+                  <Link
+                    href="/contact"
+                    className="inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-[15px] text-white/70 transition-colors hover:text-white"
+                  >
+                    Contact
+                  </Link>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
           </div>
 
           {/* Right side - CTAs */}
-          <div className="hidden lg:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-4">
             <Link
               href="/login"
-              className="text-[14px] font-medium text-white/60 hover:text-white/90 transition-colors px-3 py-2"
+              className="text-[15px] text-white/70 hover:text-white transition-colors"
             >
               Log in
             </Link>
             <Link href="/signup">
               <Button
                 size="sm"
-                className="bg-white hover:bg-white/90 text-black border-0 px-4 py-1.5 h-[34px] text-[14px] font-medium rounded-md transition-all duration-200"
+                className="bg-white hover:bg-gray-100 text-black border-0 px-5 py-2 h-[36px] text-[15px] font-medium rounded-md transition-all duration-200"
               >
                 Sign up
               </Button>
@@ -377,19 +289,6 @@ export default function LinearNavbar() {
                     ))}
                   </div>
 
-                  <div className="space-y-2">
-                    <p className="text-[12px] font-semibold text-white/40 uppercase tracking-wider">Solutions</p>
-                    {solutionItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="block text-[14px] text-white/60 hover:text-white/90 py-2 transition-colors"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
 
                   <div className="space-y-2">
                     <p className="text-[12px] font-semibold text-white/40 uppercase tracking-wider">Resources</p>
@@ -411,6 +310,30 @@ export default function LinearNavbar() {
                     className="block text-[14px] text-white/60 hover:text-white/90 py-2 transition-colors"
                   >
                     Pricing
+                  </Link>
+
+                  <Link
+                    href="/customers"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block text-[14px] text-white/60 hover:text-white/90 py-2 transition-colors"
+                  >
+                    Customers
+                  </Link>
+
+                  <Link
+                    href="/now"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block text-[14px] text-white/60 hover:text-white/90 py-2 transition-colors"
+                  >
+                    Now
+                  </Link>
+
+                  <Link
+                    href="/contact"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block text-[14px] text-white/60 hover:text-white/90 py-2 transition-colors"
+                  >
+                    Contact
                   </Link>
 
                   <hr className="border-white/10" />
