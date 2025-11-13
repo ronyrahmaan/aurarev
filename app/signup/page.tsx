@@ -66,23 +66,24 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 py-12 px-4 sm:px-6 lg:px-8">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-[#08090a] py-12 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-8 shadow-xl shadow-black/50">
+      <Card className="w-full border-0 bg-transparent shadow-none">
         <CardHeader className="space-y-1 text-center">
           <div className="flex justify-center mb-4">
             <div className="h-12 w-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
               <Star className="h-6 w-6 text-white" />
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold">Create your account</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-2xl font-bold text-white">Create your account</CardTitle>
+          <CardDescription className="text-gray-400">
             Start your 14-day free trial. No credit card required.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="fullName">Full Name</Label>
+              <Label htmlFor="fullName" className="text-gray-300">Full Name</Label>
               <Input
                 id="fullName"
                 type="text"
@@ -95,7 +96,7 @@ export default function SignupPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="businessName">Business Name</Label>
+              <Label htmlFor="businessName" className="text-gray-300">Business Name</Label>
               <Input
                 id="businessName"
                 type="text"
@@ -108,7 +109,7 @@ export default function SignupPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-gray-300">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -121,7 +122,7 @@ export default function SignupPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password" className="text-gray-300">Password</Label>
               <Input
                 id="password"
                 type="password"
@@ -134,7 +135,7 @@ export default function SignupPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <Label htmlFor="confirmPassword" className="text-gray-300">Confirm Password</Label>
               <Input
                 id="confirmPassword"
                 type="password"
@@ -169,13 +170,14 @@ export default function SignupPage() {
           </form>
 
           <div className="mt-6 text-center text-sm">
-            <span className="text-gray-600">Already have an account? </span>
-            <Link href="/login" className="text-blue-600 hover:text-blue-700 font-medium">
+            <span className="text-gray-400">Already have an account? </span>
+            <Link href="/login" className="text-blue-500 hover:text-blue-400 font-medium">
               Sign in
             </Link>
           </div>
         </CardContent>
       </Card>
+      </div>
     </div>
   )
 }

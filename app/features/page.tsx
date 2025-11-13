@@ -186,9 +186,11 @@ export default function FeaturesPage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#08090a] py-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm shadow-xl shadow-black/50">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-border">
+      <section className="relative overflow-hidden p-12">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary-purple/5" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-20">
           <div className="text-center">
@@ -400,6 +402,8 @@ export default function FeaturesPage() {
           </div>
         </div>
       </section>
+        </div>
+      </div>
     </div>
   )
 }

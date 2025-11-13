@@ -59,16 +59,17 @@ function LoginForm() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 py-12 px-4 sm:px-6 lg:px-8">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-[#08090a] py-12 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-8 shadow-xl shadow-black/50">
+      <Card className="w-full border-0 bg-transparent shadow-none">
         <CardHeader className="space-y-1 text-center">
           <div className="flex justify-center mb-4">
             <div className="h-12 w-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
               <Star className="h-6 w-6 text-white" />
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold">Welcome back</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-2xl font-bold text-white">Welcome back</CardTitle>
+          <CardDescription className="text-gray-400">
             Enter your email to sign in to your account
           </CardDescription>
         </CardHeader>
@@ -82,7 +83,7 @@ function LoginForm() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-gray-300">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -96,7 +97,7 @@ function LoginForm() {
 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" className="text-gray-300">Password</Label>
                 <Link
                   href="/forgot-password"
                   className="text-sm text-blue-600 hover:text-blue-700"
@@ -138,13 +139,14 @@ function LoginForm() {
           </form>
 
           <div className="mt-6 text-center text-sm">
-            <span className="text-gray-600">Don't have an account? </span>
-            <Link href="/signup" className="text-blue-600 hover:text-blue-700 font-medium">
+            <span className="text-gray-400">Don't have an account? </span>
+            <Link href="/signup" className="text-blue-500 hover:text-blue-400 font-medium">
               Create account
             </Link>
           </div>
         </CardContent>
       </Card>
+      </div>
     </div>
   )
 }

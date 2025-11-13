@@ -44,7 +44,10 @@ export default function DashboardPage() {
   const recentReviews = [] // Will be populated with real data
 
   return (
-    <div className="space-y-6">
+    <div className="min-h-screen bg-[#08090a] py-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 shadow-xl shadow-black/50">
+          <div className="space-y-6">
       {/* Stats Grid - Clone of HubSpot Dashboard style */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => {
@@ -131,6 +134,9 @@ export default function DashboardPage() {
             </button>
           </CardContent>
         </Card>
+      </div>
+          </div>
+        </div>
       </div>
     </div>
   )
