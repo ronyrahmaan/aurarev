@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Users
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  businessName  String?
+  fullName      String?
+  plan          String    @default("free") // free, starter, pro
+  emailNotifications Boolean @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  accounts      ConnectedAccount[]
+  reviews       Review[]
+}
+
+// Connected Google Account
+model ConnectedAccount {
+  id              String    @id @default(cuid())
+  userId          String
+  platform        String    // "google" for MVP
+  accessToken     String    @db.Text
+  refreshToken    String?   @db.Text
+  expiresAt       DateTime?
+  businessId      String?   // Google location ID
+  businessName    String?
+  isActive        Boolean   @default(true)
+  connectedAt     DateTime  @default(now())
+
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, platform])
+}
+
+// Reviews
+model Review {
+  id                String    @id @default(cuid())
+  userId            String
+  platform          String    // "google" for MVP
+  platformReviewId  String    // Google's review ID
+  reviewerName      String?
+  reviewerAvatar    String?
+  rating            Int       // 1-5
+  reviewText        String?   @db.Text
+  reviewDate        DateTime
+  aiBlurb           String?   @db.Text
+  sentiment         String?   // "positive", "neutral", "negative"
+  pulledAt          DateTime  @default(now())
+
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([platform, platformReviewId])
+  @@index([userId])
+}

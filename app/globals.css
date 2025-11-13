@@ -1,26 +1,241 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Linear-inspired Dark Theme Colors */
+  --color-background: 10 11 13;
+  --color-foreground: 255 255 255;
+
+  /* Primary brand colors */
+  --color-primary: 94 106 210;
+  --color-primary-foreground: 255 255 255;
+  --color-primary-purple: 139 92 246;
+
+  /* Surface colors */
+  --color-card: 26 29 35;
+  --color-card-foreground: 255 255 255;
+  --color-popover: 26 29 35;
+  --color-popover-foreground: 255 255 255;
+
+  /* Secondary colors */
+  --color-secondary: 42 45 53;
+  --color-secondary-foreground: 255 255 255;
+  --color-muted: 110 111 122;
+  --color-muted-foreground: 168 169 180;
+
+  /* Accent colors */
+  --color-accent: 94 106 210;
+  --color-accent-foreground: 255 255 255;
+  --color-destructive: 248 113 113;
+
+  /* Borders and inputs */
+  --color-border: 42 45 53;
+  --color-input: 26 29 35;
+  --color-ring: 94 106 210;
+
+  /* Fonts */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', Monaco, Consolas, monospace;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.5rem;
+  --background: rgb(10 11 13);
+  --foreground: rgb(255 255 255);
+  --card: rgb(26 29 35);
+  --card-foreground: rgb(255 255 255);
+  --popover: rgb(26 29 35);
+  --popover-foreground: rgb(255 255 255);
+  --primary: rgb(94 106 210);
+  --primary-foreground: rgb(255 255 255);
+  --secondary: rgb(42 45 53);
+  --secondary-foreground: rgb(255 255 255);
+  --muted: rgb(110 111 122);
+  --muted-foreground: rgb(168 169 180);
+  --accent: rgb(94 106 210);
+  --accent-foreground: rgb(255 255 255);
+  --destructive: rgb(248 113 113);
+  --border: rgb(42 45 53);
+  --input: rgb(26 29 35);
+  --ring: rgb(94 106 210);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-[rgb(10,11,13)] text-white antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-feature-settings: 'ss01', 'ss02', 'cv01', 'cv02';
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Selection color */
+  ::selection {
+    @apply bg-primary/30 text-white;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-[rgb(10,11,13)];
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[rgb(42,45,53)] rounded-full;
+    border: 3px solid rgb(10, 11, 13);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[rgb(58,61,69)];
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, rgb(94 106 210) 0%, rgb(139 92 246) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Primary gradient background */
+  .gradient-primary {
+    background: linear-gradient(135deg, rgb(94 106 210) 0%, rgb(139 92 246) 100%);
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:border-[rgb(94,106,210)] hover:shadow-[0_0_0_1px_rgb(94,106,210),0_10px_40px_rgba(94,106,210,0.1)] hover:-translate-y-1;
+  }
+
+  /* Button hover lift */
+  .btn-lift {
+    @apply transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg;
+  }
+
+  /* Fade in animation */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .animate-fade-in-down {
+    animation: fadeInDown 0.6s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out;
+  }
+
+  .animate-gradient {
+    animation: gradientShift 3s ease infinite;
+    background-size: 200% 200%;
+  }
+
+  /* Stagger animation delays */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
 }
