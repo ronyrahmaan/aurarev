@@ -1011,7 +1011,8 @@ export default function HomePage() {
       {/* Metrics Section - Gradient background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 p-12">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
+            <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <p className="text-5xl font-bold text-white mb-2">10+ hrs</p>
@@ -1030,6 +1031,7 @@ export default function HomePage() {
               <p className="text-sm text-white/80">reviews managed</p>
             </div>
           </div>
+            </div>
           </div>
         </div>
       </section>
