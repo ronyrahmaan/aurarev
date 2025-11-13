@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} antialiased bg-[rgb(10,11,13)] text-white overflow-x-hidden`}>
+      <body className={`${inter.className} antialiased bg-[rgb(8,9,10)] text-white overflow-x-hidden`}>
         {/* Subtle gradient overlay for depth */}
         <div className="fixed inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-600/[0.02] via-transparent to-purple-600/[0.02]"></div>
