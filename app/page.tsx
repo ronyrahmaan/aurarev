@@ -116,7 +116,7 @@ export default function HomePage() {
     <>
 
       {/* Hero Section - Clean dark background like Linear */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#08090a] pt-20">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#08090a] pt-20 px-6">
         {/* Subtle gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/[0.02] to-transparent" />
 
@@ -130,8 +130,9 @@ export default function HomePage() {
           }}
         />
 
-        <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-          <div className="mx-auto max-w-5xl text-center">
+        <div className="relative mx-auto max-w-7xl py-24 sm:py-32">
+          <div className="mx-auto max-w-5xl">
+            <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 text-center">
             {/* Main headline */}
             <h1 className={cn(
               "text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.02em] mb-6 leading-[1.1]",
@@ -171,6 +172,7 @@ export default function HomePage() {
             <p className="mt-6 text-[13px] text-[#6b7280] animate-fade-in-up animation-delay-400">
               No credit card required • Setup in 2 minutes • Cancel anytime
             </p>
+            </div>
           </div>
 
           {/* Dashboard preview mockup */}
@@ -219,11 +221,12 @@ export default function HomePage() {
       </section>
 
       {/* Trust Bar - Subtle background */}
-      <section className="py-12 bg-[#0f1011] border-y border-white/[0.06]">
+      <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <p className="text-center text-[13px] text-[#6b7280] mb-8 font-medium uppercase tracking-wider">
-            Trusted by industry leaders
-          </p>
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-8">
+            <p className="text-center text-[13px] text-[#6b7280] mb-8 font-medium uppercase tracking-wider">
+              Trusted by industry leaders
+            </p>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
             {customerLogos.map((customer, index) => (
               <div
@@ -242,16 +245,18 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+          </div>
         </div>
       </section>
 
       {/* Made for Modern Businesses - Primary dark background */}
-      <section className="py-20 bg-[#08090a]">
+      <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
-              Made for modern businesses
-            </h2>
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+            <div className="mx-auto max-w-3xl text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
+                Made for modern businesses
+              </h2>
             <p className="text-base text-[#9ca3af]">
               Purpose-built tools to transform reviews into revenue
             </p>
@@ -306,13 +311,16 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-blue-500/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </div>
           </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Product Feature Section A: Review Collection Hub - Lighter background */}
-      <section className="py-20 bg-[#0f1011]">
+      <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
                 All your reviews in one intelligent dashboard
@@ -409,14 +417,16 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Product Feature Section B: AI Trust Blurb Generator - Dark background */}
-      <section className="py-20 bg-[#08090a]">
+      <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
               <div className="rounded-xl bg-gray-900 border border-gray-800 overflow-hidden">
                 <div className="bg-gray-950 p-4 border-b border-gray-800">
@@ -526,14 +536,16 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Product Feature Section C: Smart Widget Display - Lighter background */}
-      <section className="py-20 bg-[#0f1011]">
+      <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
                 Display social proof that converts
@@ -658,14 +670,16 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Product Feature Section D: Automated Outreach - Dark background */}
-      <section className="py-20 bg-[#08090a]">
+      <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
               <div className="rounded-xl bg-gray-900 border border-gray-800 overflow-hidden">
                 <div className="bg-gray-950 p-4 border-b border-gray-800">
@@ -770,14 +784,16 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Product Feature Section E: Weekly Intelligence - Lighter background */}
-      <section className="py-20 bg-[#0f1011]">
+      <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
                 Stay ahead of your reputation
@@ -893,24 +909,26 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Workflow Visualization Section - Dark background */}
-      <section className="py-24 bg-[#0A0B0D]">
+      <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              See how AuraRev works
-            </h2>
-            <p className="text-lg text-gray-400">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+            <div className="mx-auto max-w-3xl text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
+                See how AuraRev works
+              </h2>
+              <p className="text-base text-[#9ca3af]">
               A complete review management ecosystem that runs on autopilot
-            </p>
-          </div>
+              </p>
+            </div>
 
-          {/* Interactive workflow animation */}
-          <div className="mx-auto max-w-5xl">
+            {/* Interactive workflow animation */}
+            <div className="mx-auto max-w-5xl">
             <div className="relative">
               {/* Workflow steps */}
               <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-2">
@@ -986,13 +1004,15 @@ export default function HomePage() {
                 <div className="h-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-pulse"></div>
               </div>
             </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Metrics Section - Gradient background */}
-      <section className="py-24 bg-gradient-to-r from-blue-600 to-purple-600">
+      <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 p-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <p className="text-5xl font-bold text-white mb-2">10+ hrs</p>
@@ -1011,20 +1031,22 @@ export default function HomePage() {
               <p className="text-sm text-white/80">reviews managed</p>
             </div>
           </div>
+          </div>
         </div>
       </section>
 
       {/* Integrations Showcase - Lighter background */}
-      <section className="py-24 bg-[#111318]">
+      <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Works with your existing tools
-            </h2>
-            <p className="text-lg text-gray-400">
-              Connect AuraRev to your favorite platforms for seamless automation
-            </p>
-          </div>
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+            <div className="mx-auto max-w-3xl text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
+                Works with your existing tools
+              </h2>
+              <p className="text-base text-[#9ca3af]">
+                Connect AuraRev to your favorite platforms for seamless automation
+              </p>
+            </div>
 
           <div className="relative">
             <div className="flex items-center justify-center">
@@ -1091,21 +1113,23 @@ export default function HomePage() {
                 <p className="text-xs text-gray-500 mt-1">Payment triggers</p>
               </div>
             </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Testimonials - Dark background */}
-      <section className="py-24 bg-[#0A0B0D]">
+      <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Loved by businesses everywhere
-            </h2>
-            <p className="text-lg text-gray-400">
-              Join thousands of businesses transforming their reputation with AuraRev
-            </p>
-          </div>
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+            <div className="mx-auto max-w-3xl text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
+                Loved by businesses everywhere
+              </h2>
+              <p className="text-base text-[#9ca3af]">
+                Join thousands of businesses transforming their reputation with AuraRev
+              </p>
+            </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
@@ -1135,20 +1159,23 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Pricing Section - Lighter background */}
-      <section className="py-24 bg-[#111318]">
+      <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Simple, transparent pricing
-            </h2>
-            <p className="text-lg text-gray-400">
-              Choose the plan that fits your business needs
-            </p>
-          </div>
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+            <div className="mx-auto max-w-3xl text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
+                Simple, transparent pricing
+              </h2>
+              <p className="text-base text-[#9ca3af]">
+                Choose the plan that fits your business needs
+              </p>
+            </div>
 
           <div className="grid md:grid-cols-4 gap-6">
             {/* Starter */}
@@ -1272,24 +1299,26 @@ export default function HomePage() {
                 Contact sales
               </Button>
             </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Final CTA Section - Dark background */}
-      <section className="py-24 bg-[#0A0B0D]">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Ready to transform your review management?
-          </h2>
-          <p className="text-xl text-gray-400 mb-10">
+      <section className="py-16 bg-[#08090a]">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 text-center">
+            <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-4 tracking-[-0.02em]">
+              Ready to transform your review management?
+            </h2>
+            <p className="text-lg text-[#9ca3af] mb-8">
             Join 1000+ businesses already using AuraRev
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-blue-500 to-blue-600 text-white border-0 px-8 py-6 text-base font-medium hover:from-blue-600 hover:to-blue-700 transition-all shadow-xl shadow-blue-500/25"
+              className="bg-white hover:bg-white/90 text-black border-0 px-7 py-3 h-12 text-[15px] font-medium rounded-lg transition-all duration-150"
             >
               Start 14-day free trial
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -1297,15 +1326,16 @@ export default function HomePage() {
             <Button
               size="lg"
               variant="outline"
-              className="px-8 py-6 text-base font-medium bg-transparent border-gray-700 text-white hover:bg-gray-900/50 hover:border-gray-600"
+              className="px-7 py-3 h-12 text-[15px] font-medium bg-transparent border border-white/[0.12] text-white hover:bg-white/[0.04] hover:border-white/[0.16] rounded-lg transition-all duration-150"
             >
               Book a demo
             </Button>
           </div>
 
-          <p className="mt-8 text-sm text-gray-500">
+          <p className="mt-8 text-[13px] text-[#6b7280]">
             No credit card required • Setup in 2 minutes • Cancel anytime
           </p>
+          </div>
         </div>
       </section>
     </>
