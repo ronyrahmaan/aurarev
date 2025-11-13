@@ -67,7 +67,7 @@ export default function SignupPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#08090a] py-12 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-8 shadow-xl shadow-black/50">
+      <div className="w-full max-w-md rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-8 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
       <Card className="w-full border-0 bg-transparent shadow-none">
         <CardHeader className="space-y-1 text-center">
           <div className="flex justify-center mb-4">

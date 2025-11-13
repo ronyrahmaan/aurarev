@@ -46,14 +46,14 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-[#08090a] py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 shadow-xl shadow-black/50">
+        <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
           <div className="space-y-6">
       {/* Stats Grid - Clone of HubSpot Dashboard style */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => {
           const Icon = stat.icon
           return (
-            <Card key={stat.title} className="border-gray-200">
+            <Card key={stat.title} className="border-gray-800/50 ring-1 ring-white/5 shadow-[0_0_20px_rgba(59,130,246,0.05)] hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-300">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
@@ -72,7 +72,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Recent Reviews Section */}
-      <Card className="border-gray-200">
+      <Card className="border-gray-800/50 ring-1 ring-white/5 shadow-[0_0_20px_rgba(59,130,246,0.05)] hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-300">
         <CardHeader>
           <CardTitle>Recent Reviews</CardTitle>
         </CardHeader>
@@ -97,7 +97,7 @@ export default function DashboardPage() {
 
       {/* Quick Actions */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <Card className="border-gray-200">
+        <Card className="border-gray-800/50 ring-1 ring-white/5 shadow-[0_0_20px_rgba(59,130,246,0.05)] hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-300">
           <CardHeader>
             <CardTitle className="flex items-center justify-between">
               Google Account Status
@@ -116,7 +116,7 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-gray-200">
+        <Card className="border-gray-800/50 ring-1 ring-white/5 shadow-[0_0_20px_rgba(59,130,246,0.05)] hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-300">
           <CardHeader>
             <CardTitle className="flex items-center justify-between">
               Email Notifications

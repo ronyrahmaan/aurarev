@@ -136,7 +136,7 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-[#08090a] py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm shadow-xl shadow-black/50">
+        <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
       {/* Hero Section */}
       <section className="relative overflow-hidden p-12">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary-purple/5" />
@@ -186,7 +186,7 @@ export default function PricingPage() {
               return (
                 <div
                   key={plan.name}
-                  className={`group relative overflow-hidden rounded-2xl border transition-all duration-300 ${
+                  className={`group relative overflow-hidden rounded-2xl border transition-all duration-300 ring-1 ring-white/10 shadow-[0_0_30px_rgba(59,130,246,0.1)] hover:shadow-[0_0_40px_rgba(59,130,246,0.2)] ${
                     plan.popular
                       ? 'border-primary bg-bg-secondary shadow-glow scale-105'
                       : 'border-border bg-bg-secondary hover:border-primary/50'
@@ -431,7 +431,7 @@ export default function PricingPage() {
       {/* Final CTA */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary-purple to-primary p-12 text-center">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary-purple to-primary p-12 text-center ring-1 ring-white/20 shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:shadow-[0_0_80px_rgba(59,130,246,0.4)] transition-all duration-300">
             <div className="absolute inset-0 bg-grid-pattern opacity-10" />
             <div className="relative">
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
