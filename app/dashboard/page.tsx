@@ -46,7 +46,7 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-[#08090a] py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 ring-1 ring-white/10 shadow-glow-blue hover:shadow-glow-blue-lg transition-all duration-300">
+        <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 ring-1 ring-white/10 shadow-[0_0_50px_rgba(59,130,246,0.15)] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] transition-all duration-300">
           <div className="space-y-6">
       {/* Stats Grid - Clone of HubSpot Dashboard style */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">

@@ -97,9 +97,6 @@ export default {
       boxShadow: {
         'glow': '0 0 0 1px rgb(94 106 210), 0 10px 40px rgba(94, 106, 210, 0.1)',
         'glow-lg': '0 0 0 1px rgb(94 106 210), 0 20px 60px rgba(94, 106, 210, 0.2)',
-        'glow-blue': '0 0 50px rgba(59, 130, 246, 0.5)',
-        'glow-blue-lg': '0 0 60px rgba(59, 130, 246, 0.7)',
-        'glow-blue-sm': '0 0 30px rgba(59, 130, 246, 0.3)',
       },
     },
   },
