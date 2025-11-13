@@ -65,9 +65,9 @@ export default function DashboardLayout({
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[rgb(8,9,10)]">
       {/* Sidebar - Clone of Stripe Dashboard */}
-      <div className="fixed inset-y-0 left-0 w-64 bg-white border-r border-gray-200">
+      <div className="fixed inset-y-0 left-0 w-64 bg-[rgb(17,19,24)] border-r border-gray-800">
         {/* Logo */}
         <div className="flex items-center gap-2 px-6 py-4 border-b border-gray-200">
           <Star className="h-8 w-8 text-blue-600" />
@@ -86,7 +86,7 @@ export default function DashboardLayout({
                 className={`flex items-center gap-3 px-3 py-2 mb-1 text-sm font-medium rounded-lg transition-colors ${
                   isActive
                     ? 'bg-blue-50 text-blue-600'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                    : 'text-gray-400 hover:bg-gray-800 hover:text-white'
                 }`}
               >
                 <Icon className="h-5 w-5" />
@@ -100,7 +100,7 @@ export default function DashboardLayout({
         <div className="border-t border-gray-200 p-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="flex items-center gap-3 w-full p-2 rounded-lg hover:bg-gray-50 transition-colors">
+              <button className="flex items-center gap-3 w-full p-2 rounded-lg hover:bg-gray-800 transition-colors text-gray-400 hover:text-white">
                 <Avatar className="h-8 w-8">
                   <AvatarFallback className="bg-blue-100 text-blue-600">
                     {user.fullName?.[0] || user.email[0].toUpperCase()}
@@ -130,7 +130,7 @@ export default function DashboardLayout({
       {/* Main content */}
       <div className="pl-64">
         {/* Top header bar */}
-        <header className="sticky top-0 z-40 bg-white border-b border-gray-200">
+        <header className="sticky top-0 z-40 bg-[rgb(17,19,24)] border-b border-gray-800">
           <div className="flex items-center justify-between px-6 py-3">
             <h1 className="text-2xl font-semibold text-gray-900">
               {navigation.find(n => n.href === pathname)?.name || 'Dashboard'}

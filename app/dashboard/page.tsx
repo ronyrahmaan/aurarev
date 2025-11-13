@@ -79,7 +79,7 @@ export default function DashboardPage() {
         <CardContent>
           {recentReviews.length === 0 ? (
             <div className="text-center py-12">
-              <div className="mx-auto h-12 w-12 rounded-lg bg-gray-100 flex items-center justify-center mb-4">
+              <div className="mx-auto h-12 w-12 rounded-lg bg-gray-800 flex items-center justify-center mb-4">
                 <Star className="h-6 w-6 text-gray-400" />
               </div>
               <h3 className="text-sm font-medium text-gray-900 mb-1">No reviews yet</h3>
