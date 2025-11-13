@@ -311,7 +311,6 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-blue-500/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </div>
           </div>
-            </div>
           </div>
         </div>
       </section>
