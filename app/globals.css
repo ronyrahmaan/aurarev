@@ -157,11 +157,21 @@
 
   /* Linear-style box backgrounds */
   .linear-box {
-    @apply bg-gradient-to-b from-[rgb(17,19,24)] to-[rgb(10,11,13)] rounded-xl border border-gray-800/50;
+    background: linear-gradient(to bottom, rgb(17,19,24), rgb(10,11,13));
+    border-radius: 0.75rem;
+    border: 1px solid rgba(31, 41, 55, 0.5);
   }
 
   .linear-box-hover {
-    @apply linear-box transition-all duration-300 hover:border-blue-600/30 hover:shadow-[0_0_0_1px_rgb(59,130,246,0.1),0_10px_40px_rgba(59,130,246,0.05)];
+    background: linear-gradient(to bottom, rgb(17,19,24), rgb(10,11,13));
+    border-radius: 0.75rem;
+    border: 1px solid rgba(31, 41, 55, 0.5);
+    transition: all 300ms;
+  }
+
+  .linear-box-hover:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.1), 0 10px 40px rgba(59, 130, 246, 0.05);
   }
 
   /* Card hover effect */
