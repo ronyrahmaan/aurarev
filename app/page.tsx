@@ -88,13 +88,22 @@ export default function HomePage() {
   return (
     <>
       {/* Announcement Banner */}
-      <div className="bg-gradient-primary text-white py-2 text-center text-sm animate-fade-in">
-        <div className="mx-auto max-w-7xl px-4 flex items-center justify-center gap-2">
-          <Badge className="bg-white/20 text-white border-white/30 text-xs">New</Badge>
-          <span>AI-Powered Review Insights are here!</span>
-          <Link href="/blog/ai-insights" className="inline-flex items-center gap-1 font-medium hover:underline">
-            Learn more <ArrowRight className="h-3 w-3" />
-          </Link>
+      <div className="bg-primary/10 backdrop-blur-sm border-b border-primary/20 py-3">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="flex items-center justify-center gap-3 text-sm">
+            <span className="inline-flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              <span className="text-white font-medium">New</span>
+            </span>
+            <span className="text-text-secondary">AI-Powered Review Insights are here!</span>
+            <Link href="/features" className="inline-flex items-center gap-1 text-primary font-medium hover:text-primary/80 transition-colors">
+              Learn more
+              <ArrowRight className="h-3 w-3" />
+            </Link>
+          </div>
         </div>
       </div>
 

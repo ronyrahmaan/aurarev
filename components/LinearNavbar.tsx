@@ -148,19 +148,19 @@ export default function LinearNavbar() {
       className={cn(
         'fixed top-0 w-full z-50 transition-all duration-200',
         isScrolled
-          ? 'bg-background/80 backdrop-blur-xl border-b border-border'
-          : 'bg-transparent'
+          ? 'bg-background/95 backdrop-blur-md border-b border-border/50'
+          : 'bg-background/80 backdrop-blur-sm border-b border-border/30'
       )}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-14 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-10">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center">
-                <Star className="h-5 w-5 text-white" />
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-primary to-primary-purple flex items-center justify-center group-hover:shadow-glow transition-all">
+                <Star className="h-4 w-4 text-white" />
               </div>
-              <span className="text-xl font-semibold text-white">AuraRev</span>
+              <span className="text-lg font-semibold text-white">AuraRev</span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -168,7 +168,7 @@ export default function LinearNavbar() {
               <NavigationMenuList className="flex gap-1">
                 {/* Product Dropdown */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-text-secondary hover:text-white">
+                  <NavigationMenuTrigger className="bg-transparent text-text-secondary hover:text-white text-sm font-medium px-3 py-2">
                     Product
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -206,7 +206,7 @@ export default function LinearNavbar() {
 
                 {/* Solutions Dropdown */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-text-secondary hover:text-white">
+                  <NavigationMenuTrigger className="bg-transparent text-text-secondary hover:text-white text-sm font-medium px-3 py-2">
                     Solutions
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -244,7 +244,7 @@ export default function LinearNavbar() {
 
                 {/* Resources Dropdown */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-text-secondary hover:text-white">
+                  <NavigationMenuTrigger className="bg-transparent text-text-secondary hover:text-white text-sm font-medium px-3 py-2">
                     Resources
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -284,7 +284,7 @@ export default function LinearNavbar() {
                 <NavigationMenuItem>
                   <Link
                     href="/pricing"
-                    className="inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-text-secondary transition-colors hover:text-white hover:bg-bg-hover"
+                    className="inline-flex h-9 w-max items-center justify-center rounded-md px-3 py-2 text-sm font-medium text-text-secondary transition-colors hover:text-white"
                   >
                     Pricing
                   </Link>
@@ -292,7 +292,7 @@ export default function LinearNavbar() {
 
                 {/* Company Dropdown */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-text-secondary hover:text-white">
+                  <NavigationMenuTrigger className="bg-transparent text-text-secondary hover:text-white text-sm font-medium px-3 py-2">
                     Company
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -335,26 +335,26 @@ export default function LinearNavbar() {
           </div>
 
           {/* Right side - CTAs */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/docs"
-              className="text-sm text-text-secondary hover:text-white transition-colors"
+              className="text-sm font-medium text-text-secondary hover:text-white transition-colors px-3 py-2"
             >
               Docs
             </Link>
             <Link
               href="/login"
-              className="text-sm text-text-secondary hover:text-white transition-colors"
+              className="text-sm font-medium text-text-secondary hover:text-white transition-colors px-3 py-2"
             >
               Sign in
             </Link>
             <Link href="/signup">
               <Button
                 size="sm"
-                className="bg-primary hover:bg-primary/90 text-white border-0 px-4 py-1.5 h-auto font-medium"
+                className="bg-primary hover:bg-primary/80 text-white border-0 px-4 py-1.5 h-8 text-sm font-medium rounded-md transition-all hover:shadow-glow"
               >
                 Get Started
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
               </Button>
             </Link>
           </div>
