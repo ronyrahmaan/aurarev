@@ -132,7 +132,7 @@ export default function HomePage() {
 
         <div className="relative mx-auto max-w-7xl py-24 sm:py-32">
           <div className="mx-auto max-w-5xl">
-            <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 text-center">
+            <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 text-center shadow-xl shadow-black/50">
             {/* Main headline */}
             <h1 className={cn(
               "text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.02em] mb-6 leading-[1.1]",
@@ -178,7 +178,7 @@ export default function HomePage() {
           {/* Dashboard preview mockup */}
           <div className="mt-16 relative animate-fade-in-up animation-delay-500">
             <div className="mx-auto max-w-5xl">
-              <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] p-1 backdrop-blur-sm">
+              <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] p-1 backdrop-blur-sm shadow-xl shadow-black/50">
                 <div className="rounded-xl bg-[#0f1011] p-4">
                   <div className="flex gap-1.5 mb-4">
                     <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
@@ -223,7 +223,7 @@ export default function HomePage() {
       {/* Trust Bar - Subtle background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-8">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-8 shadow-xl shadow-black/50">
             <p className="text-center text-[13px] text-[#6b7280] mb-8 font-medium uppercase tracking-wider">
               Trusted by industry leaders
             </p>
@@ -252,7 +252,7 @@ export default function HomePage() {
       {/* Made for Modern Businesses - Primary dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 shadow-xl shadow-black/50">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
                 Made for modern businesses
@@ -318,7 +318,7 @@ export default function HomePage() {
       {/* Product Feature Section A: Review Collection Hub - Lighter background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 shadow-xl shadow-black/50">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
@@ -424,7 +424,7 @@ export default function HomePage() {
       {/* Product Feature Section B: AI Trust Blurb Generator - Dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 shadow-xl shadow-black/50">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
               <div className="rounded-xl bg-gray-900 border border-gray-800 overflow-hidden">
@@ -543,7 +543,7 @@ export default function HomePage() {
       {/* Product Feature Section C: Smart Widget Display - Lighter background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 shadow-xl shadow-black/50">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
@@ -677,7 +677,7 @@ export default function HomePage() {
       {/* Product Feature Section D: Automated Outreach - Dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 shadow-xl shadow-black/50">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
               <div className="rounded-xl bg-gray-900 border border-gray-800 overflow-hidden">
@@ -791,7 +791,7 @@ export default function HomePage() {
       {/* Product Feature Section E: Weekly Intelligence - Lighter background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 shadow-xl shadow-black/50">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
@@ -916,7 +916,7 @@ export default function HomePage() {
       {/* Workflow Visualization Section - Dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 shadow-xl shadow-black/50">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
                 See how AuraRev works
@@ -1037,7 +1037,7 @@ export default function HomePage() {
       {/* Integrations Showcase - Lighter background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 shadow-xl shadow-black/50">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
                 Works with your existing tools
@@ -1120,7 +1120,7 @@ export default function HomePage() {
       {/* Testimonials - Dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 shadow-xl shadow-black/50">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
                 Loved by businesses everywhere
@@ -1165,7 +1165,7 @@ export default function HomePage() {
       {/* Pricing Section - Lighter background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 shadow-xl shadow-black/50">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
                 Simple, transparent pricing
@@ -1305,7 +1305,7 @@ export default function HomePage() {
       {/* Final CTA Section - Dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 text-center">
+          <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm p-12 text-center shadow-xl shadow-black/50">
             <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-4 tracking-[-0.02em]">
               Ready to transform your review management?
             </h2>
