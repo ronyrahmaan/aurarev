@@ -269,7 +269,7 @@ export default function LinearNavbar() {
                   {session.user.name || session.user.email}
                 </div>
                 <Button
-                  onClick={() => signOut()}
+                  onClick={() => signOut({ callbackUrl: '/' })}
                   variant="ghost"
                   size="sm"
                   className="text-[14px] font-normal text-[#9ca3af] hover:text-white transition-colors duration-150 px-0"

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { QueryProvider } from '@/lib/query-provider'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
+import { useSession, signOut } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
@@ -30,14 +31,6 @@ import {
   X
 } from 'lucide-react'
 
-interface User {
-  id: string
-  email: string
-  fullName: string
-  businessName: string
-  plan: string
-}
-
 export default function DashboardLayout({
   children,
 }: {
@@ -45,26 +38,32 @@ export default function DashboardLayout({
 }) {
   const router = useRouter()
   const pathname = usePathname()
-  const [user, setUser] = useState<User | null>(null)
+  const { data: session, status } = useSession()
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   useEffect(() => {
     // Check if user is logged in
-    const userStr = localStorage.getItem('user')
-    if (!userStr) {
+    if (status === 'loading') return // Still loading
+
+    if (status === 'unauthenticated') {
       router.push('/login')
       return
     }
-    setUser(JSON.parse(userStr))
-  }, [router])
+  }, [status, router])
 
   const handleLogout = () => {
-    localStorage.removeItem('token')
-    localStorage.removeItem('user')
-    router.push('/login')
+    signOut({ callbackUrl: '/' })
   }
 
-  if (!user) return null
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen bg-[rgb(8,9,10)] flex items-center justify-center">
+        <div className="text-white">Loading...</div>
+      </div>
+    )
+  }
+
+  if (status === 'unauthenticated') return null
 
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: Home },
@@ -146,19 +145,19 @@ export default function DashboardLayout({
               <button className="flex items-center gap-3 w-full p-2 rounded-lg hover:bg-white/[0.05] transition-colors">
                 <Avatar className="h-8 w-8">
                   <AvatarFallback className="bg-blue-600/20 text-blue-400">
-                    {user.fullName?.[0] || user.email[0].toUpperCase()}
+                    {session?.user?.name?.[0] || session?.user?.email?.[0]?.toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
                 <div className="flex-1 text-left">
-                  <p className="text-sm font-medium text-white">{user.businessName}</p>
-                  <p className="text-xs text-gray-400">{user.plan} plan</p>
+                  <p className="text-sm font-medium text-white">{session?.user?.businessName || 'Business'}</p>
+                  <p className="text-xs text-gray-400">{session?.user?.plan || 'free'} plan</p>
                 </div>
                 <ChevronDown className="h-4 w-4 text-gray-400" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">
               <DropdownMenuItem disabled>
-                <span className="text-xs text-gray-500">{user.email}</span>
+                <span className="text-xs text-gray-500">{session?.user?.email}</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={handleLogout}>
