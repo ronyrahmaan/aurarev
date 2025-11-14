@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import { DataTable, Column } from '@/components/dashboard/DataTable'
-import { VirtualizedDataTable } from '@/components/dashboard/VirtualizedDataTable'
+// import { VirtualizedDataTable } from '@/components/dashboard/VirtualizedDataTable'
 import { ReviewCard } from '@/components/dashboard/ReviewCard'
 import { EmptyState } from '@/components/dashboard/EmptyState'
 import { useQuery } from '@tanstack/react-query'
@@ -325,18 +325,16 @@ export default function ReviewsPage() {
           }}
         />
       ) : (
-        <VirtualizedDataTable
+        <DataTable
           data={filteredReviews}
           columns={columns}
           selectable
           onSelectionChange={setSelectedRows}
           loading={isLoading}
           pageSize={25}
-          pageSizeOptions={[25, 50, 100, 250]}
+          pageSizeOptions={[25, 50, 100]}
           emptyMessage="No reviews found"
           striped
-          height={500}
-          virtualizedThreshold={50}
         />
       )}
 
@@ -348,9 +346,12 @@ export default function ReviewsPage() {
           </DialogHeader>
           {selectedReview && (
             <ReviewCard
-              {...selectedReview}
+              id={selectedReview.id}
+              platform={selectedReview.platform}
               author={{ name: selectedReview.author }}
+              rating={selectedReview.rating as 1 | 2 | 3 | 4 | 5}
               date={new Date(selectedReview.date)}
+              text={selectedReview.text}
               sentiment={selectedReview.sentiment || 'neutral'}
               onRespond={() => console.log('Respond to review')}
               onGenerateBlurb={() => console.log('Generate blurb')}

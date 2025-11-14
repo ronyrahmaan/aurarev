@@ -92,7 +92,7 @@ export function EmptyState({
   const Icon = icon || config.icon
   const displayTitle = title || config.title
   const displayDescription = description || config.description
-  const displayAction = action || config.action
+  const displayAction = action || (config?.action ? { ...config.action, onClick: () => {} } : undefined)
 
   return (
     <div className={cn(

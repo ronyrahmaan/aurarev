@@ -363,7 +363,7 @@ export default function SettingsPage() {
                 </div>
               </div>
 
-              <Button className="w-full" variant="outline" className="bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]">
+              <Button variant="outline" className="w-full bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]">
                 Upgrade Plan
               </Button>
             </CardContent>

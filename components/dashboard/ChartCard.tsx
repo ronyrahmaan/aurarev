@@ -327,7 +327,7 @@ export function DonutChartCard(props: Omit<ChartCardProps, 'children'> & {
               const strokeDasharray = `${percentage} ${100 - percentage}`
               const strokeDashoffset = acc
 
-              return [...acc, strokeDashoffset + percentage]
+              return [...acc, (acc[acc.length - 1] || 0) + percentage]
             }, [] as number[]).map((offset, index) => {
               const item = data[index]
               const percentage = (item.value / total) * 100

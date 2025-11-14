@@ -107,7 +107,7 @@ export function ActivityFeed({ items = [] }: ActivityFeedProps) {
                           <Star
                             key={i}
                             className={`h-3 w-3 ${
-                              i < item.rating
+                              i < (item.rating || 0)
                                 ? 'fill-yellow-400 text-yellow-400'
                                 : 'text-gray-600'
                             }`}

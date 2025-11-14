@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/select'
 import {
   Zap, Clock, Mail, MessageSquare, Users, Target,
-  Plus, Edit2, Trash2, Play, Pause, CheckCircle, XCircle, Loader2
+  Plus, Edit2, Trash2, Play, Pause, CheckCircle, XCircle, Loader2, Star
 } from 'lucide-react'
 
 interface Workflow {

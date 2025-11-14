@@ -42,7 +42,7 @@ export function NotificationProvider({ children }: { children: React.ReactNode }
     setNotifications(prev => [newNotification, ...prev])
 
     // Auto-remove after duration
-    if (newNotification.duration > 0) {
+    if (newNotification.duration && newNotification.duration > 0) {
       setTimeout(() => {
         setNotifications(prev => prev.filter(n => n.id !== id))
       }, newNotification.duration)
