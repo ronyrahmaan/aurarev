@@ -76,104 +76,12 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Create Google My Business client
-    const mybusiness = createGoogleMyBusinessClient(accessToken)
-
-    // Get business accounts
-    const accountsResponse = await mybusiness.accounts.list()
-    const accounts = accountsResponse.data.accounts || []
-
-    if (accounts.length === 0) {
-      return NextResponse.json(
-        { error: 'No Google Business profiles found' },
-        { status: 404 }
-      )
-    }
-
-    let allReviews = []
-    let businessesFound = 0
-
-    // Process each business account
-    for (const account of accounts) {
-      try {
-        // Get locations for this account
-        const locationsResponse = await mybusiness.accounts.locations.list({
-          parent: account.name
-        })
-
-        const locations = locationsResponse.data.locations || []
-        businessesFound += locations.length
-
-        // Process each location
-        for (const location of locations) {
-          try {
-            // Get reviews for this location
-            const reviewsResponse = await mybusiness.accounts.locations.reviews.list({
-              parent: location.name
-            })
-
-            const reviews = reviewsResponse.data.reviews || []
-
-            // Process each review
-            for (const review of reviews) {
-              const existingReview = await prisma.review.findUnique({
-                where: {
-                  platformReviewId: review.name || ''
-                }
-              })
-
-              if (!existingReview) {
-                // Create new review
-                const newReview = await prisma.review.create({
-                  data: {
-                    userId: userId,
-                    platformReviewId: review.name || '',
-                    platform: 'google',
-                    author: review.reviewer?.displayName || 'Anonymous',
-                    rating: review.starRating || 0,
-                    text: review.comment || '',
-                    reviewDate: review.createTime ? new Date(review.createTime) : new Date(),
-                    businessName: location.title || 'Unknown Business',
-                    businessLocation: location.storefrontAddress ?
-                      `${location.storefrontAddress.addressLines?.join(' ')}, ${location.storefrontAddress.locality}` :
-                      'Unknown Location',
-                    metadata: {
-                      reviewerProfilePhotoUrl: review.reviewer?.profilePhotoUrl,
-                      isAnonymous: review.reviewer?.isAnonymous,
-                      locationName: location.name,
-                      accountName: account.name
-                    }
-                  }
-                })
-                allReviews.push(newReview)
-              }
-            }
-          } catch (locationError) {
-            console.error(`Error processing location ${location.name}:`, locationError)
-            // Continue with other locations
-          }
-        }
-      } catch (accountError) {
-        console.error(`Error processing account ${account.name}:`, accountError)
-        // Continue with other accounts
-      }
-    }
-
-    // Update last sync time
-    await prisma.connectedAccount.update({
-      where: { id: googleAccount.id },
-      data: { lastSyncAt: new Date() }
-    })
-
+    // Google My Business API v4 has been deprecated by Google
+    // The reviews endpoint is no longer available through the googleapis library
     return NextResponse.json({
-      success: true,
-      message: `Successfully pulled reviews from ${businessesFound} business location(s)`,
-      data: {
-        newReviews: allReviews.length,
-        businessesFound: businessesFound,
-        reviews: allReviews
-      }
-    })
+      error: 'Google My Business API v4 has been deprecated. Review pulling is currently unavailable. Please check Google Business Profile documentation for alternatives.',
+      deprecationNotice: 'Google deprecated the My Business API v4 in 2021. Consider using the Google Business Profile API or manual export options.'
+    }, { status: 503 })
 
   } catch (error) {
     console.error('Google reviews pulling error:', error)

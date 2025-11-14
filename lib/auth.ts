@@ -40,7 +40,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             id: user.id,
             email: user.email,
             name: user.fullName,
-            businessName: user.businessName,
+            businessName: user.businessName || "",
             plan: user.plan
           }
         } catch (error) {
@@ -72,8 +72,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }
   },
   pages: {
-    signIn: "/auth/login",
-    signUp: "/auth/signup"
+    signIn: "/auth/login"
   },
   secret: process.env.NEXTAUTH_SECRET
 })

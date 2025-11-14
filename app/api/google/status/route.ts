@@ -31,10 +31,8 @@ export async function GET(request: NextRequest) {
       select: {
         id: true,
         isActive: true,
-        accountName: true,
-        accountEmail: true,
-        lastSyncAt: true,
-        createdAt: true,
+        businessName: true,
+        connectedAt: true,
         expiresAt: true
       }
     })
@@ -53,10 +51,8 @@ export async function GET(request: NextRequest) {
       connected: true,
       isActive: googleAccount.isActive,
       isExpired: isExpired,
-      accountName: googleAccount.accountName,
-      accountEmail: googleAccount.accountEmail,
-      lastSyncAt: googleAccount.lastSyncAt,
-      connectedAt: googleAccount.createdAt,
+      businessName: googleAccount.businessName,
+      connectedAt: googleAccount.connectedAt,
       expiresAt: googleAccount.expiresAt
     })
 

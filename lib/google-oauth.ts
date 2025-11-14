@@ -44,5 +44,29 @@ export async function refreshGoogleToken(refreshToken: string) {
 export function createGoogleMyBusinessClient(accessToken: string) {
   oauth2Client.setCredentials({ access_token: accessToken })
 
-  return google.mybusinessbusinessinformation({ version: 'v1', auth: oauth2Client })
+  // Note: Google My Business API v4 has been deprecated
+  // Using Business Information API for basic business data
+  const businessInfo = google.mybusinessbusinessinformation({ version: 'v1', auth: oauth2Client })
+  const accountManagement = google.mybusinessaccountmanagement({ version: 'v1', auth: oauth2Client })
+
+  return {
+    businessInfo,
+    accountManagement,
+    // Legacy compatibility - this method no longer exists
+    accounts: {
+      list: async () => {
+        throw new Error('Google My Business API v4 has been deprecated. Please use the Google Business Profile API instead.')
+      },
+      locations: {
+        list: async () => {
+          throw new Error('Google My Business API v4 has been deprecated. Please use the Google Business Profile API instead.')
+        },
+        reviews: {
+          list: async () => {
+            throw new Error('Google My Business API v4 has been deprecated. Please use the Google Business Profile API instead.')
+          }
+        }
+      }
+    }
+  }
 }
