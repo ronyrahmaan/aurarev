@@ -3,7 +3,6 @@
 import { useState, useEffect, Suspense } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { getSession } from 'next-auth/react'
 import { authenticateUser } from '@/lib/auth-actions'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -41,14 +40,9 @@ function LoginForm() {
         throw new Error(result.error || 'Login failed')
       }
 
-      // Get the session to verify login
-      const session = await getSession()
-      if (session) {
-        router.push('/dashboard')
-      } else {
-        // Try refreshing session
-        window.location.reload()
-      }
+      // Force a refresh to ensure session is properly set
+      router.refresh()
+      router.push('/dashboard')
     } catch (err: any) {
       setError(err.message || 'Invalid email or password')
     } finally {
