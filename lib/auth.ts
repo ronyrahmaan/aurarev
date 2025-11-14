@@ -56,7 +56,7 @@ const authConfig = {
     strategy: "jwt"
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user }: { token: any; user: any }) {
       if (user) {
         token.id = user.id
         token.businessName = user.businessName
@@ -64,7 +64,7 @@ const authConfig = {
       }
       return token
     },
-    async session({ session, token }) {
+    async session({ session, token }: { session: any; token: any }) {
       if (token) {
         session.user.id = token.id as string
         session.user.businessName = token.businessName as string
