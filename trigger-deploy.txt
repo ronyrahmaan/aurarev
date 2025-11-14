@@ -1,1 +1,0 @@
-Trigger new deployment to activate updated NEXTAUTH_SECRET
