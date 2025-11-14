@@ -50,11 +50,9 @@ export async function GET(request: NextRequest) {
         accessToken: tokens.access_token,
         refreshToken: tokens.refresh_token || undefined,
         expiresAt: tokens.expiry_date ? new Date(tokens.expiry_date) : undefined,
-        accountId: userInfo.id || '',
-        accountEmail: userInfo.email || '',
-        accountName: userInfo.name || '',
-        isActive: true,
-        lastSyncAt: new Date()
+        businessId: userInfo.id || undefined,
+        businessName: userInfo.name || undefined,
+        isActive: true
       },
       create: {
         userId: userId,
@@ -62,11 +60,9 @@ export async function GET(request: NextRequest) {
         accessToken: tokens.access_token,
         refreshToken: tokens.refresh_token || undefined,
         expiresAt: tokens.expiry_date ? new Date(tokens.expiry_date) : undefined,
-        accountId: userInfo.id || '',
-        accountEmail: userInfo.email || '',
-        accountName: userInfo.name || '',
-        isActive: true,
-        lastSyncAt: new Date()
+        businessId: userInfo.id || undefined,
+        businessName: userInfo.name || undefined,
+        isActive: true
       }
     })
 
