@@ -3,87 +3,90 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Star, TrendingUp, MessageSquare, Calendar } from 'lucide-react'
+import { MetricCard } from '@/components/dashboard/MetricCard'
+import { ActivityFeed } from '@/components/dashboard/ActivityFeed'
+import { QuickActions } from '@/components/dashboard/QuickActions'
+import { useRouter } from 'next/navigation'
 
 export default function DashboardPage() {
+  const router = useRouter()
+
   // Mock data for now (will be replaced with real data)
   const stats = [
     {
       title: 'Total Reviews',
-      value: '0',
-      change: 'No reviews yet',
+      value: '1,234',
+      change: '+12%',
+      trend: 'up' as const,
+      sparkline: [10, 12, 8, 14, 16, 18, 20],
       icon: Star,
-      color: 'text-blue-600',
-      bgColor: 'bg-blue-100',
+      color: 'blue' as const,
     },
     {
       title: 'Average Rating',
-      value: '—',
-      change: 'No ratings yet',
+      value: '4.8',
+      change: '-0.1',
+      trend: 'down' as const,
+      sparkline: [4.8, 4.9, 4.9, 4.8, 4.8, 4.7, 4.8],
       icon: TrendingUp,
-      color: 'text-green-600',
-      bgColor: 'bg-green-100',
+      color: 'green' as const,
     },
     {
-      title: 'AI Blurbs Generated',
-      value: '0',
-      change: 'Start pulling reviews',
+      title: 'Response Rate',
+      value: '89%',
+      change: '+5%',
+      trend: 'up' as const,
+      sparkline: [85, 86, 84, 87, 88, 89, 89],
       icon: MessageSquare,
-      color: 'text-purple-600',
-      bgColor: 'bg-purple-100',
+      color: 'purple' as const,
     },
     {
-      title: 'Last Sync',
-      value: 'Never',
-      change: 'Connect Google account',
+      title: 'AI Blurbs',
+      value: '456',
+      change: '23 this week',
+      trend: 'neutral' as const,
+      sparkline: [420, 425, 430, 438, 445, 450, 456],
       icon: Calendar,
-      color: 'text-orange-600',
-      bgColor: 'bg-orange-100',
+      color: 'orange' as const,
     },
   ]
 
   const recentReviews = [] // Will be populated with real data
 
   return (
-    <div className="min-h-screen bg-[#08090a] py-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
-          <div className="space-y-6">
+    <div className="space-y-6">
       {/* Stats Grid - Clone of HubSpot Dashboard style */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {stats.map((stat) => {
-          const Icon = stat.icon
-          return (
-            <Card key={stat.title} className="border-gray-800/50 ring-1 ring-white/5 shadow-[0_0_20px_rgba(59,130,246,0.05)] hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-300">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-600">{stat.title}</p>
-                    <p className="mt-1 text-3xl font-bold text-gray-900">{stat.value}</p>
-                    <p className="mt-1 text-xs text-gray-500">{stat.change}</p>
-                  </div>
-                  <div className={`rounded-lg p-3 ${stat.bgColor}`}>
-                    <Icon className={`h-6 w-6 ${stat.color}`} />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          )
-        })}
+        {stats.map((stat) => (
+          <MetricCard key={stat.title} {...stat} />
+        ))}
+      </div>
+
+      {/* Middle Section: Activity Feed + Quick Actions */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2">
+          <ActivityFeed />
+        </div>
+        <div>
+          <QuickActions
+            onViewAnalytics={() => router.push('/dashboard/analytics')}
+          />
+        </div>
       </div>
 
       {/* Recent Reviews Section */}
-      <Card className="border-gray-800/50 ring-1 ring-white/5 shadow-[0_0_20px_rgba(59,130,246,0.05)] hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-300">
+      <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm hover:border-white/[0.15] transition-all duration-200">
         <CardHeader>
-          <CardTitle>Recent Reviews</CardTitle>
+          <CardTitle className="text-white">Recent Reviews</CardTitle>
         </CardHeader>
         <CardContent>
           {recentReviews.length === 0 ? (
             <div className="text-center py-12">
-              <div className="mx-auto h-12 w-12 rounded-lg bg-gray-800 flex items-center justify-center mb-4">
+              <div className="mx-auto h-12 w-12 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center mb-4">
                 <Star className="h-6 w-6 text-gray-400" />
               </div>
-              <h3 className="text-sm font-medium text-gray-900 mb-1">No reviews yet</h3>
-              <p className="text-sm text-gray-500 max-w-sm mx-auto">
+              <h3 className="text-sm font-medium text-white mb-1">No reviews yet</h3>
+              <p className="text-sm text-gray-400 max-w-sm mx-auto">
                 Connect your Google Business account to start pulling reviews automatically.
               </p>
             </div>
@@ -95,48 +98,45 @@ export default function DashboardPage() {
         </CardContent>
       </Card>
 
-      {/* Quick Actions */}
+      {/* Integration Status */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <Card className="border-gray-800/50 ring-1 ring-white/5 shadow-[0_0_20px_rgba(59,130,246,0.05)] hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-300">
+        <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm hover:border-white/[0.15] transition-all duration-200">
           <CardHeader>
-            <CardTitle className="flex items-center justify-between">
+            <CardTitle className="flex items-center justify-between text-white">
               Google Account Status
-              <Badge variant="outline" className="text-gray-500">
+              <Badge variant="outline" className="text-gray-400 border-gray-600">
                 Not Connected
               </Badge>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-sm text-gray-400 mb-4">
               Connect your Google Business account to start pulling reviews automatically.
             </p>
-            <button className="text-sm font-medium text-blue-600 hover:text-blue-700">
+            <button className="text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors">
               Connect Google Account →
             </button>
           </CardContent>
         </Card>
 
-        <Card className="border-gray-800/50 ring-1 ring-white/5 shadow-[0_0_20px_rgba(59,130,246,0.05)] hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-300">
+        <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm hover:border-white/[0.15] transition-all duration-200">
           <CardHeader>
-            <CardTitle className="flex items-center justify-between">
+            <CardTitle className="flex items-center justify-between text-white">
               Email Notifications
-              <Badge className="bg-green-100 text-green-700">
+              <Badge className="bg-green-500/20 text-green-400 border border-green-500/30">
                 Active
               </Badge>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-sm text-gray-400 mb-4">
               You'll receive weekly summaries every Monday at 9:00 AM.
             </p>
-            <button className="text-sm font-medium text-blue-600 hover:text-blue-700">
+            <button className="text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors">
               Configure Settings →
             </button>
           </CardContent>
         </Card>
-      </div>
-          </div>
-        </div>
       </div>
     </div>
   )
