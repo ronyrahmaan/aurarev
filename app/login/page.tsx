@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { signIn, getSession } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -33,24 +34,23 @@ function LoginForm() {
     setLoading(true)
 
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+      const result = await signIn('credentials', {
+        email: formData.email,
+        password: formData.password,
+        redirect: false
       })
 
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Login failed')
+      if (result?.error) {
+        throw new Error(result.error)
       }
 
-      // Store the token (we'll implement proper session management with NextAuth later)
-      localStorage.setItem('token', data.token)
-      localStorage.setItem('user', JSON.stringify(data.user))
-
-      // Redirect to dashboard
-      router.push('/dashboard')
+      if (result?.ok) {
+        // Get the session to verify login
+        const session = await getSession()
+        if (session) {
+          router.push('/dashboard')
+        }
+      }
     } catch (err: any) {
       setError(err.message || 'Invalid email or password')
     } finally {

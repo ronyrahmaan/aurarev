@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { signIn } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -20,6 +21,21 @@ export default function SignupPage() {
     password: '',
     confirmPassword: ''
   })
+
+  // Password strength checker
+  const getPasswordStrength = (password: string) => {
+    let score = 0
+    if (password.length >= 8) score++
+    if (password.match(/[a-z]/)) score++
+    if (password.match(/[A-Z]/)) score++
+    if (password.match(/[0-9]/)) score++
+    if (password.match(/[^a-zA-Z0-9]/)) score++
+    return score
+  }
+
+  const passwordStrength = getPasswordStrength(formData.password)
+  const strengthColors = ['bg-red-500', 'bg-red-400', 'bg-yellow-500', 'bg-blue-500', 'bg-green-500']
+  const strengthLabels = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong']
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -56,8 +72,19 @@ export default function SignupPage() {
         throw new Error(data.message || 'Signup failed')
       }
 
-      // Redirect to login after successful signup
-      router.push('/login?registered=true')
+      // Automatically sign in the user after successful signup
+      const signInResult = await signIn('credentials', {
+        email: formData.email,
+        password: formData.password,
+        redirect: false
+      })
+
+      if (signInResult?.ok) {
+        router.push('/dashboard')
+      } else {
+        // If auto-login fails, redirect to login with success message
+        router.push('/login?registered=true')
+      }
     } catch (err: any) {
       setError(err.message || 'Something went wrong')
     } finally {
@@ -132,6 +159,26 @@ export default function SignupPage() {
                 required
                 disabled={loading}
               />
+              {formData.password && (
+                <div className="space-y-2">
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4, 5].map((level) => (
+                      <div
+                        key={level}
+                        className={`h-1 flex-1 rounded-full transition-colors ${
+                          level <= passwordStrength ? strengthColors[passwordStrength - 1] : 'bg-gray-600'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <p className={`text-xs ${
+                    passwordStrength <= 2 ? 'text-red-400' :
+                    passwordStrength <= 3 ? 'text-yellow-400' : 'text-green-400'
+                  }`}>
+                    {passwordStrength > 0 ? strengthLabels[passwordStrength - 1] : 'Enter a password'}
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className="space-y-2">

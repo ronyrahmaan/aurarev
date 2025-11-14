@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import LinearNavbar from "@/components/LinearNavbar";
 import LinearFooter from "@/components/LinearFooter";
+import AuthSessionProvider from "@/components/SessionProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,7 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased bg-[rgb(8,9,10)] text-white overflow-x-hidden`}>
         {/* Subtle gradient overlay for depth */}
         <div className="fixed inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/[0.02] via-transparent to-purple-600/[0.02]"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/[0.02] via-transparent to-blue-500/[0.02]"></div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.05),transparent_50%)]"></div>
         </div>
 
@@ -89,14 +90,16 @@ export default function RootLayout({
 
         {/* Main content wrapper with glass effect */}
         <div className="relative z-10">
-          <LinearNavbar />
-          <main className="min-h-screen">
-            {/* Content wrapper with subtle box effect */}
-            <div className="relative">
-              {children}
-            </div>
-          </main>
-          <LinearFooter />
+          <AuthSessionProvider>
+            <LinearNavbar />
+            <main className="min-h-screen">
+              {/* Content wrapper with subtle box effect */}
+              <div className="relative">
+                {children}
+              </div>
+            </main>
+            <LinearFooter />
+          </AuthSessionProvider>
         </div>
 
         {/* Noise texture overlay for that premium feel */}

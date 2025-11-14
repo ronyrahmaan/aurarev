@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useSession, signOut } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import {
@@ -86,6 +87,7 @@ export default function LinearNavbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
+  const { data: session, status } = useSession()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -254,26 +256,51 @@ export default function LinearNavbar() {
             >
               Docs
             </Link>
-            <Link
-              href="/app"
-              className="text-[14px] font-normal text-[#9ca3af] hover:text-white transition-colors duration-150"
-            >
-              Open app
-            </Link>
-            <Link
-              href="/login"
-              className="text-[14px] font-normal text-[#9ca3af] hover:text-white transition-colors duration-150"
-            >
-              Log in
-            </Link>
-            <Link href="/signup">
-              <Button
-                size="sm"
-                className="bg-white hover:bg-white/90 text-black border-0 px-4 py-1.5 h-[34px] text-[14px] font-medium rounded-lg transition-all duration-150"
-              >
-                Sign up
-              </Button>
-            </Link>
+
+            {status === "authenticated" && session?.user ? (
+              <>
+                <Link
+                  href="/dashboard"
+                  className="text-[14px] font-normal text-[#9ca3af] hover:text-white transition-colors duration-150"
+                >
+                  Dashboard
+                </Link>
+                <div className="text-[14px] font-normal text-white/70">
+                  {session.user.name || session.user.email}
+                </div>
+                <Button
+                  onClick={() => signOut()}
+                  variant="ghost"
+                  size="sm"
+                  className="text-[14px] font-normal text-[#9ca3af] hover:text-white transition-colors duration-150 px-0"
+                >
+                  Sign out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/app"
+                  className="text-[14px] font-normal text-[#9ca3af] hover:text-white transition-colors duration-150"
+                >
+                  Open app
+                </Link>
+                <Link
+                  href="/login"
+                  className="text-[14px] font-normal text-[#9ca3af] hover:text-white transition-colors duration-150"
+                >
+                  Log in
+                </Link>
+                <Link href="/signup">
+                  <Button
+                    size="sm"
+                    className="bg-white hover:bg-white/90 text-black border-0 px-4 py-1.5 h-[34px] text-[14px] font-medium rounded-lg transition-all duration-150"
+                  >
+                    Sign up
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile menu button */}

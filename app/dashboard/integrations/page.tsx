@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSession } from 'next-auth/react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -29,9 +30,33 @@ interface Integration {
 }
 
 export default function IntegrationsPage() {
+  const { data: session } = useSession()
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [connectingId, setConnectingId] = useState<string | null>(null)
+  const [googleStatus, setGoogleStatus] = useState<{
+    connected: boolean
+    accountName?: string
+    accountEmail?: string
+    lastSyncAt?: string
+  }>({ connected: false })
+
+  // Check Google connection status on mount
+  useEffect(() => {
+    if (session?.user?.id) {
+      checkGoogleStatus()
+    }
+  }, [session])
+
+  const checkGoogleStatus = async () => {
+    try {
+      const response = await fetch(`/api/google/status?userId=${session?.user?.id}`)
+      const data = await response.json()
+      setGoogleStatus(data)
+    } catch (error) {
+      console.error('Error checking Google status:', error)
+    }
+  }
 
   const integrations: Integration[] = [
     {
@@ -40,11 +65,11 @@ export default function IntegrationsPage() {
       category: 'reviews',
       description: 'Sync reviews from Google Business Profile',
       icon: Globe,
-      status: 'connected',
+      status: googleStatus.connected ? 'connected' : 'not_connected',
       color: 'blue',
       features: ['Auto-sync reviews', 'Response management', 'Analytics'],
-      lastSync: new Date(Date.now() - 30 * 60 * 1000),
-      syncedData: { type: 'reviews', count: 234 }
+      lastSync: googleStatus.lastSyncAt ? new Date(googleStatus.lastSyncAt) : undefined,
+      syncedData: googleStatus.connected ? { type: 'reviews', count: 0 } : undefined
     },
     {
       id: 'yelp',
@@ -149,9 +174,38 @@ export default function IntegrationsPage() {
   })
 
   const handleConnect = async (integrationId: string) => {
+    if (!session?.user?.id) {
+      alert('Please log in to connect integrations')
+      return
+    }
+
     setConnectingId(integrationId)
-    // Simulate connection process
-    await new Promise(resolve => setTimeout(resolve, 2000))
+
+    if (integrationId === 'google-business') {
+      try {
+        const response = await fetch('/api/google/connect', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId: session.user.id })
+        })
+
+        const data = await response.json()
+
+        if (data.success && data.authUrl) {
+          // Redirect to Google OAuth
+          window.location.href = data.authUrl
+        } else {
+          throw new Error('Failed to generate auth URL')
+        }
+      } catch (error) {
+        console.error('Connection error:', error)
+        alert('Failed to connect to Google. Please try again.')
+      }
+    } else {
+      // Simulate connection for other integrations
+      await new Promise(resolve => setTimeout(resolve, 2000))
+    }
+
     setConnectingId(null)
   }
 

@@ -14,7 +14,7 @@ export default {
         background: "rgb(10 11 13)",
         foreground: "rgb(255 255 255)",
         primary: {
-          DEFAULT: "rgb(94 106 210)",
+          DEFAULT: "rgb(59 130 246)", // #3B82F6 - AuraRev blue
           foreground: "rgb(255 255 255)",
         },
         secondary: {
@@ -26,7 +26,7 @@ export default {
           foreground: "rgb(168 169 180)",
         },
         accent: {
-          DEFAULT: "rgb(94 106 210)",
+          DEFAULT: "rgb(59 130 246)", // #3B82F6 - AuraRev blue
           foreground: "rgb(255 255 255)",
         },
         destructive: {
@@ -35,7 +35,7 @@ export default {
         },
         border: "rgb(42 45 53)",
         input: "rgb(26 29 35)",
-        ring: "rgb(94 106 210)",
+        ring: "rgb(59 130 246)", // #3B82F6 - AuraRev blue
         card: {
           DEFAULT: "rgb(26 29 35)",
           foreground: "rgb(255 255 255)",
@@ -44,8 +44,8 @@ export default {
           DEFAULT: "rgb(26 29 35)",
           foreground: "rgb(255 255 255)",
         },
-        // Additional Linear colors
-        "primary-purple": "rgb(139 92 246)",
+        // Additional AuraRev colors
+        "primary-light": "rgb(96 165 250)", // #60A5FA - Lighter AuraRev blue
         "bg-secondary": "rgb(17 19 24)",
         "bg-tertiary": "rgb(26 29 35)",
         "bg-hover": "rgb(42 45 53)",
@@ -95,8 +95,8 @@ export default {
         '2xl': '1.5rem',
       },
       boxShadow: {
-        'glow': '0 0 0 1px rgb(94 106 210), 0 10px 40px rgba(94, 106, 210, 0.1)',
-        'glow-lg': '0 0 0 1px rgb(94 106 210), 0 20px 60px rgba(94, 106, 210, 0.2)',
+        'glow': '0 0 0 1px rgb(59 130 246), 0 10px 40px rgba(59, 130, 246, 0.1)',
+        'glow-lg': '0 0 0 1px rgb(59 130 246), 0 20px 60px rgba(59, 130, 246, 0.2)',
       },
     },
   },

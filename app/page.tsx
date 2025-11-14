@@ -948,7 +948,7 @@ export default function HomePage() {
 
                 {/* Step 2: AI processes */}
                 <div className="text-center group">
-                  <div className="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <div className="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                     <Bot className="w-8 h-8 text-white" />
                   </div>
                   <p className="text-sm font-medium text-white">AI processes</p>
@@ -1013,7 +1013,7 @@ export default function HomePage() {
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
-            <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-8">
+            <div className="rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 p-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <p className="text-5xl font-bold text-white mb-2">10+ hrs</p>
@@ -1149,7 +1149,7 @@ export default function HomePage() {
                   "{testimonial.quote}"
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600" />
+                  <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600" />
                   <div>
                     <p className="text-white font-medium">{testimonial.author}</p>
                     <p className="text-xs text-gray-500">
