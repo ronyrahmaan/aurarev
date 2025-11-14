@@ -13,10 +13,10 @@ const authConfig = {
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" }
       },
-      async authorize(credentials) {
+      async authorize(credentials: any) {
         console.log('🔐 NextAuth credentials provider called');
         console.log('📧 Email:', credentials?.email);
-        console.log('🔑 Password length:', credentials?.password?.length);
+        console.log('🔑 Password provided:', !!credentials?.password);
 
         if (!credentials?.email || !credentials?.password) {
           console.log('❌ Missing email or password');
