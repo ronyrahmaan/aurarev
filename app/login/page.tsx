@@ -3,7 +3,8 @@
 import { useState, useEffect, Suspense } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { signIn, getSession } from 'next-auth/react'
+import { getSession } from 'next-auth/react'
+import { authenticateUser } from '@/lib/auth-actions'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -34,22 +35,19 @@ function LoginForm() {
     setLoading(true)
 
     try {
-      const result = await signIn('credentials', {
-        email: formData.email,
-        password: formData.password,
-        redirect: false
-      })
+      const result = await authenticateUser(formData.email, formData.password)
 
-      if (result?.error) {
-        throw new Error(result.error)
+      if (!result.success) {
+        throw new Error(result.error || 'Login failed')
       }
 
-      if (result?.ok) {
-        // Get the session to verify login
-        const session = await getSession()
-        if (session) {
-          router.push('/dashboard')
-        }
+      // Get the session to verify login
+      const session = await getSession()
+      if (session) {
+        router.push('/dashboard')
+      } else {
+        // Try refreshing session
+        window.location.reload()
       }
     } catch (err: any) {
       setError(err.message || 'Invalid email or password')
