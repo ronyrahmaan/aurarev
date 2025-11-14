@@ -119,7 +119,7 @@ export default function HomePage() {
       {/* Hero Section - Clean dark background like Linear */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#08090a] pt-20 px-6">
         {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/[0.02] to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-blue-500/2 to-transparent" />
 
         {/* Subtle grid pattern */}
         <div
@@ -133,7 +133,7 @@ export default function HomePage() {
 
         <div className="relative mx-auto max-w-7xl py-24 sm:py-32">
           <div className="mx-auto max-w-5xl">
-            <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 text-center ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+            <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm p-12 text-center ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             {/* Main headline */}
             <h1 className={cn(
               "text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.02em] mb-6 leading-[1.1]",
@@ -142,7 +142,7 @@ export default function HomePage() {
             )}>
               <span className="text-white/95">AuraRev is a purpose-built tool for</span>
               <br />
-              <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
                 managing and monetizing reviews
               </span>
             </h1>
@@ -166,7 +166,7 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="px-7 py-3 h-12 text-[15px] font-medium bg-transparent border border-white/[0.12] text-white hover:bg-white/[0.04] hover:border-white/[0.16] rounded-lg transition-all duration-150"
+                  className="px-7 py-3 h-12 text-[15px] font-medium bg-transparent border border-white/12 text-white hover:bg-white/4 hover:border-white/16 rounded-lg transition-all duration-150"
                 >
                   Start free trial
                 </Button>
@@ -183,7 +183,7 @@ export default function HomePage() {
           {/* Dashboard preview mockup */}
           <div className="mt-16 relative animate-fade-in-up animation-delay-500">
             <div className="mx-auto max-w-5xl">
-              <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] p-1 backdrop-blur-sm ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)]">
+              <div className="rounded-2xl bg-linear-to-b from-white/4 to-white/2 border border-white/8 p-1 backdrop-blur-sm ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)]">
                 <div className="rounded-xl bg-[#0f1011] p-4">
                   <div className="flex gap-1.5 mb-4">
                     <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
@@ -228,7 +228,7 @@ export default function HomePage() {
       {/* Trust Bar - Subtle background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-8 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+          <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm p-8 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <p className="text-center text-[13px] text-[#6b7280] mb-8 font-medium uppercase tracking-wider">
               Trusted by industry leaders
             </p>
@@ -257,7 +257,7 @@ export default function HomePage() {
       {/* Made for Modern Businesses - Primary dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+          <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
                 Made for modern businesses
@@ -269,9 +269,9 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Card 1: Purpose-built for reviews */}
-            <div className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] p-8 hover:border-white/[0.12] transition-all duration-200">
+            <div className="group relative overflow-hidden rounded-xl bg-linear-to-b from-white/4 to-white/2 border border-white/8 p-8 hover:border-white/12 transition-all duration-200">
               <div className="relative z-10">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-200">
+                <div className="w-12 h-12 rounded-xl bg-linear-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-200">
                   <Star className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold text-white/90 mb-2">
@@ -281,13 +281,13 @@ export default function HomePage() {
                   Unified dashboard for all review platforms with intelligent filtering and real-time sync
                 </p>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-blue-500/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 to-blue-500/3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </div>
 
             {/* Card 2: Designed to boost reputation */}
-            <div className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] p-8 hover:border-white/[0.12] transition-all duration-200">
+            <div className="group relative overflow-hidden rounded-xl bg-linear-to-b from-white/4 to-white/2 border border-white/8 p-8 hover:border-white/12 transition-all duration-200">
               <div className="relative z-10">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-200">
+                <div className="w-12 h-12 rounded-xl bg-linear-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-200">
                   <TrendingUp className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold text-white/90 mb-2">
@@ -297,13 +297,13 @@ export default function HomePage() {
                   AI-powered insights and automated responses that improve your ratings
                 </p>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-blue-500/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 to-blue-500/3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </div>
 
             {/* Card 3: Crafted to convert */}
-            <div className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] p-8 hover:border-white/[0.12] transition-all duration-200">
+            <div className="group relative overflow-hidden rounded-xl bg-linear-to-b from-white/4 to-white/2 border border-white/8 p-8 hover:border-white/12 transition-all duration-200">
               <div className="relative z-10">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-200">
+                <div className="w-12 h-12 rounded-xl bg-linear-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-200">
                   <Target className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold text-white/90 mb-2">
@@ -313,7 +313,7 @@ export default function HomePage() {
                   Beautiful widgets and trust signals that drive sales and build confidence
                 </p>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-blue-500/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 to-blue-500/3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </div>
           </div>
           </div>
@@ -323,7 +323,7 @@ export default function HomePage() {
       {/* Product Feature Section A: Review Collection Hub - Lighter background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+          <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
@@ -335,7 +335,7 @@ export default function HomePage() {
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -344,7 +344,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -353,7 +353,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -362,7 +362,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -395,7 +395,7 @@ export default function HomePage() {
                   {[1, 2, 3].map((i) => (
                     <div key={i} className="bg-gray-900/50 rounded-lg p-3 hover:bg-gray-900 transition-colors">
                       <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex-shrink-0" />
+                        <div className="w-8 h-8 rounded-full bg-linear-to-br from-blue-500 to-blue-600 shrink-0" />
                         <div className="flex-1 min-w-0">
                           <div className="flex items-start justify-between mb-1">
                             <div>
@@ -429,7 +429,7 @@ export default function HomePage() {
       {/* Product Feature Section B: AI Trust Blurb Generator - Dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+          <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
               <div className="rounded-xl bg-gray-900 border border-gray-800 overflow-hidden">
@@ -503,7 +503,7 @@ export default function HomePage() {
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -512,7 +512,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -521,7 +521,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -530,7 +530,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -548,7 +548,7 @@ export default function HomePage() {
       {/* Product Feature Section C: Smart Widget Display - Lighter background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+          <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
@@ -560,7 +560,7 @@ export default function HomePage() {
 
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -569,7 +569,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -578,7 +578,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -587,7 +587,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -619,7 +619,7 @@ export default function HomePage() {
                 <div className="relative">
                   <div className="rounded-lg bg-gray-900 border border-gray-800 p-4 shadow-2xl">
                     <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-full bg-linear-to-br from-green-500 to-green-600 shrink-0" />
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
                           <p className="text-sm font-semibold text-white">Sarah M.</p>
@@ -640,7 +640,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Banner widget example */}
-                <div className="rounded-lg bg-gradient-to-r from-blue-600/10 to-purple-600/10 border border-blue-600/20 p-3">
+                <div className="rounded-lg bg-linear-to-r from-blue-600/10 to-purple-600/10 border border-blue-600/20 p-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="flex gap-0.5">
@@ -686,7 +686,7 @@ export default function HomePage() {
       {/* Product Feature Section D: Automated Outreach - Dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+          <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
               <div className="rounded-xl bg-gray-900 border border-gray-800 overflow-hidden">
@@ -697,7 +697,7 @@ export default function HomePage() {
                   {/* Workflow visualization */}
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-green-600/20 flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-green-600/20 flex items-center justify-center shrink-0">
                         <Check className="w-5 h-5 text-green-500" />
                       </div>
                       <div className="flex-1">
@@ -706,7 +706,7 @@ export default function HomePage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-blue-600/20 flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-blue-600/20 flex items-center justify-center shrink-0">
                         <Timer className="w-5 h-5 text-blue-500" />
                       </div>
                       <div className="flex-1">
@@ -715,7 +715,7 @@ export default function HomePage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-purple-600/20 flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-purple-600/20 flex items-center justify-center shrink-0">
                         <Send className="w-5 h-5 text-purple-500" />
                       </div>
                       <div className="flex-1">
@@ -724,7 +724,7 @@ export default function HomePage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-yellow-600/20 flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-yellow-600/20 flex items-center justify-center shrink-0">
                         <Star className="w-5 h-5 text-yellow-500" />
                       </div>
                       <div className="flex-1">
@@ -755,7 +755,7 @@ export default function HomePage() {
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -764,7 +764,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -773,7 +773,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -782,7 +782,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -800,7 +800,7 @@ export default function HomePage() {
       {/* Product Feature Section E: Weekly Intelligence - Lighter background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+          <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
@@ -812,7 +812,7 @@ export default function HomePage() {
 
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -821,7 +821,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -830,7 +830,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -839,7 +839,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mt-0.5 shrink-0">
                     <Check className="w-4 h-4 text-blue-500" />
                   </div>
                   <div>
@@ -925,7 +925,7 @@ export default function HomePage() {
       {/* Workflow Visualization Section - Dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+          <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
                 See how AuraRev works
@@ -942,7 +942,7 @@ export default function HomePage() {
               <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-2">
                 {/* Step 1: Review comes in */}
                 <div className="text-center group">
-                  <div className="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <div className="mx-auto w-16 h-16 rounded-2xl bg-linear-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                     <MessageSquare className="w-8 h-8 text-white" />
                   </div>
                   <p className="text-sm font-medium text-white">Review comes in</p>
@@ -956,7 +956,7 @@ export default function HomePage() {
 
                 {/* Step 2: AI processes */}
                 <div className="text-center group">
-                  <div className="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <div className="mx-auto w-16 h-16 rounded-2xl bg-linear-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                     <Bot className="w-8 h-8 text-white" />
                   </div>
                   <p className="text-sm font-medium text-white">AI processes</p>
@@ -970,7 +970,7 @@ export default function HomePage() {
 
                 {/* Step 3: Blurb generated */}
                 <div className="text-center group">
-                  <div className="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <div className="mx-auto w-16 h-16 rounded-2xl bg-linear-to-br from-green-500 to-green-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                     <Sparkles className="w-8 h-8 text-white" />
                   </div>
                   <p className="text-sm font-medium text-white">Blurb generated</p>
@@ -984,7 +984,7 @@ export default function HomePage() {
 
                 {/* Step 4: Widget updates */}
                 <div className="text-center group">
-                  <div className="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <div className="mx-auto w-16 h-16 rounded-2xl bg-linear-to-br from-orange-500 to-orange-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                     <Globe className="w-8 h-8 text-white" />
                   </div>
                   <p className="text-sm font-medium text-white">Widget updates</p>
@@ -998,7 +998,7 @@ export default function HomePage() {
 
                 {/* Step 5: Report compiled */}
                 <div className="text-center group">
-                  <div className="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <div className="mx-auto w-16 h-16 rounded-2xl bg-linear-to-br from-pink-500 to-pink-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                     <FileText className="w-8 h-8 text-white" />
                   </div>
                   <p className="text-sm font-medium text-white">Report compiled</p>
@@ -1008,8 +1008,8 @@ export default function HomePage() {
 
               {/* Animated connection line */}
               <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5">
-                <div className="h-full bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20"></div>
-                <div className="h-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-pulse"></div>
+                <div className="h-full bg-linear-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20"></div>
+                <div className="h-full bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 animate-pulse"></div>
               </div>
             </div>
             </div>
@@ -1020,8 +1020,8 @@ export default function HomePage() {
       {/* Metrics Section - Gradient background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
-            <div className="rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 p-8">
+          <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+            <div className="rounded-xl bg-linear-to-r from-blue-600 to-blue-500 p-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <p className="text-5xl font-bold text-white mb-2">10+ hrs</p>
@@ -1048,7 +1048,7 @@ export default function HomePage() {
       {/* Integrations Showcase - Lighter background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+          <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
                 Works with your existing tools
@@ -1061,7 +1061,7 @@ export default function HomePage() {
           <div className="relative">
             <div className="flex items-center justify-center">
               {/* Center logo */}
-              <div className="relative z-10 h-28 w-28 rounded-3xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-2xl shadow-blue-500/25">
+              <div className="relative z-10 h-28 w-28 rounded-3xl bg-linear-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-2xl shadow-blue-500/25">
                 <Star className="h-14 w-14 text-white" />
               </div>
 
@@ -1131,7 +1131,7 @@ export default function HomePage() {
       {/* Testimonials - Dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+          <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
                 Loved by businesses everywhere
@@ -1145,7 +1145,7 @@ export default function HomePage() {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-2xl bg-gradient-to-b from-gray-900 to-gray-950 border border-gray-800 p-6 hover:border-blue-600/50 transition-all"
+                className="group relative overflow-hidden rounded-2xl bg-linear-to-b from-gray-900 to-gray-950 border border-gray-800 p-6 hover:border-blue-600/50 transition-all"
               >
                 <Quote className="absolute top-4 right-4 h-8 w-8 text-blue-600/10" />
                 <div className="flex gap-1 mb-4">
@@ -1157,7 +1157,7 @@ export default function HomePage() {
                   "{testimonial.quote}"
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600" />
+                  <div className="h-10 w-10 rounded-full bg-linear-to-br from-blue-500 to-blue-600" />
                   <div>
                     <p className="text-white font-medium">{testimonial.author}</p>
                     <p className="text-xs text-gray-500">
@@ -1165,7 +1165,7 @@ export default function HomePage() {
                     </p>
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-blue-500/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 to-blue-500/3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               </div>
             ))}
           </div>
@@ -1176,7 +1176,7 @@ export default function HomePage() {
       {/* Pricing Section - Lighter background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+          <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm p-12 ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-3 tracking-[-0.02em]">
                 Simple, transparent pricing
@@ -1196,19 +1196,19 @@ export default function HomePage() {
               </div>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">1 location</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">100 review requests/mo</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">Basic widgets</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">Email support</span>
                 </li>
               </ul>
@@ -1220,7 +1220,7 @@ export default function HomePage() {
             </div>
 
             {/* Growth - Popular */}
-            <div className="relative rounded-2xl bg-gradient-to-b from-blue-900/20 to-gray-900 border-2 border-blue-600/50 p-6">
+            <div className="relative rounded-2xl bg-linear-to-b from-blue-900/20 to-gray-900 border-2 border-blue-600/50 p-6">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                 <span className="bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-full">POPULAR</span>
               </div>
@@ -1231,19 +1231,19 @@ export default function HomePage() {
               </div>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">3 locations</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">500 requests/mo</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">AI blurbs</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">Priority support</span>
                 </li>
               </ul>
@@ -1263,19 +1263,19 @@ export default function HomePage() {
               </div>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">10 locations</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">Unlimited requests</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">API access</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">White-label options</span>
                 </li>
               </ul>
@@ -1294,19 +1294,19 @@ export default function HomePage() {
               </div>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">Unlimited locations</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">Custom integrations</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">Dedicated support</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-400">SLA guarantee</span>
                 </li>
               </ul>
@@ -1324,7 +1324,7 @@ export default function HomePage() {
       {/* Final CTA Section - Dark background */}
       <section className="py-16 bg-[#08090a]">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm p-12 text-center ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+          <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm p-12 text-center ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
             <h2 className="text-3xl sm:text-4xl font-semibold text-white/95 mb-4 tracking-[-0.02em]">
               Ready to transform your review management?
             </h2>
@@ -1346,7 +1346,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="px-7 py-3 h-12 text-[15px] font-medium bg-transparent border border-white/[0.12] text-white hover:bg-white/[0.04] hover:border-white/[0.16] rounded-lg transition-all duration-150"
+                className="px-7 py-3 h-12 text-[15px] font-medium bg-transparent border border-white/12 text-white hover:bg-white/4 hover:border-white/16 rounded-lg transition-all duration-150"
               >
                 Book a demo
               </Button>

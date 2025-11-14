@@ -110,7 +110,7 @@ export default function LinearNavbar() {
       className={cn(
         'fixed top-0 w-full z-50 transition-all duration-200',
         isScrolled
-          ? 'bg-[rgba(8,9,10,0.85)] backdrop-blur-xl border-b border-white/[0.08]'
+          ? 'bg-[rgba(8,9,10,0.85)] backdrop-blur-xl border-b border-white/8'
           : 'bg-transparent'
       )}
     >
@@ -119,7 +119,7 @@ export default function LinearNavbar() {
           {/* Logo and Navigation */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2.5 mr-12 group">
-              <div className="h-8 w-8 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center transition-transform group-hover:scale-105">
+              <div className="h-8 w-8 rounded-xl bg-linear-to-br from-blue-500 to-blue-600 flex items-center justify-center transition-transform group-hover:scale-105">
                 <Star className="h-4 w-4 text-white" />
               </div>
               <span className="text-[15px] font-semibold text-white">AuraRev</span>
@@ -134,7 +134,7 @@ export default function LinearNavbar() {
                     Product
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2 bg-[#0f1011] border border-white/[0.08] rounded-xl shadow-2xl backdrop-blur-xl">
+                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2 bg-[#0f1011] border border-white/8 rounded-xl shadow-2xl backdrop-blur-xl">
                       {productItems.map((item) => {
                         const Icon = item.icon
                         return (
@@ -142,10 +142,10 @@ export default function LinearNavbar() {
                             <NavigationMenuLink asChild>
                               <Link
                                 href={item.href}
-                                className="block select-none rounded-lg p-3 leading-none no-underline outline-none transition-all duration-150 hover:bg-white/[0.04] border border-transparent group"
+                                className="block select-none rounded-lg p-3 leading-none no-underline outline-none transition-all duration-150 hover:bg-white/4 border border-transparent group"
                               >
                                 <div className="flex items-center gap-3">
-                                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.04] border border-white/[0.08] group-hover:border-white/[0.12] transition-all duration-150">
+                                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.04] border border-white/8 group-hover:border-white/12 transition-all duration-150">
                                     <Icon className="h-4 w-4 text-[#9ca3af] group-hover:text-white transition-colors duration-150" />
                                   </div>
                                   <div>
@@ -173,7 +173,7 @@ export default function LinearNavbar() {
                     Resources
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2 bg-[#0f1011] border border-white/[0.08] rounded-xl shadow-2xl backdrop-blur-xl">
+                    <ul className="grid w-[400px] gap-1 p-2 md:w-[500px] md:grid-cols-2 bg-[#0f1011] border border-white/8 rounded-xl shadow-2xl backdrop-blur-xl">
                       {resourceItems.map((item) => {
                         const Icon = item.icon
                         return (
@@ -181,10 +181,10 @@ export default function LinearNavbar() {
                             <NavigationMenuLink asChild>
                               <Link
                                 href={item.href}
-                                className="block select-none rounded-lg p-3 leading-none no-underline outline-none transition-all duration-150 hover:bg-white/[0.04] border border-transparent group"
+                                className="block select-none rounded-lg p-3 leading-none no-underline outline-none transition-all duration-150 hover:bg-white/4 border border-transparent group"
                               >
                                 <div className="flex items-center gap-3">
-                                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.04] border border-white/[0.08] group-hover:border-white/[0.12] transition-all duration-150">
+                                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.04] border border-white/8 group-hover:border-white/12 transition-all duration-150">
                                     <Icon className="h-4 w-4 text-[#9ca3af] group-hover:text-white transition-colors duration-150" />
                                   </div>
                                   <div>

@@ -41,7 +41,7 @@ export function MetricCard({
   const range = maxSparkline - minSparkline || 1
 
   return (
-    <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm hover:border-white/[0.15] hover:shadow-[0_10px_40px_rgba(0,0,0,0.2),0_0_60px_rgba(59,130,246,0.1)] transition-all duration-200">
+    <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8 backdrop-blur-sm hover:border-white/15 hover:shadow-[0_10px_40px_rgba(0,0,0,0.2),0_0_60px_rgba(59,130,246,0.1)] transition-all duration-200">
       <CardContent className="p-6">
         <div className="flex items-center justify-between mb-4">
           <p className="text-sm font-medium text-gray-400">{title}</p>

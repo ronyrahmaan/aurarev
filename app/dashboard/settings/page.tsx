@@ -52,7 +52,7 @@ export default function SettingsPage() {
   return (
     <div className="space-y-6">
       <Tabs defaultValue="business" className="space-y-4">
-        <TabsList className="bg-white/[0.02] border border-white/[0.08]">
+        <TabsList className="bg-white/[0.02] border border-white/8">
           <TabsTrigger value="business" className="data-[state=active]:bg-white/[0.05]">
             <Building2 className="h-4 w-4 mr-2" />
             Business
@@ -77,7 +77,7 @@ export default function SettingsPage() {
 
         {/* Business Profile Tab */}
         <TabsContent value="business" className="space-y-4">
-          <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+          <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
             <CardHeader>
               <CardTitle className="text-white">Business Information</CardTitle>
               <CardDescription className="text-gray-400">
@@ -91,7 +91,7 @@ export default function SettingsPage() {
                   <Input
                     id="business-name"
                     defaultValue="Acme Corp"
-                    className="bg-white/[0.02] border-white/[0.08] text-white"
+                    className="bg-white/[0.02] border-white/8 text-white"
                   />
                 </div>
                 <div className="space-y-2">
@@ -100,7 +100,7 @@ export default function SettingsPage() {
                     id="website"
                     type="url"
                     defaultValue="https://acmecorp.com"
-                    className="bg-white/[0.02] border-white/[0.08] text-white"
+                    className="bg-white/[0.02] border-white/8 text-white"
                   />
                 </div>
               </div>
@@ -111,7 +111,7 @@ export default function SettingsPage() {
                   id="email"
                   type="email"
                   defaultValue="contact@acmecorp.com"
-                  className="bg-white/[0.02] border-white/[0.08] text-white"
+                  className="bg-white/[0.02] border-white/8 text-white"
                 />
               </div>
 
@@ -121,7 +121,7 @@ export default function SettingsPage() {
                   id="phone"
                   type="tel"
                   defaultValue="+1 (555) 123-4567"
-                  className="bg-white/[0.02] border-white/[0.08] text-white"
+                  className="bg-white/[0.02] border-white/8 text-white"
                 />
               </div>
 
@@ -129,7 +129,7 @@ export default function SettingsPage() {
                 <Label htmlFor="timezone" className="text-gray-300">Timezone</Label>
                 <select
                   id="timezone"
-                  className="w-full px-3 py-2 bg-white/[0.02] border border-white/[0.08] rounded-md text-white"
+                  className="w-full px-3 py-2 bg-white/[0.02] border border-white/8 rounded-md text-white"
                 >
                   <option value="EST">Eastern Time (EST)</option>
                   <option value="CST">Central Time (CST)</option>
@@ -141,12 +141,12 @@ export default function SettingsPage() {
               <div className="space-y-2">
                 <Label className="text-gray-300">Business Logo</Label>
                 <div className="flex items-center gap-4">
-                  <div className="h-20 w-20 rounded-lg bg-white/[0.02] border border-white/[0.08] flex items-center justify-center">
+                  <div className="h-20 w-20 rounded-lg bg-white/[0.02] border border-white/8 flex items-center justify-center">
                     <Building2 className="h-8 w-8 text-gray-500" />
                   </div>
                   <Button
                     variant="outline"
-                    className="bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]"
+                    className="bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]"
                   >
                     <Upload className="h-4 w-4 mr-2" />
                     Upload Logo
@@ -159,7 +159,7 @@ export default function SettingsPage() {
 
         {/* Integrations Tab */}
         <TabsContent value="integrations" className="space-y-4">
-          <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+          <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
             <CardHeader>
               <CardTitle className="text-white">Connected Platforms</CardTitle>
               <CardDescription className="text-gray-400">
@@ -174,7 +174,7 @@ export default function SettingsPage() {
                 return (
                   <div
                     key={integration.name}
-                    className="flex items-center justify-between p-4 rounded-lg bg-white/[0.02] border border-white/[0.08]"
+                    className="flex items-center justify-between p-4 rounded-lg bg-white/[0.02] border border-white/8"
                   >
                     <div className="flex items-center gap-4">
                       <div className={`p-2 rounded-lg ${
@@ -199,7 +199,7 @@ export default function SettingsPage() {
                           <Button
                             size="sm"
                             variant="outline"
-                            className="bg-white/[0.02] border-white/[0.08] text-gray-400 hover:bg-white/[0.05]"
+                            className="bg-white/[0.02] border-white/8 text-gray-400 hover:bg-white/[0.05]"
                           >
                             Disconnect
                           </Button>
@@ -207,7 +207,7 @@ export default function SettingsPage() {
                       ) : (
                         <Button
                           size="sm"
-                          className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
+                          className="bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
                         >
                           Connect
                         </Button>
@@ -222,7 +222,7 @@ export default function SettingsPage() {
 
         {/* Notifications Tab */}
         <TabsContent value="notifications" className="space-y-4">
-          <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+          <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
             <CardHeader>
               <CardTitle className="text-white">Notification Preferences</CardTitle>
               <CardDescription className="text-gray-400">
@@ -263,12 +263,12 @@ export default function SettingsPage() {
                 />
               </div>
 
-              <div className="pt-4 border-t border-white/[0.08]">
+              <div className="pt-4 border-t border-white/8">
                 <Label className="text-white mb-3 block">Alert Thresholds</Label>
                 <div className="space-y-3">
                   <div className="flex items-center gap-4">
                     <Label className="text-gray-300 w-32">Low Rating Alert</Label>
-                    <select className="flex-1 px-3 py-2 bg-white/[0.02] border border-white/[0.08] rounded-md text-white">
+                    <select className="flex-1 px-3 py-2 bg-white/[0.02] border border-white/8 rounded-md text-white">
                       <option>3 stars or below</option>
                       <option>2 stars or below</option>
                       <option>1 star only</option>
@@ -276,7 +276,7 @@ export default function SettingsPage() {
                   </div>
                   <div className="flex items-center gap-4">
                     <Label className="text-gray-300 w-32">Response Time</Label>
-                    <select className="flex-1 px-3 py-2 bg-white/[0.02] border border-white/[0.08] rounded-md text-white">
+                    <select className="flex-1 px-3 py-2 bg-white/[0.02] border border-white/8 rounded-md text-white">
                       <option>24 hours</option>
                       <option>48 hours</option>
                       <option>72 hours</option>
@@ -291,7 +291,7 @@ export default function SettingsPage() {
 
         {/* Team Tab */}
         <TabsContent value="team" className="space-y-4">
-          <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+          <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
             <CardHeader>
               <CardTitle className="text-white">Team Members</CardTitle>
               <CardDescription className="text-gray-400">
@@ -300,7 +300,7 @@ export default function SettingsPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 rounded-lg bg-white/[0.02] border border-white/[0.08]">
+                <div className="flex items-center justify-between p-4 rounded-lg bg-white/[0.02] border border-white/8">
                   <div className="flex items-center gap-4">
                     <div className="h-10 w-10 rounded-full bg-blue-500/20 flex items-center justify-center">
                       <span className="text-blue-400 font-medium">JD</span>
@@ -316,7 +316,7 @@ export default function SettingsPage() {
                 </div>
 
                 <Button
-                  className="w-full bg-white/[0.02] border border-white/[0.08] text-white hover:bg-white/[0.05]"
+                  className="w-full bg-white/[0.02] border border-white/8 text-white hover:bg-white/[0.05]"
                   variant="outline"
                 >
                   <Mail className="h-4 w-4 mr-2" />
@@ -329,7 +329,7 @@ export default function SettingsPage() {
 
         {/* Billing Tab */}
         <TabsContent value="billing" className="space-y-4">
-          <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+          <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
             <CardHeader>
               <CardTitle className="text-white">Current Plan</CardTitle>
               <CardDescription className="text-gray-400">
@@ -337,7 +337,7 @@ export default function SettingsPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="p-4 rounded-lg bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30">
+              <div className="p-4 rounded-lg bg-linear-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30">
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <h3 className="text-lg font-semibold text-white">Professional Plan</h3>
@@ -363,7 +363,7 @@ export default function SettingsPage() {
                 </div>
               </div>
 
-              <Button variant="outline" className="w-full bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]">
+              <Button variant="outline" className="w-full bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]">
                 Upgrade Plan
               </Button>
             </CardContent>
@@ -376,7 +376,7 @@ export default function SettingsPage() {
         <Button
           onClick={handleSave}
           disabled={isLoading}
-          className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
+          className="bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
         >
           {isLoading ? (
             <>

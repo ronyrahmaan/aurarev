@@ -96,7 +96,7 @@ export function ChartCard({
 
   return (
     <Card className={cn(
-      "bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] hover:border-white/[0.15] transition-all duration-200",
+      "bg-linear-to-b from-white/4 to-white/2 border border-white/8 hover:border-white/15 transition-all duration-200",
       className
     )}>
       <CardHeader>
@@ -133,7 +133,7 @@ export function ChartCard({
           <div className="flex items-center gap-2">
             {timeRange && (
               <Select value={timeRange.value} onValueChange={timeRange.onChange}>
-                <SelectTrigger className="w-32 h-8 bg-white/[0.02] border-white/[0.08] text-white">
+                <SelectTrigger className="w-32 h-8 bg-white/[0.02] border-white/8 text-white">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -223,7 +223,7 @@ export function ChartCard({
                   size="sm"
                   variant="outline"
                   onClick={onRefresh}
-                  className="mt-2 bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]"
+                  className="mt-2 bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]"
                 >
                   Try Again
                 </Button>
@@ -297,7 +297,7 @@ export function BarChartCard(props: Omit<ChartCardProps, 'children'> & {
                 <div
                   className={cn(
                     "h-full transition-all duration-500",
-                    item.color || "bg-gradient-to-r from-blue-500/60 to-blue-400/40"
+                    item.color || "bg-linear-to-r from-blue-500/60 to-blue-400/40"
                   )}
                   style={{ width: `${percentage}%` }}
                 />

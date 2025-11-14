@@ -65,7 +65,7 @@ export function DashboardSidebar({ user, onLogout }: DashboardSidebarProps) {
   return (
     <div
       className={cn(
-        "fixed inset-y-0 left-0 z-50 flex flex-col bg-[rgb(15,16,17)] border-r border-white/[0.08] transition-all duration-300",
+        "fixed inset-y-0 left-0 z-50 flex flex-col bg-[rgb(15,16,17)] border-r border-white/8 transition-all duration-300",
         isCollapsed ? "w-16" : "w-64"
       )}
       role="navigation"
@@ -73,7 +73,7 @@ export function DashboardSidebar({ user, onLogout }: DashboardSidebarProps) {
     >
       {/* Logo Section */}
       <div className={cn(
-        "flex items-center gap-2 px-4 py-4 border-b border-white/[0.08]",
+        "flex items-center gap-2 px-4 py-4 border-b border-white/8",
         isCollapsed && "justify-center"
       )}>
         <Star className="h-8 w-8 text-blue-500 shrink-0" aria-hidden="true" />
@@ -96,7 +96,7 @@ export function DashboardSidebar({ user, onLogout }: DashboardSidebarProps) {
                 className={cn(
                   "flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200",
                   isActive
-                    ? 'bg-gradient-to-r from-blue-600/20 to-blue-600/10 text-blue-400 border-l-2 border-blue-500'
+                    ? 'bg-linear-to-r from-blue-600/20 to-blue-600/10 text-blue-400 border-l-2 border-blue-500'
                     : 'text-gray-400 hover:bg-white/[0.05] hover:text-white',
                   isCollapsed && "justify-center px-2"
                 )}
@@ -140,7 +140,7 @@ export function DashboardSidebar({ user, onLogout }: DashboardSidebarProps) {
 
         {/* Secondary Navigation */}
         {!isCollapsed && (
-          <div className="pt-4 mt-4 border-t border-white/[0.08] space-y-1">
+          <div className="pt-4 mt-4 border-t border-white/8 space-y-1">
             {secondaryNavigation.map((item) => {
               const Icon = item.icon
               return (
@@ -160,7 +160,7 @@ export function DashboardSidebar({ user, onLogout }: DashboardSidebarProps) {
 
       {/* User Section */}
       {user && (
-        <div className="border-t border-white/[0.08] p-3">
+        <div className="border-t border-white/8 p-3">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button
@@ -193,7 +193,7 @@ export function DashboardSidebar({ user, onLogout }: DashboardSidebarProps) {
             <DropdownMenuContent
               align={isCollapsed ? "start" : "end"}
               side={isCollapsed ? "right" : "top"}
-              className="w-56 bg-[rgb(23,24,26)] border-white/[0.08]"
+              className="w-56 bg-[rgb(23,24,26)] border-white/8"
             >
               <DropdownMenuItem className="text-gray-300">
                 <User className="mr-2 h-4 w-4" />
@@ -227,7 +227,7 @@ export function DashboardSidebar({ user, onLogout }: DashboardSidebarProps) {
         variant="ghost"
         onClick={() => setIsCollapsed(!isCollapsed)}
         className={cn(
-          "absolute -right-3 top-9 h-6 w-6 rounded-full bg-[rgb(23,24,26)] border border-white/[0.08] text-gray-400 hover:text-white hover:bg-white/[0.05]",
+          "absolute -right-3 top-9 h-6 w-6 rounded-full bg-[rgb(23,24,26)] border border-white/8 text-gray-400 hover:text-white hover:bg-white/[0.05]",
           "shadow-lg"
         )}
         aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}

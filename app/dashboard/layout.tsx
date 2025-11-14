@@ -79,8 +79,8 @@ export default function DashboardLayout({
     <div className="min-h-screen bg-[rgb(8,9,10)]">
       {/* Mobile Sidebar */}
       <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
-        <SheetContent side="left" className="w-64 bg-[rgb(15,16,17)] border-r border-white/[0.08] p-0">
-          <div className="flex items-center gap-2 px-6 py-4 border-b border-white/[0.08]">
+        <SheetContent side="left" className="w-64 bg-[rgb(15,16,17)] border-r border-white/8 p-0">
+          <div className="flex items-center gap-2 px-6 py-4 border-b border-white/8">
             <Star className="h-8 w-8 text-blue-500" />
             <span className="text-xl font-bold text-white">AuraRev</span>
           </div>
@@ -95,7 +95,7 @@ export default function DashboardLayout({
                   onClick={() => setSidebarOpen(false)}
                   className={`flex items-center gap-3 px-3 py-2 mb-1 text-sm font-medium rounded-lg transition-all duration-200 ${
                     isActive
-                      ? 'bg-gradient-to-r from-blue-600/20 to-blue-600/10 text-blue-400 border-l-2 border-blue-500'
+                      ? 'bg-linear-to-r from-blue-600/20 to-blue-600/10 text-blue-400 border-l-2 border-blue-500'
                       : 'text-gray-400 hover:bg-white/[0.05] hover:text-white'
                   }`}
                 >
@@ -109,9 +109,9 @@ export default function DashboardLayout({
       </Sheet>
 
       {/* Desktop Sidebar */}
-      <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:w-64 lg:bg-[rgb(15,16,17)] lg:border-r lg:border-white/[0.08] lg:block">
+      <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:w-64 lg:bg-[rgb(15,16,17)] lg:border-r lg:border-white/8 lg:block">
         {/* Logo */}
-        <div className="flex items-center gap-2 px-6 py-4 border-b border-white/[0.08]">
+        <div className="flex items-center gap-2 px-6 py-4 border-b border-white/8">
           <Star className="h-8 w-8 text-blue-500" />
           <span className="text-xl font-bold text-white">AuraRev</span>
         </div>
@@ -127,7 +127,7 @@ export default function DashboardLayout({
                 href={item.href}
                 className={`flex items-center gap-3 px-3 py-2 mb-1 text-sm font-medium rounded-lg transition-all duration-200 ${
                   isActive
-                    ? 'bg-gradient-to-r from-blue-600/20 to-blue-600/10 text-blue-400 border-l-2 border-blue-500'
+                    ? 'bg-linear-to-r from-blue-600/20 to-blue-600/10 text-blue-400 border-l-2 border-blue-500'
                     : 'text-gray-400 hover:bg-white/[0.05] hover:text-white'
                 }`}
               >
@@ -139,7 +139,7 @@ export default function DashboardLayout({
         </nav>
 
         {/* User section at bottom */}
-        <div className="border-t border-white/[0.08] p-4">
+        <div className="border-t border-white/8 p-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="flex items-center gap-3 w-full p-2 rounded-lg hover:bg-white/[0.05] transition-colors">
@@ -172,7 +172,7 @@ export default function DashboardLayout({
       {/* Main content */}
       <div className="lg:pl-64">
         {/* Top header bar */}
-        <header className="sticky top-0 z-40 bg-[rgb(15,16,17)] border-b border-white/[0.08] backdrop-blur-sm">
+        <header className="sticky top-0 z-40 bg-[rgb(15,16,17)] border-b border-white/8 backdrop-blur-sm">
           <div className="flex items-center justify-between px-4 lg:px-6 py-4">
             <div className="flex items-center gap-4">
               <Button
@@ -191,7 +191,7 @@ export default function DashboardLayout({
               <CommandPalette />
               <Button
                 size="sm"
-                className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white shadow-lg shadow-blue-500/20 transition-all duration-200"
+                className="bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white shadow-lg shadow-blue-500/20 transition-all duration-200"
               >
                 <RefreshCw className="mr-2 h-4 w-4" />
                 Pull Reviews

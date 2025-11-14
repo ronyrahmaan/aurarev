@@ -77,7 +77,7 @@ function DefaultErrorFallback({ error, resetError }: ErrorFallbackProps) {
 
   return (
     <div className="min-h-[400px] flex items-center justify-center p-6">
-      <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-red-500/20 max-w-md w-full">
+      <Card className="bg-linear-to-b from-white/4 to-white/2 border border-red-500/20 max-w-md w-full">
         <CardHeader className="text-center">
           <div className="mx-auto h-16 w-16 rounded-full bg-red-500/10 flex items-center justify-center mb-4">
             <AlertTriangle className="h-8 w-8 text-red-400" />
@@ -102,7 +102,7 @@ function DefaultErrorFallback({ error, resetError }: ErrorFallbackProps) {
           <div className="flex flex-col gap-2 pt-2">
             <Button
               onClick={resetError}
-              className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
+              className="bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
             >
               <RefreshCw className="h-4 w-4 mr-2" />
               Try Again
@@ -110,7 +110,7 @@ function DefaultErrorFallback({ error, resetError }: ErrorFallbackProps) {
             <Button
               variant="outline"
               onClick={() => window.location.href = '/dashboard'}
-              className="bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]"
+              className="bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]"
             >
               <Home className="h-4 w-4 mr-2" />
               Go to Dashboard

@@ -63,7 +63,7 @@ export default function Navbar() {
             </Link>
             <Button
               size="sm"
-              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white"
+              className="bg-linear-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white"
             >
               Get Started
             </Button>
@@ -101,7 +101,7 @@ export default function Navbar() {
                 </Link>
                 <Button
                   size="lg"
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white"
+                  className="w-full bg-linear-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Get Started

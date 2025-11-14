@@ -82,7 +82,7 @@ export function ActivityFeed({ items = [] }: ActivityFeedProps) {
   const displayItems = items.length > 0 ? items : mockData
 
   return (
-    <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm hover:border-white/[0.15] transition-all duration-200">
+    <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8 backdrop-blur-sm hover:border-white/15 transition-all duration-200">
       <CardHeader>
         <CardTitle className="text-white">Recent Activity</CardTitle>
       </CardHeader>

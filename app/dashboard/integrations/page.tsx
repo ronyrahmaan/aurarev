@@ -264,7 +264,7 @@ export default function IntegrationsPage() {
             placeholder="Search integrations..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 bg-white/[0.02] border-white/[0.08] text-white"
+            className="pl-10 bg-white/[0.02] border-white/8 text-white"
           />
         </div>
         <div className="flex gap-2 flex-wrap">
@@ -277,7 +277,7 @@ export default function IntegrationsPage() {
               className={`${
                 selectedCategory === category.value
                   ? 'bg-blue-500/20 border-blue-500 text-blue-400'
-                  : 'bg-white/[0.02] border-white/[0.08] text-gray-400 hover:text-white hover:bg-white/[0.05]'
+                  : 'bg-white/[0.02] border-white/8 text-gray-400 hover:text-white hover:bg-white/[0.05]'
               }`}
             >
               {category.label}
@@ -291,7 +291,7 @@ export default function IntegrationsPage() {
 
       {/* Connected Integrations Summary */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+        <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -304,7 +304,7 @@ export default function IntegrationsPage() {
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+        <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -317,7 +317,7 @@ export default function IntegrationsPage() {
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+        <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -341,7 +341,7 @@ export default function IntegrationsPage() {
           return (
             <Card
               key={integration.id}
-              className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] hover:border-white/[0.15] transition-all duration-200"
+              className="bg-linear-to-b from-white/4 to-white/2 border border-white/8 hover:border-white/15 transition-all duration-200"
             >
               <CardHeader>
                 <div className="flex items-start justify-between">
@@ -379,7 +379,7 @@ export default function IntegrationsPage() {
                       <Badge
                         key={feature}
                         variant="secondary"
-                        className="bg-white/[0.02] border-white/[0.08] text-gray-300"
+                        className="bg-white/[0.02] border-white/8 text-gray-300"
                       >
                         {feature}
                       </Badge>
@@ -389,7 +389,7 @@ export default function IntegrationsPage() {
 
                 {/* Sync Status */}
                 {integration.status === 'connected' && integration.lastSync && (
-                  <div className="p-3 bg-white/[0.02] rounded-lg border border-white/[0.08]">
+                  <div className="p-3 bg-white/[0.02] rounded-lg border border-white/8">
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-xs text-gray-500">Last synced</p>
@@ -416,7 +416,7 @@ export default function IntegrationsPage() {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="flex-1 bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]"
+                        className="flex-1 bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]"
                       >
                         <Settings className="h-4 w-4 mr-2" />
                         Configure
@@ -424,7 +424,7 @@ export default function IntegrationsPage() {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="flex-1 bg-white/[0.02] border-white/[0.08] text-gray-400 hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/30"
+                        className="flex-1 bg-white/[0.02] border-white/8 text-gray-400 hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/30"
                       >
                         Disconnect
                       </Button>
@@ -441,7 +441,7 @@ export default function IntegrationsPage() {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="bg-white/[0.02] border-white/[0.08] text-gray-400 hover:bg-white/[0.05]"
+                        className="bg-white/[0.02] border-white/8 text-gray-400 hover:bg-white/[0.05]"
                       >
                         <ExternalLink className="h-4 w-4" />
                       </Button>
@@ -451,7 +451,7 @@ export default function IntegrationsPage() {
                       size="sm"
                       onClick={() => handleConnect(integration.id)}
                       disabled={isConnecting}
-                      className="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
+                      className="flex-1 bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
                     >
                       {isConnecting ? (
                         <>
@@ -474,7 +474,7 @@ export default function IntegrationsPage() {
       </div>
 
       {/* API Access Card */}
-      <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+      <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
         <CardHeader>
           <div className="flex items-center gap-2">
             <Shield className="h-5 w-5 text-purple-400" />
@@ -502,13 +502,13 @@ export default function IntegrationsPage() {
             <div className="flex gap-3">
               <Button
                 variant="outline"
-                className="bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]"
+                className="bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]"
               >
                 View Documentation
               </Button>
               <Button
                 variant="outline"
-                className="bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]"
+                className="bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]"
               >
                 Generate New Key
               </Button>

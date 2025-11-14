@@ -106,7 +106,7 @@ export default function AutomationsPage() {
         </div>
         <Button
           onClick={() => setIsCreating(true)}
-          className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
+          className="bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
         >
           <Plus className="h-4 w-4 mr-2" />
           Create Workflow
@@ -118,7 +118,7 @@ export default function AutomationsPage() {
         {workflows.map((workflow) => (
           <Card
             key={workflow.id}
-            className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] hover:border-white/[0.15] transition-all duration-200 cursor-pointer"
+            className="bg-linear-to-b from-white/4 to-white/2 border border-white/8 hover:border-white/15 transition-all duration-200 cursor-pointer"
             onClick={() => setSelectedWorkflow(workflow.id)}
           >
             <CardHeader>
@@ -176,7 +176,7 @@ export default function AutomationsPage() {
               </div>
 
               {workflow.lastRun && (
-                <div className="pt-3 border-t border-white/[0.08]">
+                <div className="pt-3 border-t border-white/8">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-gray-500">Success Rate</span>
                     <span className="text-sm font-medium text-white">{workflow.successRate}%</span>
@@ -196,11 +196,11 @@ export default function AutomationsPage() {
                 </div>
               )}
 
-              <div className="flex items-center justify-between pt-3 border-t border-white/[0.08]">
+              <div className="flex items-center justify-between pt-3 border-t border-white/8">
                 <Button
                   size="sm"
                   variant="outline"
-                  className="bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]"
+                  className="bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]"
                   onClick={(e) => {
                     e.stopPropagation()
                     // Toggle status
@@ -237,7 +237,7 @@ export default function AutomationsPage() {
 
       {/* Create/Edit Workflow Panel */}
       {isCreating && (
-        <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+        <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
@@ -262,7 +262,7 @@ export default function AutomationsPage() {
               <Label className="text-gray-300">Workflow Name</Label>
               <Input
                 placeholder="e.g., Post-Purchase Review Request"
-                className="bg-white/[0.02] border-white/[0.08] text-white"
+                className="bg-white/[0.02] border-white/8 text-white"
               />
             </div>
 
@@ -270,7 +270,7 @@ export default function AutomationsPage() {
             <div className="space-y-2">
               <Label className="text-gray-300">When this happens...</Label>
               <Select>
-                <SelectTrigger className="bg-white/[0.02] border-white/[0.08] text-white">
+                <SelectTrigger className="bg-white/[0.02] border-white/8 text-white">
                   <SelectValue placeholder="Select a trigger" />
                 </SelectTrigger>
                 <SelectContent>
@@ -293,7 +293,7 @@ export default function AutomationsPage() {
             <div className="space-y-2">
               <Label className="text-gray-300">Do this...</Label>
               <Select>
-                <SelectTrigger className="bg-white/[0.02] border-white/[0.08] text-white">
+                <SelectTrigger className="bg-white/[0.02] border-white/8 text-white">
                   <SelectValue placeholder="Select an action" />
                 </SelectTrigger>
                 <SelectContent>
@@ -317,7 +317,7 @@ export default function AutomationsPage() {
               <Label className="text-gray-300">Message Template</Label>
               <Textarea
                 placeholder="Hi {customer_name}, thanks for your recent purchase..."
-                className="bg-white/[0.02] border-white/[0.08] text-white min-h-[120px]"
+                className="bg-white/[0.02] border-white/8 text-white min-h-[120px]"
               />
               <p className="text-xs text-gray-500">
                 Available variables: {'{customer_name}'}, {'{business_name}'}, {'{purchase_date}'}, {'{product_name}'}
@@ -325,7 +325,7 @@ export default function AutomationsPage() {
             </div>
 
             {/* Advanced Settings */}
-            <div className="space-y-4 p-4 bg-white/[0.02] rounded-lg border border-white/[0.08]">
+            <div className="space-y-4 p-4 bg-white/[0.02] rounded-lg border border-white/8">
               <h4 className="text-sm font-medium text-white">Advanced Settings</h4>
 
               <div className="flex items-center justify-between">
@@ -350,12 +350,12 @@ export default function AutomationsPage() {
               <Button
                 variant="outline"
                 onClick={() => setIsCreating(false)}
-                className="bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]"
+                className="bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]"
               >
                 Cancel
               </Button>
               <Button
-                className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
+                className="bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
               >
                 Create Workflow
               </Button>
@@ -365,7 +365,7 @@ export default function AutomationsPage() {
       )}
 
       {/* Workflow Analytics */}
-      <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+      <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
         <CardHeader>
           <CardTitle className="text-white">Workflow Performance</CardTitle>
           <CardDescription className="text-gray-400">
@@ -374,7 +374,7 @@ export default function AutomationsPage() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="p-4 bg-white/[0.02] rounded-lg border border-white/[0.08]">
+            <div className="p-4 bg-white/[0.02] rounded-lg border border-white/8">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm text-gray-400">Total Sent</span>
                 <Mail className="h-4 w-4 text-blue-400" />
@@ -382,7 +382,7 @@ export default function AutomationsPage() {
               <p className="text-2xl font-bold text-white">3,456</p>
               <p className="text-xs text-green-400 mt-1">+23% this week</p>
             </div>
-            <div className="p-4 bg-white/[0.02] rounded-lg border border-white/[0.08]">
+            <div className="p-4 bg-white/[0.02] rounded-lg border border-white/8">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm text-gray-400">Response Rate</span>
                 <Users className="h-4 w-4 text-purple-400" />
@@ -390,7 +390,7 @@ export default function AutomationsPage() {
               <p className="text-2xl font-bold text-white">34%</p>
               <p className="text-xs text-green-400 mt-1">+5% improvement</p>
             </div>
-            <div className="p-4 bg-white/[0.02] rounded-lg border border-white/[0.08]">
+            <div className="p-4 bg-white/[0.02] rounded-lg border border-white/8">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm text-gray-400">Reviews Generated</span>
                 <Star className="h-4 w-4 text-yellow-400" />

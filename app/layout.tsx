@@ -22,27 +22,27 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased bg-[rgb(8,9,10)] text-white overflow-x-hidden`}>
         {/* Subtle gradient overlay for depth */}
         <div className="fixed inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/[0.02] via-transparent to-blue-500/[0.02]"></div>
+          <div className="absolute inset-0 bg-linear-to-br from-blue-600/[0.02] via-transparent to-blue-500/[0.02]"></div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.05),transparent_50%)]"></div>
         </div>
 
         {/* Decorative Border Frame - Visible on ALL pages */}
         <div className="fixed inset-0 pointer-events-none z-50">
           {/* Top border */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent"></div>
-          <div className="absolute top-4 left-4 right-4 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
+          <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-blue-500/30 to-transparent"></div>
+          <div className="absolute top-4 left-4 right-4 h-px bg-linear-to-r from-transparent via-blue-500/20 to-transparent"></div>
 
           {/* Bottom border */}
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent"></div>
-          <div className="absolute bottom-4 left-4 right-4 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-blue-500/30 to-transparent"></div>
+          <div className="absolute bottom-4 left-4 right-4 h-px bg-linear-to-r from-transparent via-blue-500/20 to-transparent"></div>
 
           {/* Left border */}
-          <div className="absolute top-0 bottom-0 left-0 w-px bg-gradient-to-b from-transparent via-blue-500/30 to-transparent"></div>
-          <div className="absolute top-4 bottom-4 left-4 w-px bg-gradient-to-b from-transparent via-blue-500/20 to-transparent"></div>
+          <div className="absolute top-0 bottom-0 left-0 w-px bg-linear-to-b from-transparent via-blue-500/30 to-transparent"></div>
+          <div className="absolute top-4 bottom-4 left-4 w-px bg-linear-to-b from-transparent via-blue-500/20 to-transparent"></div>
 
           {/* Right border */}
-          <div className="absolute top-0 bottom-0 right-0 w-px bg-gradient-to-b from-transparent via-blue-500/30 to-transparent"></div>
-          <div className="absolute top-4 bottom-4 right-4 w-px bg-gradient-to-b from-transparent via-blue-500/20 to-transparent"></div>
+          <div className="absolute top-0 bottom-0 right-0 w-px bg-linear-to-b from-transparent via-blue-500/30 to-transparent"></div>
+          <div className="absolute top-4 bottom-4 right-4 w-px bg-linear-to-b from-transparent via-blue-500/20 to-transparent"></div>
 
           {/* Corner decorations */}
           {/* Top-left corner */}

@@ -196,10 +196,10 @@ export function DataTable<T extends Record<string, any>>({
 
   return (
     <div className={cn("space-y-4", className)}>
-      <div className="rounded-lg border border-white/[0.08] bg-gradient-to-b from-white/[0.02] to-transparent overflow-hidden">
+      <div className="rounded-lg border border-white/8 bg-linear-to-b from-white/[0.02] to-transparent overflow-hidden">
         <Table>
           <TableHeader className={cn(stickyHeader && "sticky top-0 z-10 bg-[rgb(23,24,26)]")}>
-            <TableRow className="border-white/[0.08] hover:bg-transparent">
+            <TableRow className="border-white/8 hover:bg-transparent">
               {selectable && (
                 <TableHead className="w-12">
                   <Checkbox
@@ -251,7 +251,7 @@ export function DataTable<T extends Record<string, any>>({
                   <TableRow
                     key={index}
                     className={cn(
-                      "border-white/[0.08] transition-colors",
+                      "border-white/8 transition-colors",
                       isSelected && "bg-white/[0.02]",
                       onRowClick && "cursor-pointer hover:bg-white/[0.02]",
                       striped && index % 2 === 0 && "bg-white/[0.01]"
@@ -319,7 +319,7 @@ export function DataTable<T extends Record<string, any>>({
                   value={pageSize.toString()}
                   onValueChange={handlePageSizeChange}
                 >
-                  <SelectTrigger className="w-20 h-8 bg-white/[0.02] border-white/[0.08] text-white">
+                  <SelectTrigger className="w-20 h-8 bg-white/[0.02] border-white/8 text-white">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -337,7 +337,7 @@ export function DataTable<T extends Record<string, any>>({
               <Button
                 variant="outline"
                 size="icon"
-                className="h-8 w-8 bg-white/[0.02] border-white/[0.08]"
+                className="h-8 w-8 bg-white/[0.02] border-white/8"
                 onClick={() => goToPage(1)}
                 disabled={currentPage === 1}
               >
@@ -346,7 +346,7 @@ export function DataTable<T extends Record<string, any>>({
               <Button
                 variant="outline"
                 size="icon"
-                className="h-8 w-8 bg-white/[0.02] border-white/[0.08]"
+                className="h-8 w-8 bg-white/[0.02] border-white/8"
                 onClick={() => goToPage(currentPage - 1)}
                 disabled={currentPage === 1}
               >
@@ -360,7 +360,7 @@ export function DataTable<T extends Record<string, any>>({
               <Button
                 variant="outline"
                 size="icon"
-                className="h-8 w-8 bg-white/[0.02] border-white/[0.08]"
+                className="h-8 w-8 bg-white/[0.02] border-white/8"
                 onClick={() => goToPage(currentPage + 1)}
                 disabled={currentPage === totalPages}
               >
@@ -369,7 +369,7 @@ export function DataTable<T extends Record<string, any>>({
               <Button
                 variant="outline"
                 size="icon"
-                className="h-8 w-8 bg-white/[0.02] border-white/[0.08]"
+                className="h-8 w-8 bg-white/[0.02] border-white/8"
                 onClick={() => goToPage(totalPages)}
                 disabled={currentPage === totalPages}
               >

@@ -136,10 +136,10 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-[#08090a] py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+        <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
       {/* Hero Section */}
       <section className="relative overflow-hidden p-12">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary-purple/5" />
+        <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-primary-purple/5" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-20">
           <div className="text-center">
             <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
@@ -203,7 +203,7 @@ export default function PricingPage() {
                   <div className="p-8">
                     {/* Header */}
                     <div className="flex items-center gap-3 mb-4">
-                      <div className={`h-10 w-10 rounded-lg bg-gradient-to-br ${plan.color} flex items-center justify-center`}>
+                      <div className={`h-10 w-10 rounded-lg bg-linear-to-br ${plan.color} flex items-center justify-center`}>
                         <Icon className="h-5 w-5 text-white" />
                       </div>
                       <h3 className="text-2xl font-bold">{plan.name}</h3>
@@ -256,7 +256,7 @@ export default function PricingPage() {
                       </p>
                       {plan.features.map((feature, idx) => (
                         <div key={idx} className="flex items-start gap-3">
-                          <Check className="h-5 w-5 text-accent-green flex-shrink-0 mt-0.5" />
+                          <Check className="h-5 w-5 text-accent-green shrink-0 mt-0.5" />
                           <span className="text-sm text-text-secondary">
                             {feature}
                           </span>
@@ -267,7 +267,7 @@ export default function PricingPage() {
                           <div className="pt-3" />
                           {plan.notIncluded.map((feature, idx) => (
                             <div key={idx} className="flex items-start gap-3">
-                              <X className="h-5 w-5 text-text-tertiary flex-shrink-0 mt-0.5" />
+                              <X className="h-5 w-5 text-text-tertiary shrink-0 mt-0.5" />
                               <span className="text-sm text-text-tertiary line-through">
                                 {feature}
                               </span>
@@ -431,7 +431,7 @@ export default function PricingPage() {
       {/* Final CTA */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary-purple to-primary p-12 text-center ring-1 ring-white/20 shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:shadow-[0_0_80px_rgba(59,130,246,0.4)] transition-all duration-300">
+          <div className="relative overflow-hidden rounded-3xl bg-linear-to-br from-primary via-primary-purple to-primary p-12 text-center ring-1 ring-white/20 shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:shadow-[0_0_80px_rgba(59,130,246,0.4)] transition-all duration-300">
             <div className="absolute inset-0 bg-grid-pattern opacity-10" />
             <div className="relative">
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">

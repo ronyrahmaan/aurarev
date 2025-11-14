@@ -11,8 +11,8 @@ export function GlowBox({ children, className, enableHover = true }: GlowBoxProp
     <div
       className={cn(
         "rounded-2xl",
-        "bg-gradient-to-b from-white/[0.06] to-white/[0.02]",
-        "border-2 border-white/[0.15]",
+        "bg-linear-to-b from-white/6 to-white/2",
+        "border-2 border-white/15",
         "backdrop-blur-sm",
         "p-12",
         "ring-2 ring-white/20",

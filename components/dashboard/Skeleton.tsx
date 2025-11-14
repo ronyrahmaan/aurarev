@@ -33,7 +33,7 @@ export function Skeleton({
   return (
     <div
       className={cn(
-        'bg-gradient-to-r from-white/[0.05] via-white/[0.08] to-white/[0.05]',
+        'bg-linear-to-r from-white/[0.05] via-white/[0.08] to-white/[0.05]',
         variantClasses[variant],
         animationClasses[animation],
         className
@@ -80,7 +80,7 @@ export function TableSkeleton({ rows = 5, columns = 6 }: { rows?: number; column
 // Card Skeleton
 export function CardSkeleton({ showHeader = true }: { showHeader?: boolean }) {
   return (
-    <div className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] rounded-lg p-6 space-y-4">
+    <div className="bg-linear-to-b from-white/4 to-white/2 border border-white/8 rounded-lg p-6 space-y-4">
       {showHeader && (
         <div className="space-y-2">
           <Skeleton className="h-6 w-1/3" />
@@ -99,7 +99,7 @@ export function CardSkeleton({ showHeader = true }: { showHeader?: boolean }) {
 // Metric Card Skeleton
 export function MetricCardSkeleton() {
   return (
-    <div className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] rounded-lg p-6 space-y-4">
+    <div className="bg-linear-to-b from-white/4 to-white/2 border border-white/8 rounded-lg p-6 space-y-4">
       <div className="flex items-center justify-between">
         <Skeleton className="h-4 w-24" />
         <Skeleton variant="circular" className="h-8 w-8" />
@@ -127,7 +127,7 @@ export function MetricCardSkeleton() {
 // Review Card Skeleton
 export function ReviewCardSkeleton() {
   return (
-    <div className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] rounded-lg p-6 space-y-4">
+    <div className="bg-linear-to-b from-white/4 to-white/2 border border-white/8 rounded-lg p-6 space-y-4">
       <div className="flex items-start gap-4">
         <Skeleton variant="circular" className="h-10 w-10 shrink-0" />
         <div className="flex-1 space-y-2">
@@ -145,7 +145,7 @@ export function ReviewCardSkeleton() {
         <Skeleton className="h-4 w-5/6" />
         <Skeleton className="h-4 w-4/6" />
       </div>
-      <div className="flex items-center justify-between pt-3 border-t border-white/[0.08]">
+      <div className="flex items-center justify-between pt-3 border-t border-white/8">
         <Skeleton className="h-8 w-24" />
         <div className="flex gap-2">
           <Skeleton className="h-8 w-28" />
@@ -159,7 +159,7 @@ export function ReviewCardSkeleton() {
 // Chart Skeleton
 export function ChartSkeleton({ height = 256 }: { height?: number }) {
   return (
-    <div className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] rounded-lg p-6 space-y-4">
+    <div className="bg-linear-to-b from-white/4 to-white/2 border border-white/8 rounded-lg p-6 space-y-4">
       <div className="flex items-center justify-between">
         <Skeleton className="h-6 w-32" />
         <Skeleton className="h-8 w-24" />
@@ -185,7 +185,7 @@ export function ChartSkeleton({ height = 256 }: { height?: number }) {
 // Activity Feed Skeleton
 export function ActivityFeedSkeleton() {
   return (
-    <div className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] rounded-lg p-6 space-y-4">
+    <div className="bg-linear-to-b from-white/4 to-white/2 border border-white/8 rounded-lg p-6 space-y-4">
       <Skeleton className="h-6 w-32" />
       <div className="space-y-4">
         {Array.from({ length: 4 }).map((_, i) => (

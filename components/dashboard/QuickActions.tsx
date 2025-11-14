@@ -81,7 +81,7 @@ export function QuickActions({
   }
 
   return (
-    <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm hover:border-white/[0.15] transition-all duration-200">
+    <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8 backdrop-blur-sm hover:border-white/15 transition-all duration-200">
       <CardHeader>
         <CardTitle className="text-white">Quick Actions</CardTitle>
       </CardHeader>
@@ -97,9 +97,9 @@ export function QuickActions({
                 disabled={loadingAction !== null}
                 className={`
                   group relative p-4 rounded-lg
-                  bg-white/[0.02] border border-white/[0.08]
+                  bg-white/[0.02] border border-white/8
                   transition-all duration-200
-                  hover:bg-white/[0.04]
+                  hover:bg-white/4
                   disabled:opacity-50 disabled:cursor-not-allowed
                   ${colorClasses[action.color as keyof typeof colorClasses]}
                 `}

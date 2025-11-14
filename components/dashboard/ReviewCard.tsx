@@ -81,7 +81,7 @@ export function ReviewCard({
   const PlatformIcon = platformConfig[platform].icon
 
   return (
-    <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] hover:border-white/[0.15] transition-all duration-200">
+    <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8 hover:border-white/15 transition-all duration-200">
       <CardHeader>
         <div className="flex items-start justify-between">
           <div className="flex items-start gap-4">
@@ -133,7 +133,7 @@ export function ReviewCard({
                   <MoreVertical className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-[rgb(23,24,26)] border-white/[0.08]">
+              <DropdownMenuContent align="end" className="bg-[rgb(23,24,26)] border-white/8">
                 <DropdownMenuItem onClick={onShare} className="text-gray-300 hover:text-white">
                   <Share2 className="h-4 w-4 mr-2" />
                   Share Review
@@ -176,7 +176,7 @@ export function ReviewCard({
 
         {/* Response Section */}
         {response && (
-          <div className="p-3 bg-white/[0.02] rounded-lg border border-white/[0.08] space-y-2">
+          <div className="p-3 bg-white/[0.02] rounded-lg border border-white/8 space-y-2">
             <div className="flex items-center gap-2">
               <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">
                 Business Response
@@ -199,7 +199,7 @@ export function ReviewCard({
         )}
 
         {/* Helpful Section */}
-        <div className="flex items-center justify-between pt-3 border-t border-white/[0.08]">
+        <div className="flex items-center justify-between pt-3 border-t border-white/8">
           <div className="flex items-center gap-3">
             {helpful > 0 && (
               <span className="text-xs text-gray-500">
@@ -232,7 +232,7 @@ export function ReviewCard({
                 size="sm"
                 variant="outline"
                 onClick={onGenerateBlurb}
-                className="bg-white/[0.02] border-white/[0.08] text-purple-400 hover:bg-purple-500/10 hover:text-purple-300 hover:border-purple-500/30"
+                className="bg-white/[0.02] border-white/8 text-purple-400 hover:bg-purple-500/10 hover:text-purple-300 hover:border-purple-500/30"
               >
                 Generate Blurb
               </Button>
@@ -241,7 +241,7 @@ export function ReviewCard({
               <Button
                 size="sm"
                 onClick={onRespond}
-                className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white"
+                className="bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white"
               >
                 <MessageSquare className="h-3 w-3 mr-1" />
                 Respond

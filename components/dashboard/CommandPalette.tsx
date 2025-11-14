@@ -228,7 +228,7 @@ export function CommandPalette() {
       {/* Trigger hint in UI */}
       <button
         onClick={() => setOpen(true)}
-        className="hidden lg:flex items-center gap-2 px-3 py-1.5 text-sm text-gray-400 bg-white/[0.02] border border-white/[0.08] rounded-lg hover:bg-white/[0.05] hover:text-white transition-colors"
+        className="hidden lg:flex items-center gap-2 px-3 py-1.5 text-sm text-gray-400 bg-white/[0.02] border border-white/8 rounded-lg hover:bg-white/[0.05] hover:text-white transition-colors"
       >
         <Search className="h-3 w-3" />
         <span>Search...</span>
@@ -244,8 +244,8 @@ export function CommandPalette() {
 
       {/* Command Palette Dialog */}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="sm:max-w-2xl p-0 gap-0 bg-[rgb(23,24,26)] border border-white/[0.08]">
-          <div className="flex items-center gap-3 px-4 border-b border-white/[0.08]">
+        <DialogContent className="sm:max-w-2xl p-0 gap-0 bg-[rgb(23,24,26)] border border-white/8">
+          <div className="flex items-center gap-3 px-4 border-b border-white/8">
             <Search className="h-4 w-4 text-gray-400 shrink-0" />
             <Input
               value={search}
@@ -307,7 +307,7 @@ export function CommandPalette() {
             )}
           </div>
 
-          <div className="px-4 py-2 border-t border-white/[0.08] bg-white/[0.02]">
+          <div className="px-4 py-2 border-t border-white/8 bg-white/[0.02]">
             <div className="flex items-center gap-4 text-xs text-gray-500">
               <span className="flex items-center gap-1">
                 <kbd className="px-1 py-0.5 bg-white/[0.05] border border-white/[0.1] rounded">↑</kbd>

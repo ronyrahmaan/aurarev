@@ -44,7 +44,7 @@ export default function WidgetsPage() {
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Widget Settings */}
-        <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+        <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
           <CardHeader>
             <CardTitle className="text-white">Widget Settings</CardTitle>
             <CardDescription className="text-gray-400">
@@ -56,7 +56,7 @@ export default function WidgetsPage() {
             <div className="space-y-2">
               <Label className="text-gray-300">Display Style</Label>
               <Select value={widgetStyle} onValueChange={setWidgetStyle}>
-                <SelectTrigger className="bg-white/[0.02] border-white/[0.08] text-white">
+                <SelectTrigger className="bg-white/[0.02] border-white/8 text-white">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -79,7 +79,7 @@ export default function WidgetsPage() {
                   className={`flex-1 ${
                     widgetTheme === 'light'
                       ? 'bg-white text-black border-white'
-                      : 'bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]'
+                      : 'bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]'
                   }`}
                 >
                   <Sun className="h-4 w-4 mr-2" />
@@ -92,7 +92,7 @@ export default function WidgetsPage() {
                   className={`flex-1 ${
                     widgetTheme === 'dark'
                       ? 'bg-gray-800 text-white border-blue-500'
-                      : 'bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]'
+                      : 'bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]'
                   }`}
                 >
                   <Moon className="h-4 w-4 mr-2" />
@@ -104,8 +104,8 @@ export default function WidgetsPage() {
                   onClick={() => setWidgetTheme('auto')}
                   className={`flex-1 ${
                     widgetTheme === 'auto'
-                      ? 'bg-gradient-to-r from-gray-800 to-white text-black border-blue-500'
-                      : 'bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]'
+                      ? 'bg-linear-to-r from-gray-800 to-white text-black border-blue-500'
+                      : 'bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]'
                   }`}
                 >
                   Auto
@@ -117,7 +117,7 @@ export default function WidgetsPage() {
             <div className="space-y-2">
               <Label className="text-gray-300">Reviews to Display</Label>
               <Select value={displayCount} onValueChange={setDisplayCount}>
-                <SelectTrigger className="bg-white/[0.02] border-white/[0.08] text-white">
+                <SelectTrigger className="bg-white/[0.02] border-white/8 text-white">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -151,7 +151,7 @@ export default function WidgetsPage() {
         </Card>
 
         {/* Live Preview */}
-        <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+        <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
@@ -168,7 +168,7 @@ export default function WidgetsPage() {
                   className={`${
                     previewDevice === 'desktop'
                       ? 'bg-blue-500/20 border-blue-500 text-blue-400'
-                      : 'bg-white/[0.02] border-white/[0.08] text-gray-400'
+                      : 'bg-white/[0.02] border-white/8 text-gray-400'
                   }`}
                 >
                   <Monitor className="h-4 w-4" />
@@ -180,7 +180,7 @@ export default function WidgetsPage() {
                   className={`${
                     previewDevice === 'mobile'
                       ? 'bg-blue-500/20 border-blue-500 text-blue-400'
-                      : 'bg-white/[0.02] border-white/[0.08] text-gray-400'
+                      : 'bg-white/[0.02] border-white/8 text-gray-400'
                   }`}
                 >
                   <Smartphone className="h-4 w-4" />
@@ -197,7 +197,7 @@ export default function WidgetsPage() {
                   ? 'bg-white text-black'
                   : widgetTheme === 'dark'
                   ? 'bg-gray-900 text-white'
-                  : 'bg-gradient-to-b from-gray-900 to-gray-800 text-white'
+                  : 'bg-linear-to-b from-gray-900 to-gray-800 text-white'
               } rounded-lg p-6 shadow-2xl transition-all duration-300`}
             >
               {/* Mock Widget Preview */}
@@ -264,7 +264,7 @@ export default function WidgetsPage() {
       </div>
 
       {/* Embed Code */}
-      <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+      <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-white">
             <Code className="h-5 w-5" />
@@ -283,7 +283,7 @@ export default function WidgetsPage() {
               size="sm"
               variant="outline"
               onClick={handleCopy}
-              className="absolute top-2 right-2 bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]"
+              className="absolute top-2 right-2 bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]"
             >
               {copied ? (
                 <>

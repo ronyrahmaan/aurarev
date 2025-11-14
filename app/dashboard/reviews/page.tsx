@@ -243,12 +243,12 @@ export default function ReviewsPage() {
             <Input
               placeholder="Search reviews..."
               onChange={(e) => debouncedSearch(e.target.value)}
-              className="pl-10 bg-white/[0.02] border-white/[0.08] text-white placeholder:text-gray-500"
+              className="pl-10 bg-white/[0.02] border-white/8 text-white placeholder:text-gray-500"
               aria-label="Search reviews"
             />
           </div>
           <Select value={platformFilter} onValueChange={setPlatformFilter}>
-            <SelectTrigger className="w-[150px] bg-white/[0.02] border-white/[0.08] text-white" aria-label="Filter by platform">
+            <SelectTrigger className="w-[150px] bg-white/[0.02] border-white/8 text-white" aria-label="Filter by platform">
               <SelectValue placeholder="Platform" />
             </SelectTrigger>
             <SelectContent>
@@ -259,7 +259,7 @@ export default function ReviewsPage() {
             </SelectContent>
           </Select>
           <Select value={ratingFilter} onValueChange={setRatingFilter}>
-            <SelectTrigger className="w-[150px] bg-white/[0.02] border-white/[0.08] text-white" aria-label="Filter by rating">
+            <SelectTrigger className="w-[150px] bg-white/[0.02] border-white/8 text-white" aria-label="Filter by rating">
               <SelectValue placeholder="Rating" />
             </SelectTrigger>
             <SelectContent>
@@ -276,7 +276,7 @@ export default function ReviewsPage() {
           <Button
             variant="outline"
             size="sm"
-            className="bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]"
+            className="bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]"
           >
             <Filter className="h-4 w-4 mr-2" aria-hidden="true" />
             More Filters
@@ -284,7 +284,7 @@ export default function ReviewsPage() {
           <Button
             size="sm"
             onClick={() => refetch()}
-            className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
+            className="bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
           >
             <RefreshCw className="h-4 w-4 mr-2" aria-hidden="true" />
             Pull Reviews
@@ -300,11 +300,11 @@ export default function ReviewsPage() {
               {selectedRows.length} review{selectedRows.length !== 1 ? 's' : ''} selected
             </span>
             <div className="flex items-center gap-2">
-              <Button size="sm" variant="outline" className="bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]">
+              <Button size="sm" variant="outline" className="bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]">
                 <MessageSquare className="h-4 w-4 mr-2" aria-hidden="true" />
                 Generate Blurbs
               </Button>
-              <Button size="sm" variant="outline" className="bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]">
+              <Button size="sm" variant="outline" className="bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]">
                 <Download className="h-4 w-4 mr-2" aria-hidden="true" />
                 Export
               </Button>
@@ -340,7 +340,7 @@ export default function ReviewsPage() {
 
       {/* Review Detail Dialog */}
       <Dialog open={!!selectedReview} onOpenChange={() => setSelectedReview(null)}>
-        <DialogContent className="max-w-2xl bg-[rgb(23,24,26)] border-white/[0.08]">
+        <DialogContent className="max-w-2xl bg-[rgb(23,24,26)] border-white/8">
           <DialogHeader>
             <DialogTitle className="text-white">Review Details</DialogTitle>
           </DialogHeader>

@@ -103,11 +103,11 @@ export function EmptyState({
       <div className="relative mb-6">
         {illustration && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="h-32 w-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl" />
+            <div className="h-32 w-32 bg-linear-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl" />
           </div>
         )}
         <div className="relative">
-          <div className="h-20 w-20 mx-auto rounded-2xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-white/[0.08] flex items-center justify-center mb-2">
+          <div className="h-20 w-20 mx-auto rounded-2xl bg-linear-to-b from-white/[0.08] to-white/2 border border-white/8 flex items-center justify-center mb-2">
             <Icon className="h-10 w-10 text-gray-400" />
           </div>
           {illustration && config.illustration && (
@@ -136,7 +136,7 @@ export function EmptyState({
             onClick={displayAction.onClick}
             className={cn(
               displayAction.variant === 'default' &&
-              "bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white"
+              "bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white"
             )}
           >
             {type === 'reviews' && <Link2 className="h-4 w-4 mr-2" />}
@@ -175,7 +175,7 @@ export function EmptyState({
           {['Reviews', 'Ratings', 'Insights'].map((item) => (
             <div
               key={item}
-              className="p-3 bg-white/[0.02] rounded-lg border border-white/[0.08] text-center"
+              className="p-3 bg-white/[0.02] rounded-lg border border-white/8 text-center"
             >
               <div className="h-8 w-8 mx-auto mb-2 bg-gray-800 rounded-lg animate-pulse" />
               <p className="text-xs text-gray-500">{item}</p>

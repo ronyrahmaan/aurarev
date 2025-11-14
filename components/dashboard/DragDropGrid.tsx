@@ -88,7 +88,7 @@ export function DragDropGrid({
   }
 
   const getSizeClasses = (size: DragDropItem['size']) => {
-    const baseClasses = "bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] rounded-lg transition-all duration-200"
+    const baseClasses = "bg-linear-to-b from-white/4 to-white/2 border border-white/8 rounded-lg transition-all duration-200"
 
     switch (size) {
       case 'small':
@@ -118,7 +118,7 @@ export function DragDropGrid({
             size="sm"
             variant="outline"
             onClick={() => onItemsChange(items)}
-            className="bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]"
+            className="bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]"
           >
             <Settings className="h-4 w-4 mr-2" />
             Customize
@@ -199,7 +199,7 @@ function SortableGridItem({ item, editable, onRemove }: SortableGridItemProps) {
       )}
     >
       {editable && (
-        <div className="flex items-center justify-between p-3 border-b border-white/[0.08]">
+        <div className="flex items-center justify-between p-3 border-b border-white/8">
           <div
             {...attributes}
             {...listeners}
@@ -239,7 +239,7 @@ function OverlayItem({ item }: { item: DragDropItem }) {
 }
 
 function getSizeClasses(size: DragDropItem['size']) {
-  const baseClasses = "bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] rounded-lg"
+  const baseClasses = "bg-linear-to-b from-white/4 to-white/2 border border-white/8 rounded-lg"
 
   switch (size) {
     case 'small':

@@ -75,14 +75,14 @@ export default function DashboardPage() {
       </div>
 
       {/* Recent Reviews Section */}
-      <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm hover:border-white/[0.15] transition-all duration-200">
+      <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8 backdrop-blur-sm hover:border-white/15 transition-all duration-200">
         <CardHeader>
           <CardTitle className="text-white">Recent Reviews</CardTitle>
         </CardHeader>
         <CardContent>
           {recentReviews.length === 0 ? (
             <div className="text-center py-12">
-              <div className="mx-auto h-12 w-12 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center mb-4">
+              <div className="mx-auto h-12 w-12 rounded-lg bg-white/[0.05] border border-white/8 flex items-center justify-center mb-4">
                 <Star className="h-6 w-6 text-gray-400" />
               </div>
               <h3 className="text-sm font-medium text-white mb-1">No reviews yet</h3>
@@ -100,7 +100,7 @@ export default function DashboardPage() {
 
       {/* Integration Status */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm hover:border-white/[0.15] transition-all duration-200">
+        <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8 backdrop-blur-sm hover:border-white/15 transition-all duration-200">
           <CardHeader>
             <CardTitle className="flex items-center justify-between text-white">
               Google Account Status
@@ -119,7 +119,7 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08] backdrop-blur-sm hover:border-white/[0.15] transition-all duration-200">
+        <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8 backdrop-blur-sm hover:border-white/15 transition-all duration-200">
           <CardHeader>
             <CardTitle className="flex items-center justify-between text-white">
               Email Notifications

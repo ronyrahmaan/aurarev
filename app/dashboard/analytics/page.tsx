@@ -74,7 +74,7 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Review Volume Chart */}
-      <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+      <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
         <CardHeader>
           <CardTitle className="text-white">Review Volume Over Time</CardTitle>
         </CardHeader>
@@ -105,7 +105,7 @@ export default function AnalyticsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Rating Distribution */}
-        <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+        <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
           <CardHeader>
             <CardTitle className="text-white">Rating Distribution</CardTitle>
           </CardHeader>
@@ -120,7 +120,7 @@ export default function AnalyticsPage() {
                   <div className="flex-1">
                     <div className="h-8 bg-white/[0.02] rounded-lg overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-yellow-500/60 to-yellow-400/40 flex items-center justify-end pr-2"
+                        className="h-full bg-linear-to-r from-yellow-500/60 to-yellow-400/40 flex items-center justify-end pr-2"
                         style={{ width: `${item.percentage}%` }}
                       >
                         <span className="text-xs text-white font-medium">{item.count}</span>
@@ -135,7 +135,7 @@ export default function AnalyticsPage() {
         </Card>
 
         {/* Platform Comparison */}
-        <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+        <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
           <CardHeader>
             <CardTitle className="text-white">Reviews by Platform</CardTitle>
           </CardHeader>
@@ -165,7 +165,7 @@ export default function AnalyticsPage() {
             </div>
 
             {/* Total */}
-            <div className="mt-6 pt-4 border-t border-white/[0.08]">
+            <div className="mt-6 pt-4 border-t border-white/8">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-white">Total Reviews</span>
                 <span className="text-2xl font-bold text-white">450</span>
@@ -176,7 +176,7 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Sentiment Trends */}
-      <Card className="bg-gradient-to-b from-white/[0.04] to-white/[0.02] border border-white/[0.08]">
+      <Card className="bg-linear-to-b from-white/4 to-white/2 border border-white/8">
         <CardHeader>
           <CardTitle className="text-white">Sentiment Analysis Trends</CardTitle>
         </CardHeader>

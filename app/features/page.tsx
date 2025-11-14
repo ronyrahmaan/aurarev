@@ -188,10 +188,10 @@ export default function FeaturesPage() {
   return (
     <div className="min-h-screen bg-[#08090a] py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border-2 border-white/[0.15] backdrop-blur-sm ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
+        <div className="rounded-2xl bg-linear-to-b from-white/6 to-white/2 border-2 border-white/15 backdrop-blur-sm ring-2 ring-white/20 shadow-[0_0_50px_rgba(59,130,246,0.25),inset_0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_80px_rgba(59,130,246,0.35),inset_0_0_40px_rgba(59,130,246,0.12)] transition-all duration-500">
       {/* Hero Section */}
       <section className="relative overflow-hidden p-12">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary-purple/5" />
+        <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-primary-purple/5" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-20">
           <div className="text-center">
             <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
@@ -241,9 +241,9 @@ export default function FeaturesPage() {
                   key={index}
                   className="group relative overflow-hidden rounded-2xl border border-border bg-bg-secondary p-8 hover:border-primary/50 transition-all duration-300 ring-1 ring-white/5 shadow-[0_0_30px_rgba(59,130,246,0.08)] hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]"
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity`} />
+                  <div className={`absolute inset-0 bg-linear-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity`} />
                   <div className="relative">
-                    <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${feature.color} mb-4`}>
+                    <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br ${feature.color} mb-4`}>
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
@@ -322,7 +322,7 @@ export default function FeaturesPage() {
                           className="group p-4 rounded-lg border border-border bg-bg-secondary/50 hover:bg-bg-secondary hover:border-primary/30 transition-all ring-1 ring-white/5 shadow-[0_0_20px_rgba(59,130,246,0.05)] hover:shadow-[0_0_30px_rgba(59,130,246,0.1)]"
                         >
                           <div className="flex items-start gap-3">
-                            <CheckCircle2 className="h-5 w-5 text-accent-green mt-0.5 flex-shrink-0" />
+                            <CheckCircle2 className="h-5 w-5 text-accent-green mt-0.5 shrink-0" />
                             <div>
                               <h4 className="font-medium text-white">{feature.name}</h4>
                               <p className="mt-1 text-sm text-text-secondary">{feature.description}</p>
@@ -373,7 +373,7 @@ export default function FeaturesPage() {
       {/* Final CTA */}
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary-purple to-primary p-12 text-center ring-1 ring-white/20 shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:shadow-[0_0_80px_rgba(59,130,246,0.4)] transition-all duration-300">
+          <div className="relative overflow-hidden rounded-3xl bg-linear-to-br from-primary via-primary-purple to-primary p-12 text-center ring-1 ring-white/20 shadow-[0_0_60px_rgba(59,130,246,0.3)] hover:shadow-[0_0_80px_rgba(59,130,246,0.4)] transition-all duration-300">
             <div className="absolute inset-0 bg-grid-pattern opacity-10" />
             <div className="relative">
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
