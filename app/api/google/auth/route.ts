@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Generate Google OAuth URL
-    const authUrl = getGoogleAuthUrl(userId)
+    const authUrl = getGoogleAuthUrl()
 
     // Redirect user to Google OAuth consent screen
     return NextResponse.redirect(authUrl)

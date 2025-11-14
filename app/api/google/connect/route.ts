@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Generate Google OAuth URL
-    const authUrl = getGoogleAuthUrl(userId)
+    const authUrl = getGoogleAuthUrl()
 
     return NextResponse.json({
       success: true,
