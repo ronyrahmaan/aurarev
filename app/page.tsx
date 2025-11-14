@@ -153,20 +153,24 @@ export default function HomePage() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-300">
-              <Button
-                size="lg"
-                className="bg-white hover:bg-white/90 text-black border-0 px-7 py-3 h-12 text-[15px] font-medium rounded-lg transition-all duration-150"
-              >
-                See AuraRev in action
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="px-7 py-3 h-12 text-[15px] font-medium bg-transparent border border-white/[0.12] text-white hover:bg-white/[0.04] hover:border-white/[0.16] rounded-lg transition-all duration-150"
-              >
-                Start free trial
-              </Button>
+              <Link href="/features">
+                <Button
+                  size="lg"
+                  className="bg-white hover:bg-white/90 text-black border-0 px-7 py-3 h-12 text-[15px] font-medium rounded-lg transition-all duration-150"
+                >
+                  See AuraRev in action
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Link href="/signup">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="px-7 py-3 h-12 text-[15px] font-medium bg-transparent border border-white/[0.12] text-white hover:bg-white/[0.04] hover:border-white/[0.16] rounded-lg transition-all duration-150"
+                >
+                  Start free trial
+                </Button>
+              </Link>
             </div>
 
             {/* Trust text */}
@@ -594,13 +598,17 @@ export default function HomePage() {
               </div>
 
               <div className="flex gap-3">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                  Preview Widgets
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <Button variant="outline" className="border-gray-700 text-white hover:bg-gray-900">
-                  View Gallery
-                </Button>
+                <Link href="/features">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                    Preview Widgets
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/features">
+                  <Button variant="outline" className="border-gray-700 text-white hover:bg-gray-900">
+                    View Gallery
+                  </Button>
+                </Link>
               </div>
             </div>
 
@@ -1204,9 +1212,11 @@ export default function HomePage() {
                   <span className="text-sm text-gray-400">Email support</span>
                 </li>
               </ul>
-              <Button className="w-full border-gray-700 text-white hover:bg-gray-800" variant="outline">
-                Get started
-              </Button>
+              <Link href="/signup">
+                <Button className="w-full border-gray-700 text-white hover:bg-gray-800" variant="outline">
+                  Get started
+                </Button>
+              </Link>
             </div>
 
             {/* Growth - Popular */}
@@ -1237,9 +1247,11 @@ export default function HomePage() {
                   <span className="text-sm text-gray-400">Priority support</span>
                 </li>
               </ul>
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white border-0">
-                Get started
-              </Button>
+              <Link href="/signup">
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white border-0">
+                  Get started
+                </Button>
+              </Link>
             </div>
 
             {/* Scale */}
@@ -1267,9 +1279,11 @@ export default function HomePage() {
                   <span className="text-sm text-gray-400">White-label options</span>
                 </li>
               </ul>
-              <Button className="w-full border-gray-700 text-white hover:bg-gray-800" variant="outline">
-                Get started
-              </Button>
+              <Link href="/signup">
+                <Button className="w-full border-gray-700 text-white hover:bg-gray-800" variant="outline">
+                  Get started
+                </Button>
+              </Link>
             </div>
 
             {/* Enterprise */}
@@ -1296,9 +1310,11 @@ export default function HomePage() {
                   <span className="text-sm text-gray-400">SLA guarantee</span>
                 </li>
               </ul>
-              <Button className="w-full border-gray-700 text-white hover:bg-gray-800" variant="outline">
-                Contact sales
-              </Button>
+              <Link href="/contact">
+                <Button className="w-full border-gray-700 text-white hover:bg-gray-800" variant="outline">
+                  Contact sales
+                </Button>
+              </Link>
             </div>
             </div>
           </div>
@@ -1317,20 +1333,24 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              size="lg"
-              className="bg-white hover:bg-white/90 text-black border-0 px-7 py-3 h-12 text-[15px] font-medium rounded-lg transition-all duration-150"
-            >
-              Start 14-day free trial
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="px-7 py-3 h-12 text-[15px] font-medium bg-transparent border border-white/[0.12] text-white hover:bg-white/[0.04] hover:border-white/[0.16] rounded-lg transition-all duration-150"
-            >
-              Book a demo
-            </Button>
+            <Link href="/signup">
+              <Button
+                size="lg"
+                className="bg-white hover:bg-white/90 text-black border-0 px-7 py-3 h-12 text-[15px] font-medium rounded-lg transition-all duration-150"
+              >
+                Start 14-day free trial
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button
+                size="lg"
+                variant="outline"
+                className="px-7 py-3 h-12 text-[15px] font-medium bg-transparent border border-white/[0.12] text-white hover:bg-white/[0.04] hover:border-white/[0.16] rounded-lg transition-all duration-150"
+              >
+                Book a demo
+              </Button>
+            </Link>
           </div>
 
           <p className="mt-8 text-[13px] text-[#6b7280]">
