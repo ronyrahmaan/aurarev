@@ -161,7 +161,8 @@ export default function SignupPage() {
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <>
+              <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="fullName" className="text-gray-300">Full Name</Label>
               <Input
@@ -269,12 +270,13 @@ export default function SignupPage() {
             </Button>
           </form>
 
-          <div className="mt-6 text-center text-sm">
-            <span className="text-gray-400">Already have an account? </span>
-            <Link href="/login" className="text-blue-500 hover:text-blue-400 font-medium">
-              Sign in
-            </Link>
-          </div>
+              <div className="mt-6 text-center text-sm">
+                <span className="text-gray-400">Already have an account? </span>
+                <Link href="/login" className="text-blue-500 hover:text-blue-400 font-medium">
+                  Sign in
+                </Link>
+              </div>
+            </>
           )}
         </CardContent>
       </Card>
