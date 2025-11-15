@@ -18,12 +18,15 @@ model User {
   createdAt          DateTime           @default(now())
   updatedAt          DateTime           @updatedAt
   emailVerified      DateTime?
+  emailVerifiedAt    DateTime?
+  isActive           Boolean            @default(false)
   image              String?
   name               String?
   Account            Account[]
   accounts           ConnectedAccount[]
   reviews            Review[]
   Session            Session[]
+  tokens             AuthToken[]
 }
 
 model ConnectedAccount {
@@ -85,6 +88,29 @@ model Session {
   userId       String
   expires      DateTime
   User         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model AuthToken {
+  id         String             @id @default(cuid())
+  token      String             @unique
+  hashedToken String            @unique
+  email      String
+  type       AuthTokenType      @default(EMAIL_VERIFICATION)
+  expiresAt  DateTime
+  createdAt  DateTime           @default(now())
+  usedAt     DateTime?
+  isValid    Boolean            @default(true)
+  userId     String?
+  User       User?              @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([email, type])
+  @@index([token])
+}
+
+enum AuthTokenType {
+  EMAIL_VERIFICATION
+  PASSWORD_RESET
+  CHANGE_EMAIL
 }
 
 model VerificationToken {

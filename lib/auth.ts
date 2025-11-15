@@ -38,15 +38,27 @@ const authConfig = {
             return null
           }
 
+          // Check if email is verified
+          if (!user.emailVerifiedAt || !user.isActive) {
+            // Return a special error that can be handled by the client
+            throw new Error("EMAIL_NOT_VERIFIED")
+          }
+
           return {
             id: user.id,
             email: user.email,
             name: user.fullName,
             businessName: user.businessName || "",
-            plan: user.plan
+            plan: user.plan,
+            emailVerified: !!user.emailVerifiedAt,
+            isActive: user.isActive
           }
         } catch (error) {
           console.error("Auth error:", error)
+          // Re-throw email verification errors so they can be handled specifically
+          if (error instanceof Error && error.message === "EMAIL_NOT_VERIFIED") {
+            throw error
+          }
           return null
         }
       }
@@ -61,6 +73,8 @@ const authConfig = {
         token.id = user.id
         token.businessName = user.businessName
         token.plan = user.plan
+        token.emailVerified = user.emailVerified
+        token.isActive = user.isActive
       }
       return token
     },
@@ -69,6 +83,8 @@ const authConfig = {
         session.user.id = token.id as string
         session.user.businessName = token.businessName as string
         session.user.plan = token.plan as string
+        session.user.emailVerified = token.emailVerified as boolean
+        session.user.isActive = token.isActive as boolean
       }
       return session
     }
