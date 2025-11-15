@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Star, Loader2, CheckCircle } from 'lucide-react'
+import { Star, Loader2, CheckCircle, Mail, AlertTriangle } from 'lucide-react'
 
 function LoginForm() {
   const router = useRouter()
@@ -16,6 +16,8 @@ function LoginForm() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [showSuccess, setShowSuccess] = useState(false)
+  const [needsVerification, setNeedsVerification] = useState(false)
+  const [resendingEmail, setResendingEmail] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -31,6 +33,7 @@ function LoginForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
+    setNeedsVerification(false)
     setLoading(true)
 
     try {
@@ -41,7 +44,14 @@ function LoginForm() {
       })
 
       if (result?.error) {
-        throw new Error('Invalid email or password')
+        // Check if it's an email verification error
+        if (result.error.includes('EMAIL_NOT_VERIFIED') || result.error.includes('verify your email')) {
+          setNeedsVerification(true)
+          setError('Please verify your email address before signing in.')
+        } else {
+          setError('Invalid email or password')
+        }
+        return
       }
 
       // Successful login - redirect to dashboard
@@ -50,6 +60,37 @@ function LoginForm() {
       setError(err.message || 'Invalid email or password')
     } finally {
       setLoading(false)
+    }
+  }
+
+  const handleResendVerification = async () => {
+    if (!formData.email) {
+      setError('Please enter your email address first')
+      return
+    }
+
+    setResendingEmail(true)
+    setError('')
+
+    try {
+      const response = await fetch('/api/auth/resend-verification', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: formData.email })
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setShowSuccess(true)
+        setTimeout(() => setShowSuccess(false), 5000)
+      } else {
+        setError(data.message || 'Failed to resend verification email')
+      }
+    } catch (err) {
+      setError('Failed to resend verification email')
+    } finally {
+      setResendingEmail(false)
     }
   }
 
@@ -112,8 +153,39 @@ function LoginForm() {
             </div>
 
             {error && (
-              <div className="bg-red-50 text-red-600 text-sm p-3 rounded-lg">
-                {error}
+              <div className={`text-sm p-3 rounded-lg ${needsVerification ? 'bg-orange-50 text-orange-600 border border-orange-200' : 'bg-red-50 text-red-600'}`}>
+                <div className="flex items-start gap-2">
+                  {needsVerification && <AlertTriangle className="h-4 w-4 mt-0.5 shrink-0" />}
+                  <div className="flex-1">
+                    <p>{error}</p>
+                    {needsVerification && (
+                      <div className="mt-3 flex flex-col gap-2">
+                        <Button
+                          type="button"
+                          size="sm"
+                          onClick={handleResendVerification}
+                          disabled={resendingEmail || !formData.email}
+                          className="w-full bg-orange-600 hover:bg-orange-700 text-white"
+                        >
+                          {resendingEmail ? (
+                            <>
+                              <Loader2 className="mr-2 h-3 w-3 animate-spin" />
+                              Sending...
+                            </>
+                          ) : (
+                            <>
+                              <Mail className="mr-2 h-3 w-3" />
+                              Resend Verification Email
+                            </>
+                          )}
+                        </Button>
+                        <p className="text-xs text-orange-500">
+                          Enter your email above and click "Resend Verification Email"
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             )}
 

@@ -20,6 +20,16 @@ export async function authenticateUser(email: string, password: string) {
           return { success: false, error: 'Something went wrong' }
       }
     }
+
+    // Handle specific email verification error
+    if (error instanceof Error && error.message === 'EMAIL_NOT_VERIFIED') {
+      return {
+        success: false,
+        error: 'Please verify your email address before signing in. Check your inbox for a verification email.',
+        errorType: 'EMAIL_NOT_VERIFIED'
+      }
+    }
+
     return { success: false, error: 'Something went wrong' }
   }
 }

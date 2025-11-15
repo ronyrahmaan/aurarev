@@ -8,12 +8,14 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Star, Loader2 } from 'lucide-react'
+import { Star, Loader2, Mail, CheckCircle } from 'lucide-react'
 
 export default function SignupPage() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [success, setSuccess] = useState(false)
+  const [successMessage, setSuccessMessage] = useState('')
   const [formData, setFormData] = useState({
     fullName: '',
     businessName: '',
@@ -40,6 +42,7 @@ export default function SignupPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
+    setSuccess(false)
 
     // Validation
     if (formData.password !== formData.confirmPassword) {
@@ -69,18 +72,28 @@ export default function SignupPage() {
       const data = await response.json()
 
       if (!response.ok) {
-        throw new Error(data.message || 'Signup failed')
+        // Handle specific error cases
+        if (data.errors && Array.isArray(data.errors)) {
+          setError(`Password requirements not met:\n${data.errors.join('\n')}`)
+        } else {
+          setError(data.message || 'Signup failed')
+        }
+        return
       }
 
-      // Automatically sign in the user after successful signup
-      const signInResult = await authenticateUser(formData.email, formData.password)
+      // Success! Show verification message
+      setSuccess(true)
+      setSuccessMessage(data.message || 'Account created! Please check your email to verify your account.')
 
-      if (signInResult.success) {
-        router.push('/dashboard')
-      } else {
-        // If auto-login fails, redirect to login with success message
-        router.push('/login?registered=true')
-      }
+      // Clear the form
+      setFormData({
+        fullName: '',
+        businessName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+      })
+
     } catch (err: any) {
       setError(err.message || 'Something went wrong')
     } finally {
@@ -104,7 +117,51 @@ export default function SignupPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          {success ? (
+            <div className="text-center space-y-6">
+              <div className="mx-auto h-16 w-16 bg-green-500/10 rounded-full flex items-center justify-center">
+                <CheckCircle className="h-8 w-8 text-green-400" />
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="text-xl font-semibold text-white">Check your email!</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {successMessage}
+                </p>
+                <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4">
+                  <div className="flex items-center gap-3">
+                    <Mail className="h-5 w-5 text-blue-400 shrink-0" />
+                    <div className="text-left">
+                      <p className="text-sm font-medium text-blue-400">What's next?</p>
+                      <p className="text-xs text-gray-400 mt-1">
+                        Click the verification link in your email, then return to sign in to your account.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <Button
+                  onClick={() => router.push('/login')}
+                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800"
+                >
+                  Go to Sign In
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setSuccess(false)
+                    setSuccessMessage('')
+                  }}
+                  className="w-full bg-white/[0.02] border-white/8 text-white hover:bg-white/[0.05]"
+                >
+                  Create Another Account
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="fullName" className="text-gray-300">Full Name</Label>
               <Input
@@ -218,6 +275,7 @@ export default function SignupPage() {
               Sign in
             </Link>
           </div>
+          )}
         </CardContent>
       </Card>
       </div>
