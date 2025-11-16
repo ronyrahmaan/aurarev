@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useAuth } from '@/components/AuthProvider'
+// import { useAuth } from AuthProvider - REMOVED
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -30,7 +30,7 @@ interface Integration {
 }
 
 export default function IntegrationsPage() {
-  const { user } = useAuth()
+  
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [connectingId, setConnectingId] = useState<string | null>(null)

@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
 import { cookies } from 'next/headers'
+import { NextRequest } from 'next/server'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 
@@ -35,6 +36,18 @@ export async function getSession() {
 
     const payload = jwt.verify(token, JWT_SECRET) as { userId: string; email: string }
     return payload
+  } catch {
+    return null
+  }
+}
+
+export function getAuthTokenFromRequest(request: NextRequest): string | null {
+  return request.cookies.get('auth-token')?.value || null
+}
+
+export function verifyToken(token: string) {
+  try {
+    return jwt.verify(token, JWT_SECRET) as { userId: string; email: string }
   } catch {
     return null
   }

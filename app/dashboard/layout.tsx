@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { QueryProvider } from '@/lib/query-provider'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
-import { useAuth } from '@/components/AuthProvider'
+// import { useAuth } from AuthProvider - REMOVED
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
@@ -38,32 +38,13 @@ export default function DashboardLayout({
 }) {
   const router = useRouter()
   const pathname = usePathname()
-  const { user, loading, logout } = useAuth()
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const user = { fullName: 'User', businessName: 'Business', email: 'user@example.com', plan: 'free' } // Placeholder
 
-  useEffect(() => {
-    // Check if user is logged in
-    if (loading) return // Still loading
-
-    if (!user) {
-      router.push('/login')
-      return
-    }
-  }, [user, loading, router])
-
-  const handleLogout = () => {
-    logout()
+  const handleLogout = async () => {
+    await fetch('/api/auth/logout', { method: 'POST' })
+    router.push('/login')
   }
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-[rgb(8,9,10)] flex items-center justify-center">
-        <div className="text-white">Loading...</div>
-      </div>
-    )
-  }
-
-  if (!user) return null
 
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: Home },
