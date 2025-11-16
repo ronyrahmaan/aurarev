@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { authenticateUser } from '@/lib/auth-actions'
+import { signIn } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -73,10 +73,15 @@ export default function SignupPage() {
       }
 
       // Automatically sign in the user after successful signup
-      const signInResult = await authenticateUser(formData.email, formData.password)
+      const signInResult = await signIn('credentials', {
+        email: formData.email,
+        password: formData.password,
+        redirect: false,
+      })
 
-      if (signInResult.success) {
-        router.push('/dashboard')
+      if (signInResult?.ok && !signInResult.error) {
+        // Success! Redirect directly to dashboard
+        window.location.href = '/dashboard'
       } else {
         // If auto-login fails, redirect to login with success message
         router.push('/login?registered=true')
