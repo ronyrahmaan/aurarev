@@ -1,0 +1,41 @@
+import jwt from 'jsonwebtoken'
+import { cookies } from 'next/headers'
+
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
+
+export async function createSession(userId: string, email: string) {
+  const token = jwt.sign({ userId, email }, JWT_SECRET, { expiresIn: '7d' })
+  const cookieStore = await cookies()
+  cookieStore.set('auth-token', token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 7 * 24 * 60 * 60,
+    path: '/',
+  })
+  return token
+}
+
+export async function clearSession() {
+  const cookieStore = await cookies()
+  cookieStore.set('auth-token', '', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 0,
+    path: '/',
+  })
+}
+
+export async function getSession() {
+  try {
+    const cookieStore = await cookies()
+    const token = cookieStore.get('auth-token')?.value
+    if (!token) return null
+
+    const payload = jwt.verify(token, JWT_SECRET) as { userId: string; email: string }
+    return payload
+  } catch {
+    return null
+  }
+}
