@@ -44,21 +44,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (email: string, password: string) => {
     try {
+      console.log('AuthProvider: Starting login request for email:', email)
       const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       })
 
+      console.log('AuthProvider: Response status:', response.status)
       const data = await response.json()
+      console.log('AuthProvider: Response data:', data)
 
       if (response.ok) {
         setUser(data.user)
+        console.log('AuthProvider: Login successful, user set:', data.user)
         return { success: true }
       } else {
+        console.log('AuthProvider: Login failed:', data.message)
         return { success: false, error: data.message }
       }
     } catch (error) {
+      console.error('AuthProvider: Login error:', error)
       return { success: false, error: 'Something went wrong' }
     }
   }

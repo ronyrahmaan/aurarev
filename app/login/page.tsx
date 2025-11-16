@@ -31,15 +31,20 @@ function LoginForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    console.log('Form submitted with:', formData)
     setError('')
     setLoading(true)
 
     try {
+      console.log('Calling login function...')
       const result = await login(formData.email, formData.password)
+      console.log('Login result:', result)
 
       if (result.success) {
+        console.log('Login successful, redirecting to dashboard')
         router.push('/dashboard')
       } else {
+        console.log('Login failed:', result.error)
         setError(result.error || 'Login failed. Please try again.')
       }
     } catch (err) {
