@@ -87,7 +87,7 @@ export default function LinearNavbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
-  const { data: session, status } = useSession()
+  const { data: session, status, update } = useSession()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,6 +97,25 @@ export default function LinearNavbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    const validateSession = async () => {
+      if (session && status === 'authenticated') {
+        try {
+          const response = await fetch('/api/auth/session')
+          const serverSession = await response.json()
+
+          if (!serverSession || serverSession === null) {
+            await update()
+          }
+        } catch (error) {
+          console.error('Session validation error:', error)
+        }
+      }
+    }
+
+    validateSession()
+  }, [session, status, update])
 
   // Don't show on dashboard or auth pages
   if (pathname.startsWith('/dashboard') ||

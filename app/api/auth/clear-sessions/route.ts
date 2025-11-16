@@ -4,7 +4,8 @@ export async function POST(request: NextRequest) {
   try {
     const response = NextResponse.json({
       message: 'All sessions cleared',
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      clearClientStorage: true
     }, { status: 200 })
 
     // Comprehensive list of all possible NextAuth cookies
@@ -61,6 +62,12 @@ export async function POST(request: NextRequest) {
         sameSite: 'lax'
       })
     })
+
+    // Add cache control headers to prevent caching
+    response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate')
+    response.headers.set('Pragma', 'no-cache')
+    response.headers.set('Expires', '0')
+    response.headers.set('Surrogate-Control', 'no-store')
 
     return response
   } catch (error) {

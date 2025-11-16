@@ -56,10 +56,23 @@ export default function SignupPage() {
 
     try {
       // Clear any existing sessions before signup
-      await fetch('/api/auth/clear-sessions', {
+      const clearResponse = await fetch('/api/auth/clear-sessions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
       })
+
+      if (clearResponse.ok) {
+        const clearData = await clearResponse.json()
+        if (clearData.clearClientStorage) {
+          // Clear any client-side storage
+          try {
+            localStorage.clear()
+            sessionStorage.clear()
+          } catch (e) {
+            console.log('Storage clearing skipped')
+          }
+        }
+      }
 
       const response = await fetch('/api/auth/signup', {
         method: 'POST',

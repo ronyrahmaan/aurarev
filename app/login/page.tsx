@@ -35,10 +35,23 @@ function LoginForm() {
 
     try {
       // Clear any existing sessions before login
-      await fetch('/api/auth/clear-sessions', {
+      const clearResponse = await fetch('/api/auth/clear-sessions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
       })
+
+      if (clearResponse.ok) {
+        const clearData = await clearResponse.json()
+        if (clearData.clearClientStorage) {
+          // Clear any client-side storage
+          try {
+            localStorage.clear()
+            sessionStorage.clear()
+          } catch (e) {
+            console.log('Storage clearing skipped')
+          }
+        }
+      }
 
       const result = await signIn('credentials', {
         email: formData.email,
