@@ -27,13 +27,14 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // TODO: Re-enable email verification when domain/SendGrid is configured
     // Check if email is verified
-    if (!user.emailVerified) {
-      return NextResponse.json(
-        { message: 'Please verify your email before signing in' },
-        { status: 401 }
-      )
-    }
+    // if (!user.emailVerified) {
+    //   return NextResponse.json(
+    //     { message: 'Please verify your email before signing in' },
+    //     { status: 401 }
+    //   )
+    // }
 
     // Verify password
     const isValidPassword = await bcrypt.compare(password, user.passwordHash)

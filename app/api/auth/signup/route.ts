@@ -53,14 +53,15 @@ export async function POST(request: NextRequest) {
       }
     })
 
+    // TODO: Re-enable email sending when domain/SendGrid is configured
     // Send verification email
-    const emailData = generateVerificationEmail(email, emailVerificationToken)
-    await sendEmail(emailData)
+    // const emailData = generateVerificationEmail(email, emailVerificationToken)
+    // await sendEmail(emailData)
 
     // Return success (without sensitive data)
     return NextResponse.json({
-      message: 'Account created successfully. Please check your email to verify your account.',
-      requiresEmailVerification: true,
+      message: 'Account created successfully. You can now sign in.',
+      requiresEmailVerification: false,
       user: {
         id: user.id,
         email: user.email,
