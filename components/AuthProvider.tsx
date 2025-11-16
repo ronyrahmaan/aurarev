@@ -28,15 +28,35 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const fetchUser = async () => {
     try {
+      console.log('AuthProvider: Fetching user...')
       const response = await fetch('/api/auth/me')
+      console.log('AuthProvider: /api/auth/me response status:', response.status)
+
       if (response.ok) {
         const data = await response.json()
+        console.log('AuthProvider: User data received:', data.user)
         setUser(data.user)
       } else {
+        console.log('AuthProvider: No authenticated user, setting user to null')
         setUser(null)
+        // Clear any old client-side auth data
+        if (typeof window !== 'undefined') {
+          localStorage.removeItem('user')
+          localStorage.removeItem('token')
+          localStorage.removeItem('auth-token')
+          sessionStorage.clear()
+        }
       }
     } catch (error) {
+      console.error('AuthProvider: Error fetching user:', error)
       setUser(null)
+      // Clear any old client-side auth data on error
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('user')
+        localStorage.removeItem('token')
+        localStorage.removeItem('auth-token')
+        sessionStorage.clear()
+      }
     } finally {
       setLoading(false)
     }
@@ -104,6 +124,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }
 
   useEffect(() => {
+    // Clear any potential cached data from old auth system
+    if (typeof window !== 'undefined') {
+      console.log('AuthProvider: Clearing old client-side auth data')
+      localStorage.removeItem('user')
+      localStorage.removeItem('token')
+      localStorage.removeItem('auth-token')
+      // Clear any NextAuth related data
+      localStorage.removeItem('nextauth.message')
+      localStorage.removeItem('__next-auth.session-token')
+      localStorage.removeItem('__Secure-next-auth.session-token')
+      sessionStorage.clear()
+    }
     fetchUser()
   }, [])
 
