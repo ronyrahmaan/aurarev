@@ -6,7 +6,6 @@ import { prisma } from "@/lib/db"
 const authConfig = {
   debug: process.env.NODE_ENV === 'development',
   trustHost: true,
-  csrf: true,
   basePath: "/api/auth",
   providers: [
     CredentialsProvider({
