@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useSession, signOut } from 'next-auth/react'
+import { useAuth } from '@/components/AuthProvider'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import {
@@ -87,7 +87,7 @@ export default function LinearNavbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
-  const { data: session, status, update } = useSession()
+  const { user, loading, logout } = useAuth()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -98,24 +98,6 @@ export default function LinearNavbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    const validateSession = async () => {
-      if (session && status === 'authenticated') {
-        try {
-          const response = await fetch('/api/auth/session')
-          const serverSession = await response.json()
-
-          if (!serverSession || serverSession === null) {
-            await update()
-          }
-        } catch (error) {
-          console.error('Session validation error:', error)
-        }
-      }
-    }
-
-    validateSession()
-  }, [session, status, update])
 
   // Don't show on dashboard or auth pages
   if (pathname.startsWith('/dashboard') ||
@@ -276,7 +258,7 @@ export default function LinearNavbar() {
               Docs
             </Link>
 
-            {status === "authenticated" && session?.user ? (
+            {user && !loading ? (
               <>
                 <Link
                   href="/dashboard"
@@ -285,10 +267,10 @@ export default function LinearNavbar() {
                   Dashboard
                 </Link>
                 <div className="text-[14px] font-normal text-white/70">
-                  {session.user.name || session.user.email}
+                  {user.fullName || user.email}
                 </div>
                 <Button
-                  onClick={() => signOut({ callbackUrl: '/' })}
+                  onClick={logout}
                   variant="ghost"
                   size="sm"
                   className="text-[14px] font-normal text-[#9ca3af] hover:text-white transition-colors duration-150 px-0"

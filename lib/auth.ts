@@ -1,80 +1,79 @@
-import NextAuth from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
-import bcrypt from "bcryptjs"
-import { prisma } from "@/lib/db"
+import jwt from 'jsonwebtoken'
+import { cookies } from 'next/headers'
+import { NextRequest } from 'next/server'
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
-  providers: [
-    CredentialsProvider({
-      name: "credentials",
-      credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" }
-      },
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
-          return null
-        }
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
+const COOKIE_NAME = 'auth-token'
 
-        try {
-          const user = await prisma.user.findUnique({
-            where: { email: credentials.email as string }
-          })
+export interface JWTPayload {
+  userId: string
+  email: string
+  iat?: number
+  exp?: number
+}
 
-          if (!user?.passwordHash) {
-            return null
-          }
+export function generateToken(payload: Omit<JWTPayload, 'iat' | 'exp'>): string {
+  return jwt.sign(payload, JWT_SECRET, {
+    expiresIn: '7d',
+  })
+}
 
-          const isValidPassword = await bcrypt.compare(
-            credentials.password as string,
-            user.passwordHash
-          )
+export function verifyToken(token: string): JWTPayload | null {
+  try {
+    return jwt.verify(token, JWT_SECRET) as JWTPayload
+  } catch (error) {
+    return null
+  }
+}
 
-          if (!isValidPassword) {
-            return null
-          }
+export async function setAuthCookie(token: string) {
+  const cookieStore = await cookies()
+  cookieStore.set(COOKIE_NAME, token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 7 * 24 * 60 * 60, // 7 days
+    path: '/',
+  })
+}
 
-          return {
-            id: user.id,
-            email: user.email,
-            name: user.fullName,
-            businessName: user.businessName || '',
-            plan: user.plan
-          }
-        } catch (error) {
-          console.error("Authentication error:", error)
-          return null
-        }
-      }
-    })
-  ],
-  session: {
-    strategy: "jwt",
-    maxAge: 7 * 24 * 60 * 60 // 7 days
-  },
-  jwt: {
-    maxAge: 7 * 24 * 60 * 60 // 7 days
-  },
-  callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id
-        token.businessName = user.businessName
-        token.plan = user.plan
-      }
-      return token
-    },
-    async session({ session, token }) {
-      if (token) {
-        session.user.id = token.id as string
-        session.user.businessName = token.businessName as string
-        session.user.plan = token.plan as string
-      }
-      return session
-    }
-  },
-  pages: {
-    signIn: "/login"
-  },
-  secret: process.env.NEXTAUTH_SECRET
-})
+export async function clearAuthCookie() {
+  const cookieStore = await cookies()
+  cookieStore.set(COOKIE_NAME, '', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 0,
+    path: '/',
+  })
+}
+
+export async function getAuthToken(): Promise<string | null> {
+  try {
+    const cookieStore = await cookies()
+    return cookieStore.get(COOKIE_NAME)?.value || null
+  } catch (error) {
+    return null
+  }
+}
+
+export function getAuthTokenFromRequest(request: NextRequest): string | null {
+  return request.cookies.get(COOKIE_NAME)?.value || null
+}
+
+export async function getCurrentUser(): Promise<JWTPayload | null> {
+  try {
+    const token = await getAuthToken()
+    if (!token) return null
+
+    const payload = verifyToken(token)
+    return payload
+  } catch (error) {
+    return null
+  }
+}
+
+export function generateEmailToken(): string {
+  return Math.random().toString(36).substring(2, 15) +
+         Math.random().toString(36).substring(2, 15)
+}

@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
 import { prisma } from '@/lib/db'
+import { generateEmailToken } from '@/lib/auth'
+import { sendEmail, generateVerificationEmail } from '@/lib/email'
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,6 +12,13 @@ export async function POST(request: NextRequest) {
     if (!fullName || !businessName || !email || !password) {
       return NextResponse.json(
         { message: 'All fields are required' },
+        { status: 400 }
+      )
+    }
+
+    if (password.length < 8) {
+      return NextResponse.json(
+        { message: 'Password must be at least 8 characters' },
         { status: 400 }
       )
     }
@@ -27,23 +36,31 @@ export async function POST(request: NextRequest) {
     }
 
     // Hash password
-    const hashedPassword = await bcrypt.hash(password, 10)
+    const hashedPassword = await bcrypt.hash(password, 12)
 
-    // Create user
+    // Generate email verification token
+    const emailVerificationToken = generateEmailToken()
+
+    // Create user with verification token
     const user = await prisma.user.create({
       data: {
         fullName,
         businessName,
         email,
         passwordHash: hashedPassword,
-        plan: 'free'
+        plan: 'free',
+        emailVerificationToken,
       }
     })
 
+    // Send verification email
+    const emailData = generateVerificationEmail(email, emailVerificationToken)
+    await sendEmail(emailData)
 
     // Return success (without sensitive data)
     return NextResponse.json({
-      message: 'Account created successfully',
+      message: 'Account created successfully. Please check your email to verify your account.',
+      requiresEmailVerification: true,
       user: {
         id: user.id,
         email: user.email,

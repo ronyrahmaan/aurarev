@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { signIn } from 'next-auth/react'
+import { useAuth } from '@/components/AuthProvider'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -13,6 +13,7 @@ import { Star, Loader2, CheckCircle } from 'lucide-react'
 function LoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const { login } = useAuth()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [showSuccess, setShowSuccess] = useState(false)
@@ -34,44 +35,13 @@ function LoginForm() {
     setLoading(true)
 
     try {
-      // Clear any existing sessions before login
-      const clearResponse = await fetch('/api/auth/clear-sessions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
-      })
+      const result = await login(formData.email, formData.password)
 
-      if (clearResponse.ok) {
-        const clearData = await clearResponse.json()
-        if (clearData.clearClientStorage) {
-          // Clear any client-side storage
-          try {
-            localStorage.clear()
-            sessionStorage.clear()
-          } catch (e) {
-            console.log('Storage clearing skipped')
-          }
-        }
+      if (result.success) {
+        router.push('/dashboard')
+      } else {
+        setError(result.error || 'Login failed. Please try again.')
       }
-
-      const result = await signIn('credentials', {
-        email: formData.email,
-        password: formData.password,
-        redirect: false,
-      })
-
-      if (result?.error) {
-        setError('Invalid email or password')
-        setLoading(false)
-        return
-      }
-
-      if (result?.ok) {
-        // Force page refresh to ensure clean session state
-        window.location.href = '/dashboard'
-        return
-      }
-
-      setError('Login failed. Please try again.')
     } catch (err) {
       console.error('Login error:', err)
       setError('Something went wrong. Please try again.')

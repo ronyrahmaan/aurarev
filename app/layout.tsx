@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import LinearNavbar from "@/components/LinearNavbar";
 import LinearFooter from "@/components/LinearFooter";
-import AuthSessionProvider from "@/components/SessionProvider";
+import { AuthProvider } from "@/components/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -90,7 +90,7 @@ export default function RootLayout({
 
         {/* Main content wrapper with glass effect */}
         <div className="relative z-10">
-          <AuthSessionProvider>
+          <AuthProvider>
             <LinearNavbar />
             <main className="min-h-screen">
               {/* Content wrapper with subtle box effect */}
@@ -99,7 +99,7 @@ export default function RootLayout({
               </div>
             </main>
             <LinearFooter />
-          </AuthSessionProvider>
+          </AuthProvider>
         </div>
 
         {/* Noise texture overlay for that premium feel */}

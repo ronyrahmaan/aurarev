@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useSession } from 'next-auth/react'
+import { useAuth } from '@/components/AuthProvider'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -30,7 +30,7 @@ interface Integration {
 }
 
 export default function IntegrationsPage() {
-  const { data: session } = useSession()
+  const { user } = useAuth()
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [connectingId, setConnectingId] = useState<string | null>(null)
@@ -43,14 +43,14 @@ export default function IntegrationsPage() {
 
   // Check Google connection status on mount
   useEffect(() => {
-    if (session?.user?.id) {
+    if (user?.id) {
       checkGoogleStatus()
     }
-  }, [session])
+  }, [user])
 
   const checkGoogleStatus = async () => {
     try {
-      const response = await fetch(`/api/google/status?userId=${session?.user?.id}`)
+      const response = await fetch(`/api/google/status?userId=${user?.id}`)
       const data = await response.json()
       setGoogleStatus(data)
     } catch (error) {
@@ -174,7 +174,7 @@ export default function IntegrationsPage() {
   })
 
   const handleConnect = async (integrationId: string) => {
-    if (!session?.user?.id) {
+    if (!user?.id) {
       alert('Please log in to connect integrations')
       return
     }
@@ -186,7 +186,7 @@ export default function IntegrationsPage() {
         const response = await fetch('/api/google/connect', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ userId: session.user.id })
+          body: JSON.stringify({ userId: user.id })
         })
 
         const data = await response.json()

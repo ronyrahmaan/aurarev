@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { signIn } from 'next-auth/react'
+import { useAuth } from '@/components/AuthProvider'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -12,6 +12,7 @@ import { Star, Loader2 } from 'lucide-react'
 
 export default function SignupPage() {
   const router = useRouter()
+  const { signup, login } = useAuth()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [formData, setFormData] = useState({
@@ -55,59 +56,29 @@ export default function SignupPage() {
     setLoading(true)
 
     try {
-      // Clear any existing sessions before signup
-      const clearResponse = await fetch('/api/auth/clear-sessions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+      const signupResult = await signup({
+        fullName: formData.fullName,
+        businessName: formData.businessName,
+        email: formData.email,
+        password: formData.password
       })
 
-      if (clearResponse.ok) {
-        const clearData = await clearResponse.json()
-        if (clearData.clearClientStorage) {
-          // Clear any client-side storage
-          try {
-            localStorage.clear()
-            sessionStorage.clear()
-          } catch (e) {
-            console.log('Storage clearing skipped')
+      if (signupResult.success) {
+        if (signupResult.requiresEmailVerification) {
+          // Show email verification message and redirect to login
+          router.push('/login?message=Please check your email to verify your account before signing in.')
+        } else {
+          // Auto login after successful signup if no email verification required
+          const loginResult = await login(formData.email, formData.password)
+          if (loginResult.success) {
+            router.push('/dashboard')
+          } else {
+            router.push('/login?registered=true')
           }
         }
+      } else {
+        setError(signupResult.error || 'Registration failed')
       }
-
-      const response = await fetch('/api/auth/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fullName: formData.fullName,
-          businessName: formData.businessName,
-          email: formData.email,
-          password: formData.password
-        })
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        setError(data.message || 'Registration failed')
-        setLoading(false)
-        return
-      }
-
-      // Automatically sign in the user after successful signup
-      const signInResult = await signIn('credentials', {
-        email: formData.email,
-        password: formData.password,
-        redirect: false,
-      })
-
-      if (signInResult?.ok && !signInResult.error) {
-        // Force page refresh to ensure clean session state
-        window.location.href = '/dashboard'
-        return
-      }
-
-      // If auto-login fails, redirect to login with success message
-      router.push('/login?registered=true')
     } catch (err) {
       console.error('Signup error:', err)
       setError('Something went wrong. Please try again.')
