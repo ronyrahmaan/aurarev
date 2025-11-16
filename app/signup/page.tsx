@@ -55,6 +55,12 @@ export default function SignupPage() {
     setLoading(true)
 
     try {
+      // Clear any existing sessions before signup
+      await fetch('/api/auth/clear-sessions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      })
+
       const response = await fetch('/api/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -69,7 +75,9 @@ export default function SignupPage() {
       const data = await response.json()
 
       if (!response.ok) {
-        throw new Error(data.message || 'Signup failed')
+        setError(data.message || 'Registration failed')
+        setLoading(false)
+        return
       }
 
       // Automatically sign in the user after successful signup
@@ -80,14 +88,16 @@ export default function SignupPage() {
       })
 
       if (signInResult?.ok && !signInResult.error) {
-        // Success! Redirect directly to dashboard
+        // Force page refresh to ensure clean session state
         window.location.href = '/dashboard'
-      } else {
-        // If auto-login fails, redirect to login with success message
-        router.push('/login?registered=true')
+        return
       }
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong')
+
+      // If auto-login fails, redirect to login with success message
+      router.push('/login?registered=true')
+    } catch (err) {
+      console.error('Signup error:', err)
+      setError('Something went wrong. Please try again.')
     } finally {
       setLoading(false)
     }

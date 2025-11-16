@@ -34,6 +34,12 @@ function LoginForm() {
     setLoading(true)
 
     try {
+      // Clear any existing sessions before login
+      await fetch('/api/auth/clear-sessions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      })
+
       const result = await signIn('credentials', {
         email: formData.email,
         password: formData.password,
@@ -41,13 +47,21 @@ function LoginForm() {
       })
 
       if (result?.error) {
-        throw new Error('Invalid email or password')
+        setError('Invalid email or password')
+        setLoading(false)
+        return
       }
 
-      // Successful login - redirect to dashboard
-      router.push('/dashboard')
-    } catch (err: any) {
-      setError(err.message || 'Invalid email or password')
+      if (result?.ok) {
+        // Force page refresh to ensure clean session state
+        window.location.href = '/dashboard'
+        return
+      }
+
+      setError('Login failed. Please try again.')
+    } catch (err) {
+      console.error('Login error:', err)
+      setError('Something went wrong. Please try again.')
     } finally {
       setLoading(false)
     }

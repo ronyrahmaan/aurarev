@@ -3,10 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcryptjs"
 import { prisma } from "@/lib/db"
 
-const authConfig = {
-  debug: process.env.NODE_ENV === 'development',
-  trustHost: true,
-  basePath: "/api/auth",
+export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -21,21 +18,19 @@ const authConfig = {
 
         try {
           const user = await prisma.user.findUnique({
-            where: {
-              email: credentials.email as string
-            }
+            where: { email: credentials.email as string }
           })
 
-          if (!user || !user.passwordHash) {
+          if (!user?.passwordHash) {
             return null
           }
 
-          const passwordMatch = await bcrypt.compare(
+          const isValidPassword = await bcrypt.compare(
             credentials.password as string,
             user.passwordHash
           )
 
-          if (!passwordMatch) {
+          if (!isValidPassword) {
             return null
           }
 
@@ -43,38 +38,33 @@ const authConfig = {
             id: user.id,
             email: user.email,
             name: user.fullName,
-            businessName: user.businessName || "",
+            businessName: user.businessName || '',
             plan: user.plan
           }
         } catch (error) {
-          console.error("Auth error:", error)
+          console.error("Authentication error:", error)
           return null
         }
       }
     })
   ],
   session: {
-    strategy: "jwt" as const,
-    maxAge: 30 * 24 * 60 * 60, // 30 days
+    strategy: "jwt",
+    maxAge: 7 * 24 * 60 * 60 // 7 days
   },
   jwt: {
-    maxAge: 30 * 24 * 60 * 60, // 30 days
+    maxAge: 7 * 24 * 60 * 60 // 7 days
   },
   callbacks: {
-    async jwt({ token, user }: { token: any; user: any }) {
-      // If this is the first time (user just signed in)
+    async jwt({ token, user }) {
       if (user) {
         token.id = user.id
         token.businessName = user.businessName
         token.plan = user.plan
-        token.iat = Math.floor(Date.now() / 1000)
-        token.exp = Math.floor(Date.now() / 1000) + (30 * 24 * 60 * 60) // 30 days from now
       }
-
-      // Return previous token if the access token has not expired yet
       return token
     },
-    async session({ session, token }: { session: any; token: any }) {
+    async session({ session, token }) {
       if (token) {
         session.user.id = token.id as string
         session.user.businessName = token.businessName as string
@@ -87,6 +77,4 @@ const authConfig = {
     signIn: "/login"
   },
   secret: process.env.NEXTAUTH_SECRET
-}
-
-export const { handlers, signIn, signOut, auth } = NextAuth(authConfig)
+})

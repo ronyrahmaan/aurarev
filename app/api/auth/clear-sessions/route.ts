@@ -1,42 +1,72 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
 
 export async function POST(request: NextRequest) {
   try {
-    // Clear NextAuth session cookies
-    const cookieStore = cookies()
-
-    // Get all cookies and clear the NextAuth ones
-    const nextAuthCookies = [
-      'next-auth.session-token',
-      '__Secure-next-auth.session-token',
-      'next-auth.csrf-token',
-      '__Host-next-auth.csrf-token',
-      'next-auth.callback-url',
-      '__Secure-next-auth.callback-url'
-    ]
-
     const response = NextResponse.json({
-      message: 'Sessions cleared successfully',
-      action: 'Please refresh the page'
+      message: 'All sessions cleared',
+      timestamp: new Date().toISOString()
     }, { status: 200 })
 
-    // Clear all NextAuth cookies
-    nextAuthCookies.forEach(cookieName => {
+    // Comprehensive list of all possible NextAuth cookies
+    const cookiesToClear = [
+      'next-auth.session-token',
+      '__Secure-next-auth.session-token',
+      '__Host-next-auth.session-token',
+      'authjs.session-token',
+      '__Secure-authjs.session-token',
+      '__Host-authjs.session-token',
+      'next-auth.csrf-token',
+      '__Secure-next-auth.csrf-token',
+      '__Host-next-auth.csrf-token',
+      'authjs.csrf-token',
+      '__Secure-authjs.csrf-token',
+      '__Host-authjs.csrf-token',
+      'next-auth.callback-url',
+      '__Secure-next-auth.callback-url',
+      '__Host-next-auth.callback-url',
+      'authjs.callback-url',
+      '__Secure-authjs.callback-url',
+      '__Host-authjs.callback-url'
+    ]
+
+    // Clear each cookie with all possible configurations
+    cookiesToClear.forEach(cookieName => {
+      // Clear for root domain
       response.cookies.set(cookieName, '', {
-        maxAge: 0,
+        maxAge: -1,
+        expires: new Date(0),
+        path: '/',
+        domain: undefined,
+        httpOnly: true,
+        secure: true,
+        sameSite: 'lax'
+      })
+
+      // Clear for current domain (if different)
+      response.cookies.set(cookieName, '', {
+        maxAge: -1,
+        expires: new Date(0),
         path: '/',
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        secure: true,
+        sameSite: 'lax'
+      })
+
+      // Clear without httpOnly for any client-side cookies
+      response.cookies.set(cookieName, '', {
+        maxAge: -1,
+        expires: new Date(0),
+        path: '/',
+        secure: true,
         sameSite: 'lax'
       })
     })
 
     return response
   } catch (error) {
-    console.error('Clear sessions error:', error)
+    console.error('Session clearing failed:', error)
     return NextResponse.json(
-      { message: 'Failed to clear sessions' },
+      { message: 'Session clearing failed', error: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     )
   }
