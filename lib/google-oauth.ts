@@ -44,29 +44,69 @@ export async function refreshGoogleToken(refreshToken: string) {
 export function createGoogleMyBusinessClient(accessToken: string) {
   oauth2Client.setCredentials({ access_token: accessToken })
 
-  // Note: Google My Business API v4 has been deprecated
-  // Using Business Information API for basic business data
   const businessInfo = google.mybusinessbusinessinformation({ version: 'v1', auth: oauth2Client })
   const accountManagement = google.mybusinessaccountmanagement({ version: 'v1', auth: oauth2Client })
 
   return {
     businessInfo,
     accountManagement,
-    // Legacy compatibility - this method no longer exists
-    accounts: {
-      list: async () => {
-        throw new Error('Google My Business API v4 has been deprecated. Please use the Google Business Profile API instead.')
-      },
-      locations: {
-        list: async () => {
-          throw new Error('Google My Business API v4 has been deprecated. Please use the Google Business Profile API instead.')
-        },
-        reviews: {
-          list: async () => {
-            throw new Error('Google My Business API v4 has been deprecated. Please use the Google Business Profile API instead.')
-          }
-        }
+    auth: oauth2Client
+  }
+}
+
+// Function to get business accounts
+export async function getGoogleBusinessAccounts(accessToken: string) {
+  oauth2Client.setCredentials({ access_token: accessToken })
+
+  const accountManagement = google.mybusinessaccountmanagement({ version: 'v1', auth: oauth2Client })
+
+  try {
+    const response = await accountManagement.accounts.list()
+    return response.data.accounts || []
+  } catch (error) {
+    console.error('Error fetching Google Business accounts:', error)
+    throw error
+  }
+}
+
+// Function to get business locations for an account
+export async function getGoogleBusinessLocations(accessToken: string, accountName: string) {
+  oauth2Client.setCredentials({ access_token: accessToken })
+
+  const businessInfo = google.mybusinessbusinessinformation({ version: 'v1', auth: oauth2Client })
+
+  try {
+    const response = await businessInfo.accounts.locations.list({
+      parent: accountName
+    })
+    return response.data.locations || []
+  } catch (error) {
+    console.error('Error fetching Google Business locations:', error)
+    throw error
+  }
+}
+
+// Function to get reviews for a business location
+export async function getGoogleBusinessReviews(accessToken: string, locationName: string) {
+  oauth2Client.setCredentials({ access_token: accessToken })
+
+  try {
+    // Using direct HTTP request as the googleapis library doesn't have the reviews endpoint
+    const response = await fetch(`https://mybusiness.googleapis.com/v4/${locationName}/reviews`, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
       }
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
     }
+
+    const data = await response.json()
+    return data.reviews || []
+  } catch (error) {
+    console.error('Error fetching Google Business reviews:', error)
+    throw error
   }
 }

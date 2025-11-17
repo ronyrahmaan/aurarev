@@ -1,43 +1,38 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Star } from 'lucide-react'
+import { useAuth } from '@/hooks/useAuth'
 
 export default function LoginPage() {
   const router = useRouter()
+  const { user, login, loading } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (user && !loading) {
+      router.push('/dashboard')
+    }
+  }, [user, loading, router])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
-    setLoading(true)
 
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      })
+    const result = await login(email, password)
 
-      const data = await response.json()
-
-      if (response.ok && data.success) {
-        router.push('/dashboard')
-      } else {
-        setError(data.error || 'Login failed. Please try again.')
-      }
-    } catch (err) {
-      setError('Something went wrong')
-    } finally {
-      setLoading(false)
+    if (result.success) {
+      router.push('/dashboard')
+    } else {
+      setError(result.error || 'Login failed. Please try again.')
     }
   }
 

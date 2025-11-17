@@ -1,15 +1,17 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Star } from 'lucide-react'
+import { useAuth } from '@/hooks/useAuth'
 
 export default function SignupPage() {
   const router = useRouter()
+  const { user, signup, loading } = useAuth()
   const [formData, setFormData] = useState({
     fullName: '',
     businessName: '',
@@ -17,31 +19,24 @@ export default function SignupPage() {
     password: ''
   })
   const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (user && !loading) {
+      router.push('/dashboard')
+    }
+  }, [user, loading, router])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
-    setLoading(true)
 
-    try {
-      const response = await fetch('/api/auth/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      })
+    const result = await signup(formData)
 
-      const data = await response.json()
-
-      if (data.success) {
-        router.push('/login')
-      } else {
-        setError(data.error)
-      }
-    } catch (err) {
-      setError('Something went wrong')
-    } finally {
-      setLoading(false)
+    if (result.success) {
+      router.push('/dashboard') // Auto-login after signup
+    } else {
+      setError(result.error || 'Signup failed. Please try again.')
     }
   }
 
