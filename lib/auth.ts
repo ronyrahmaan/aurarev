@@ -28,15 +28,25 @@ export async function clearSession() {
   })
 }
 
-export async function getSession() {
+export async function getSession(request?: NextRequest) {
   try {
-    const cookieStore = await cookies()
-    const token = cookieStore.get('auth-token')?.value
+    let token: string | undefined
+
+    if (request) {
+      // Use request object if provided (for API routes)
+      token = request.cookies.get('auth-token')?.value
+    } else {
+      // Use Next.js cookies() function for server components
+      const cookieStore = await cookies()
+      token = cookieStore.get('auth-token')?.value
+    }
+
     if (!token) return null
 
     const payload = jwt.verify(token, JWT_SECRET) as { userId: string; email: string }
     return payload
-  } catch {
+  } catch (error) {
+    console.error('Session error:', error)
     return null
   }
 }
