@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
               locationName: location.name,
               locationDisplayName: location.title,
               address: location.storefrontAddress,
-              phoneNumber: location.primaryPhone,
+              phoneNumber: (location as any).primaryPhone || null,
               website: location.websiteUri
             })
           }
