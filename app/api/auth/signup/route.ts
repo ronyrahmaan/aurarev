@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
 import { prisma } from '@/lib/db'
+import { createSession } from '@/lib/auth'
 
 export async function POST(request: NextRequest) {
   try {
@@ -31,9 +32,19 @@ export async function POST(request: NextRequest) {
       }
     })
 
+    // Automatically log in the user after successful signup
+    await createSession(user.id, user.email)
+
     return NextResponse.json({
       success: true,
-      user: { id: user.id, email: user.email, fullName: user.fullName, businessName: user.businessName }
+      message: 'Account created successfully',
+      user: {
+        id: user.id,
+        email: user.email,
+        fullName: user.fullName,
+        businessName: user.businessName,
+        plan: user.plan
+      }
     })
   } catch (error) {
     console.error('Signup error:', error)
