@@ -101,7 +101,7 @@ export async function GET(request: NextRequest) {
           const locations = await getGoogleBusinessLocations(accessToken, account.name!)
 
           // Add account info to each location
-          const locationsWithAccount = locations.map(location => ({
+          const locationsWithAccount = locations.map((location: any) => ({
             ...location,
             accountName: account.name,
             accountDisplayName: account.accountName || account.name

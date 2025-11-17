@@ -55,44 +55,62 @@ export function createGoogleMyBusinessClient(accessToken: string) {
   }
 }
 
-// Function to get business accounts
+// Function to get business accounts using Account Management API
 export async function getGoogleBusinessAccounts(accessToken: string) {
   oauth2Client.setCredentials({ access_token: accessToken })
 
-  const accountManagement = google.mybusinessaccountmanagement({ version: 'v1', auth: oauth2Client })
-
   try {
-    const response = await accountManagement.accounts.list()
-    return response.data.accounts || []
+    // Use Account Management API v1 (the migration path from deprecated v4)
+    const response = await fetch('https://mybusinessaccountmanagement.googleapis.com/v1/accounts', {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      }
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
+    const data = await response.json()
+    return data.accounts || []
   } catch (error) {
     console.error('Error fetching Google Business accounts:', error)
     throw error
   }
 }
 
-// Function to get business locations for an account
+// Function to get business locations for an account using Business Information API
 export async function getGoogleBusinessLocations(accessToken: string, accountName: string) {
   oauth2Client.setCredentials({ access_token: accessToken })
 
-  const businessInfo = google.mybusinessbusinessinformation({ version: 'v1', auth: oauth2Client })
-
   try {
-    const response = await businessInfo.accounts.locations.list({
-      parent: accountName
+    // Use Business Information API v1 (the migration path from deprecated locations)
+    const response = await fetch(`https://mybusinessbusinessinformation.googleapis.com/v1/${accountName}/locations`, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      }
     })
-    return response.data.locations || []
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
+    const data = await response.json()
+    return data.locations || []
   } catch (error) {
     console.error('Error fetching Google Business locations:', error)
     throw error
   }
 }
 
-// Function to get reviews for a business location
+// Function to get reviews for a business location using Business Profile API
 export async function getGoogleBusinessReviews(accessToken: string, locationName: string) {
   oauth2Client.setCredentials({ access_token: accessToken })
 
   try {
-    // Using direct HTTP request as the googleapis library doesn't have the reviews endpoint
+    // Using Business Profile API for reviews
     const response = await fetch(`https://mybusiness.googleapis.com/v4/${locationName}/reviews`, {
       headers: {
         'Authorization': `Bearer ${accessToken}`,
