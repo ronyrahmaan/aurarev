@@ -47,8 +47,12 @@ export function getAuthTokenFromRequest(request: NextRequest): string | null {
 
 export function verifyToken(token: string) {
   try {
-    return jwt.verify(token, JWT_SECRET) as { userId: string; email: string }
-  } catch {
+    console.log('🔑 JWT: Verifying token with secret:', JWT_SECRET.substring(0, 10) + '...')
+    const result = jwt.verify(token, JWT_SECRET) as { userId: string; email: string }
+    console.log('🔑 JWT: Token verification successful for user:', result.userId)
+    return result
+  } catch (error) {
+    console.log('🔑 JWT: Token verification failed:', error instanceof Error ? error.message : 'Unknown error')
     return null
   }
 }
