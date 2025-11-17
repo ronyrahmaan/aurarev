@@ -6,7 +6,7 @@ const oauth2Client = new google.auth.OAuth2(
   `${process.env.NEXTAUTH_URL}/api/google/callback`
 )
 
-export function getGoogleAuthUrl() {
+export function getGoogleAuthUrl(userId?: string) {
   const scopes = [
     'https://www.googleapis.com/auth/business.manage',
     'https://www.googleapis.com/auth/userinfo.email',
@@ -16,7 +16,8 @@ export function getGoogleAuthUrl() {
   return oauth2Client.generateAuthUrl({
     access_type: 'offline',
     scope: scopes,
-    prompt: 'consent'
+    prompt: 'consent',
+    state: userId || 'anonymous'
   })
 }
 

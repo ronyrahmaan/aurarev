@@ -5,21 +5,24 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { getGoogleAuthUrl } from '@/lib/google-oauth'
+import { getSession } from '@/lib/auth'
 
 export async function GET(request: NextRequest) {
   try {
-    const searchParams = request.nextUrl.searchParams
-    const userId = searchParams.get('userId')
+    // Get authenticated user from session
+    const session = await getSession(request)
 
-    if (!userId) {
+    if (!session?.userId) {
       return NextResponse.json(
-        { error: 'User ID is required' },
-        { status: 400 }
+        { error: 'Authentication required' },
+        { status: 401 }
       )
     }
 
-    // Generate Google OAuth URL
-    const authUrl = getGoogleAuthUrl()
+    const userId = session.userId
+
+    // Generate Google OAuth URL with userId in state
+    const authUrl = getGoogleAuthUrl(userId)
 
     // Redirect user to Google OAuth consent screen
     return NextResponse.redirect(authUrl)
