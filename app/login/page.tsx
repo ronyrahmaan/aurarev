@@ -29,11 +29,10 @@ export default function LoginPage() {
 
       const data = await response.json()
 
-      if (data.success) {
+      if (response.ok && data.success) {
         router.push('/dashboard')
-        window.location.reload()
       } else {
-        setError(data.error)
+        setError(data.error || 'Login failed. Please try again.')
       }
     } catch (err) {
       setError('Something went wrong')
