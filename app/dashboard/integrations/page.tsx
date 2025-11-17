@@ -43,14 +43,12 @@ export default function IntegrationsPage() {
 
   // Check Google connection status on mount
   useEffect(() => {
-    if (user?.id) {
-      checkGoogleStatus()
-    }
-  }, [user])
+    checkGoogleStatus()
+  }, [])
 
   const checkGoogleStatus = async () => {
     try {
-      const response = await fetch(`/api/google/status?userId=${user?.id}`)
+      const response = await fetch(`/api/google/status`)
       const data = await response.json()
       setGoogleStatus(data)
     } catch (error) {
