@@ -12,7 +12,7 @@ const prisma = new PrismaClient()
 export async function GET(request: NextRequest) {
   try {
     // Get authenticated user
-    const session = await getSession()
+    const session = await getSession(request)
 
     if (!session?.userId) {
       return NextResponse.json(
@@ -125,7 +125,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     // Get authenticated user
-    const session = await getSession()
+    const session = await getSession(request)
 
     if (!session?.userId) {
       return NextResponse.json(
