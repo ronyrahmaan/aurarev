@@ -11,14 +11,18 @@ const prisma = new PrismaClient()
 
 export async function POST(request: NextRequest) {
   try {
-    const { userId } = await request.json()
+    // Get authenticated user from session
+    const { getSession } = await import('@/lib/auth')
+    const session = await getSession(request)
 
-    if (!userId) {
+    if (!session?.userId) {
       return NextResponse.json(
-        { error: 'User ID is required' },
-        { status: 400 }
+        { error: 'Authentication required' },
+        { status: 401 }
       )
     }
+
+    const userId = session.userId
 
     // Get user's Google account connection
     const googleAccount = await prisma.connectedAccount.findUnique({

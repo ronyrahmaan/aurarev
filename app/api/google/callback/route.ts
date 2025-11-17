@@ -50,9 +50,10 @@ export async function GET(request: NextRequest) {
         accessToken: tokens.access_token,
         refreshToken: tokens.refresh_token || undefined,
         expiresAt: tokens.expiry_date ? new Date(tokens.expiry_date) : undefined,
-        businessId: userInfo.id || undefined,
-        businessName: userInfo.name || undefined,
+        accountEmail: userInfo.email || undefined,
+        accountName: userInfo.name || undefined,
         isActive: true
+        // Note: businessId and businessName should be set later via Configure button
       },
       create: {
         userId: userId,
@@ -60,9 +61,10 @@ export async function GET(request: NextRequest) {
         accessToken: tokens.access_token,
         refreshToken: tokens.refresh_token || undefined,
         expiresAt: tokens.expiry_date ? new Date(tokens.expiry_date) : undefined,
-        businessId: userInfo.id || undefined,
-        businessName: userInfo.name || undefined,
+        accountEmail: userInfo.email || undefined,
+        accountName: userInfo.name || undefined,
         isActive: true
+        // Note: businessId and businessName will be set later via Configure button
       }
     })
 

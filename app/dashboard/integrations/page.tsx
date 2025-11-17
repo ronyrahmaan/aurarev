@@ -7,10 +7,11 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog'
 import {
   Globe, MessageSquare, Star, Link2, Check, X, Loader2,
   ShoppingBag, CreditCard, Calendar, Mail, Phone, Database,
-  AlertCircle, CheckCircle, Settings, ExternalLink, Shield
+  AlertCircle, CheckCircle, Settings, ExternalLink, Shield, Download
 } from 'lucide-react'
 
 interface Integration {
@@ -34,6 +35,10 @@ export default function IntegrationsPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [connectingId, setConnectingId] = useState<string | null>(null)
+  const [operationLoading, setOperationLoading] = useState<string | null>(null)
+  const [showBusinessSelector, setShowBusinessSelector] = useState(false)
+  const [businessLocations, setBusinessLocations] = useState<any[]>([])
+  const [selectedBusiness, setSelectedBusiness] = useState<{ id: string; name: string } | null>(null)
   const [googleStatus, setGoogleStatus] = useState<{
     connected: boolean
     accountName?: string
@@ -44,6 +49,28 @@ export default function IntegrationsPage() {
   // Check Google connection status on mount
   useEffect(() => {
     checkGoogleStatus()
+  }, [])
+
+  // Handle OAuth callback success/error messages
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const success = params.get('success')
+    const error = params.get('error')
+
+    if (success === 'google_connected') {
+      alert('Google Business Profile connected successfully! Use the Configure button to select which business location to monitor.')
+      // Clear URL parameters
+      window.history.replaceState({}, '', '/dashboard/integrations')
+    } else if (error) {
+      const errorMessages = {
+        'google_auth_failed': 'Google authentication failed. Please try again.',
+        'missing_parameters': 'OAuth callback missing required parameters.',
+        'connection_failed': 'Failed to establish Google connection. Please try again.'
+      }
+      alert(errorMessages[error as keyof typeof errorMessages] || 'An error occurred during Google authentication.')
+      // Clear URL parameters
+      window.history.replaceState({}, '', '/dashboard/integrations')
+    }
   }, [])
 
   const checkGoogleStatus = async () => {
@@ -199,6 +226,110 @@ export default function IntegrationsPage() {
     }
 
     setConnectingId(null)
+  }
+
+  const handlePullReviews = async () => {
+    setOperationLoading('pull-reviews')
+    try {
+      const response = await fetch('/api/google/pull-reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include'
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        alert(`Successfully pulled ${data.newReviews || 0} new reviews!`)
+        checkGoogleStatus() // Refresh status
+      } else {
+        throw new Error(data.error || 'Failed to pull reviews')
+      }
+    } catch (error) {
+      console.error('Pull reviews error:', error)
+      alert('Failed to pull reviews. Please try again.')
+    }
+    setOperationLoading(null)
+  }
+
+  const handleDisconnect = async () => {
+    if (!confirm('Are you sure you want to disconnect your Google Business account?')) {
+      return
+    }
+
+    setOperationLoading('disconnect')
+    try {
+      const response = await fetch('/api/google/disconnect', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include'
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        alert('Google Business account disconnected successfully!')
+        checkGoogleStatus() // Refresh status
+      } else {
+        throw new Error(data.error || 'Failed to disconnect')
+      }
+    } catch (error) {
+      console.error('Disconnect error:', error)
+      alert('Failed to disconnect. Please try again.')
+    }
+    setOperationLoading(null)
+  }
+
+  const handleConfigure = async () => {
+    setOperationLoading('configure')
+    try {
+      const response = await fetch('/api/google/business-locations', {
+        method: 'GET',
+        credentials: 'include'
+      })
+      const data = await response.json()
+
+      if (data.success) {
+        setBusinessLocations(data.locations)
+        setSelectedBusiness(data.currentSelection?.businessId ? {
+          id: data.currentSelection.businessId,
+          name: data.currentSelection.businessName
+        } : null)
+        setShowBusinessSelector(true)
+      } else {
+        throw new Error(data.error || 'Failed to fetch business locations')
+      }
+    } catch (error) {
+      console.error('Configure error:', error)
+      alert('Failed to fetch business locations. Please try again.')
+    }
+    setOperationLoading(null)
+  }
+
+  const handleSelectBusiness = async (businessId: string, businessName: string) => {
+    setOperationLoading('save-business')
+    try {
+      const response = await fetch('/api/google/select-business', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ businessId, businessName })
+      })
+      const data = await response.json()
+
+      if (data.success) {
+        setSelectedBusiness({ id: businessId, name: businessName })
+        setShowBusinessSelector(false)
+        alert(`Successfully selected business: ${businessName}`)
+        checkGoogleStatus() // Refresh the connection status
+      } else {
+        throw new Error(data.error || 'Failed to select business')
+      }
+    } catch (error) {
+      console.error('Select business error:', error)
+      alert('Failed to select business. Please try again.')
+    }
+    setOperationLoading(null)
   }
 
   const getStatusBadge = (status: Integration['status']) => {
@@ -402,62 +533,101 @@ export default function IntegrationsPage() {
                 )}
 
                 {/* Action Buttons */}
-                <div className="flex gap-2">
-                  {integration.status === 'connected' ? (
-                    <>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="flex-1 bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]"
-                      >
-                        <Settings className="h-4 w-4 mr-2" />
-                        Configure
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="flex-1 bg-white/[0.02] border-white/[0.08] text-gray-400 hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/30"
-                      >
-                        Disconnect
-                      </Button>
-                    </>
-                  ) : integration.status === 'error' ? (
-                    <>
-                      <Button
-                        size="sm"
-                        className="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30"
-                      >
-                        <AlertCircle className="h-4 w-4 mr-2" />
-                        Fix Connection
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="bg-white/[0.02] border-white/[0.08] text-gray-400 hover:bg-white/[0.05]"
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                      </Button>
-                    </>
-                  ) : (
+                <div className="space-y-2">
+                  {integration.status === 'connected' && integration.id === 'google-business' && (
                     <Button
                       size="sm"
-                      onClick={() => handleConnect(integration.id)}
-                      disabled={isConnecting}
-                      className="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
+                      onClick={handlePullReviews}
+                      disabled={operationLoading === 'pull-reviews'}
+                      className="w-full bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600"
                     >
-                      {isConnecting ? (
+                      {operationLoading === 'pull-reviews' ? (
                         <>
                           <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                          Connecting...
+                          Pulling Reviews...
                         </>
                       ) : (
                         <>
-                          <Link2 className="h-4 w-4 mr-2" />
-                          Connect
+                          <Download className="h-4 w-4 mr-2" />
+                          Pull Reviews
                         </>
                       )}
                     </Button>
                   )}
+
+                  <div className="flex gap-2">
+                    {integration.status === 'connected' ? (
+                      <>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={integration.id === 'google-business' ? handleConfigure : undefined}
+                          disabled={operationLoading !== null}
+                          className="flex-1 bg-white/[0.02] border-white/[0.08] text-white hover:bg-white/[0.05]"
+                        >
+                          {operationLoading === 'configure' ? (
+                            <>
+                              <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                              Loading...
+                            </>
+                          ) : (
+                            <>
+                              <Settings className="h-4 w-4 mr-2" />
+                              Configure
+                            </>
+                          )}
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={integration.id === 'google-business' ? handleDisconnect : undefined}
+                          disabled={operationLoading !== null}
+                          className="flex-1 bg-white/[0.02] border-white/[0.08] text-gray-400 hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/30"
+                        >
+                          {operationLoading === 'disconnect' ? (
+                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                          ) : null}
+                          Disconnect
+                        </Button>
+                      </>
+                    ) : integration.status === 'error' ? (
+                      <>
+                        <Button
+                          size="sm"
+                          className="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30"
+                        >
+                          <AlertCircle className="h-4 w-4 mr-2" />
+                          Fix Connection
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="bg-white/[0.02] border-white/[0.08] text-gray-400 hover:bg-white/[0.05]"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                        </Button>
+                      </>
+                    ) : (
+                      <Button
+                        size="sm"
+                        onClick={() => handleConnect(integration.id)}
+                        disabled={isConnecting}
+                        className="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
+                      >
+                        {isConnecting ? (
+                          <>
+                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                            Connecting...
+                          </>
+                        ) : (
+                          <>
+                            <Link2 className="h-4 w-4 mr-2" />
+                            Connect
+                          </>
+                        )}
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -508,6 +678,91 @@ export default function IntegrationsPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Business Location Selector Modal */}
+      {showBusinessSelector && (
+        <Dialog open={showBusinessSelector} onOpenChange={setShowBusinessSelector}>
+          <DialogContent className="bg-gray-900 border-gray-700 text-white">
+            <DialogHeader>
+              <DialogTitle>Select Business Location</DialogTitle>
+              <DialogDescription className="text-gray-400">
+                Choose which business location you want to monitor for reviews.
+              </DialogDescription>
+            </DialogHeader>
+
+            <div className="space-y-3 max-h-96 overflow-y-auto">
+              {businessLocations.length > 0 ? (
+                businessLocations.map((location, index) => (
+                  <div
+                    key={index}
+                    className={`p-3 border rounded-lg cursor-pointer transition-colors ${
+                      selectedBusiness?.id === location.name
+                        ? 'border-green-500 bg-green-500/10'
+                        : 'border-gray-600 hover:border-gray-500 bg-gray-800/50'
+                    }`}
+                    onClick={() => setSelectedBusiness({ id: location.name, name: location.title || location.name })}
+                  >
+                    <div className="flex justify-between items-start">
+                      <div className="flex-1">
+                        <h3 className="font-medium">{location.title || location.name}</h3>
+                        {location.storefrontAddress && (
+                          <p className="text-sm text-gray-400 mt-1">
+                            {location.storefrontAddress.addressLines?.join(', ')}, {' '}
+                            {location.storefrontAddress.locality}, {' '}
+                            {location.storefrontAddress.administrativeArea} {' '}
+                            {location.storefrontAddress.postalCode}
+                          </p>
+                        )}
+                        <p className="text-xs text-gray-500 mt-1">
+                          Account: {location.accountDisplayName || location.accountName}
+                        </p>
+                      </div>
+                      {selectedBusiness?.id === location.name && (
+                        <CheckCircle className="h-5 w-5 text-green-500" />
+                      )}
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="text-center py-8">
+                  <p className="text-gray-400">No business locations found.</p>
+                  <p className="text-sm text-gray-500 mt-1">
+                    Make sure your Google account has access to Google Business Profile locations.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            <DialogFooter>
+              <Button
+                variant="outline"
+                onClick={() => setShowBusinessSelector(false)}
+                className="bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700"
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={() => {
+                  if (selectedBusiness) {
+                    handleSelectBusiness(selectedBusiness.id, selectedBusiness.name)
+                  }
+                }}
+                disabled={!selectedBusiness || operationLoading === 'save-business'}
+                className="bg-green-600 hover:bg-green-700 text-white"
+              >
+                {operationLoading === 'save-business' ? (
+                  <>
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    Saving...
+                  </>
+                ) : (
+                  'Select Business'
+                )}
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   )
 }
