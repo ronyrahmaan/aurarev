@@ -172,11 +172,6 @@ export default function IntegrationsPage() {
   })
 
   const handleConnect = async (integrationId: string) => {
-    if (!user?.id) {
-      alert('Please log in to connect integrations')
-      return
-    }
-
     setConnectingId(integrationId)
 
     if (integrationId === 'google-business') {
@@ -184,7 +179,7 @@ export default function IntegrationsPage() {
         const response = await fetch('/api/google/connect', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ userId: user.id })
+          body: JSON.stringify({ userId: 'placeholder' })
         })
 
         const data = await response.json()
