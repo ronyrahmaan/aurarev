@@ -40,8 +40,7 @@ export async function POST(request: NextRequest) {
       },
       data: {
         businessId: businessId,
-        businessName: businessName,
-        updatedAt: new Date()
+        businessName: businessName
       }
     })
 
