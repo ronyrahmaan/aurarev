@@ -38,66 +38,33 @@ interface Review {
   sentiment?: 'positive' | 'negative' | 'neutral'
 }
 
-// Mock API function (replace with real API call)
 async function fetchReviews(): Promise<Review[]> {
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  return [
-    {
-      id: '1',
-      platform: 'google',
-      author: 'Sarah Johnson',
-      rating: 5,
-      date: '2024-01-15',
-      text: 'Absolutely amazing service! The team went above and beyond to ensure everything was perfect. I couldn\'t be happier with the results.',
-      status: 'responded',
-      hasBlurb: true,
-      sentiment: 'positive'
-    },
-    {
-      id: '2',
-      platform: 'yelp',
-      author: 'Mike Chen',
-      rating: 4,
-      date: '2024-01-14',
-      text: 'Great experience overall. The staff was friendly and professional. Would definitely recommend to friends and family.',
-      status: 'pending',
-      hasBlurb: false,
-      sentiment: 'positive'
-    },
-    {
-      id: '3',
-      platform: 'facebook',
-      author: 'Emily Davis',
-      rating: 5,
-      date: '2024-01-13',
-      text: 'Professional, courteous, and efficient. Couldn\'t ask for better service! They exceeded all my expectations.',
-      status: 'responded',
-      hasBlurb: true,
-      sentiment: 'positive'
-    },
-    {
-      id: '4',
-      platform: 'google',
-      author: 'Robert Wilson',
-      rating: 3,
-      date: '2024-01-12',
-      text: 'Service was okay but could be improved. Wait times were longer than expected.',
-      status: 'pending',
-      hasBlurb: false,
-      sentiment: 'neutral'
-    },
-    {
-      id: '5',
-      platform: 'yelp',
-      author: 'Lisa Martinez',
-      rating: 5,
-      date: '2024-01-11',
-      text: 'Outstanding! Best experience I\'ve had. Will definitely be back.',
-      status: 'responded',
-      hasBlurb: true,
-      sentiment: 'positive'
+  try {
+    const response = await fetch('/api/reviews', {
+      credentials: 'include'
+    })
+    if (!response.ok) {
+      throw new Error('Failed to fetch reviews')
     }
-  ]
+    const result = await response.json()
+    const reviews = result.data?.reviews || []
+
+    // Transform the database format to the component format
+    return reviews.map((review: any) => ({
+      id: review.id,
+      platform: review.platform,
+      author: review.reviewerName || 'Anonymous',
+      rating: review.rating,
+      date: new Date(review.reviewDate).toISOString().split('T')[0],
+      text: review.reviewText || '',
+      status: review.aiBlurb ? 'responded' : 'pending',
+      hasBlurb: !!review.aiBlurb,
+      sentiment: review.sentiment
+    }))
+  } catch (error) {
+    console.error('Error fetching reviews:', error)
+    return []
+  }
 }
 
 export default function ReviewsPage() {

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { QueryProvider } from '@/lib/query-provider'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
-// import { useAuth } from AuthProvider - REMOVED
+import { useAuth } from '@/hooks/useAuth'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
@@ -39,11 +39,24 @@ export default function DashboardLayout({
   const router = useRouter()
   const pathname = usePathname()
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const user = { fullName: 'User', businessName: 'Business', email: 'user@example.com', plan: 'free' } // Placeholder
+  const { user, loading, logout } = useAuth()
 
   const handleLogout = async () => {
-    await fetch('/api/auth/logout', { method: 'POST' })
+    await logout()
     router.push('/login')
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[rgb(8,9,10)] flex items-center justify-center">
+        <div className="text-white">Loading...</div>
+      </div>
+    )
+  }
+
+  if (!user) {
+    router.push('/login')
+    return null
   }
 
   const navigation = [

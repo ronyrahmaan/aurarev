@@ -8,12 +8,14 @@ import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Badge } from '@/components/ui/badge'
+import { useAuth } from '@/hooks/useAuth'
 import {
   Building2, Bell, Users, CreditCard, Link2, Upload,
   Check, X, Loader2, Globe, MessageSquare, Mail
 } from 'lucide-react'
 
 export default function SettingsPage() {
+  const { user } = useAuth()
   const [emailNotifications, setEmailNotifications] = useState(true)
   const [smsAlerts, setSmsAlerts] = useState(false)
   const [weeklyReports, setWeeklyReports] = useState(true)
@@ -303,11 +305,13 @@ export default function SettingsPage() {
                 <div className="flex items-center justify-between p-4 rounded-lg bg-white/[0.02] border border-white/[0.08]">
                   <div className="flex items-center gap-4">
                     <div className="h-10 w-10 rounded-full bg-blue-500/20 flex items-center justify-center">
-                      <span className="text-blue-400 font-medium">JD</span>
+                      <span className="text-blue-400 font-medium">
+                        {user?.fullName?.[0] || user?.email?.[0]?.toUpperCase() || 'U'}
+                      </span>
                     </div>
                     <div>
-                      <p className="font-medium text-white">John Doe</p>
-                      <p className="text-sm text-gray-400">john@acmecorp.com</p>
+                      <p className="font-medium text-white">{user?.fullName || 'User'}</p>
+                      <p className="text-sm text-gray-400">{user?.email || 'No email'}</p>
                     </div>
                   </div>
                   <Badge className="bg-purple-500/20 text-purple-400 border-purple-500/30">
