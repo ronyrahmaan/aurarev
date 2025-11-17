@@ -48,7 +48,9 @@ export default function IntegrationsPage() {
 
   const checkGoogleStatus = async () => {
     try {
-      const response = await fetch(`/api/google/status`)
+      const response = await fetch(`/api/google/status`, {
+        credentials: 'include'
+      })
       const data = await response.json()
       setGoogleStatus(data)
     } catch (error) {
@@ -95,11 +97,9 @@ export default function IntegrationsPage() {
       category: 'payments',
       description: 'Track payments and trigger review requests',
       icon: CreditCard,
-      status: 'connected',
+      status: 'not_connected',
       color: 'purple',
-      features: ['Payment tracking', 'Customer data sync', 'Automated triggers'],
-      lastSync: new Date(Date.now() - 2 * 60 * 60 * 1000),
-      syncedData: { type: 'customers', count: 1250 }
+      features: ['Payment tracking', 'Customer data sync', 'Automated triggers']
     },
     {
       id: 'square',
@@ -147,11 +147,9 @@ export default function IntegrationsPage() {
       category: 'marketing',
       description: 'SMS notifications and review requests',
       icon: Phone,
-      status: 'connected',
+      status: 'not_connected',
       color: 'red',
-      features: ['SMS campaigns', 'Two-way messaging', 'Phone verification'],
-      lastSync: new Date(Date.now() - 24 * 60 * 60 * 1000),
-      syncedData: { type: 'messages', count: 456 }
+      features: ['SMS campaigns', 'Two-way messaging', 'Phone verification']
     }
   ]
 
@@ -179,7 +177,8 @@ export default function IntegrationsPage() {
         const response = await fetch('/api/google/connect', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ userId: 'placeholder' })
+          credentials: 'include',
+          body: JSON.stringify({})
         })
 
         const data = await response.json()
