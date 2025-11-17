@@ -5,10 +5,10 @@ export async function GET(request: NextRequest) {
   const debug = {
     timestamp: new Date().toISOString(),
     path: request.nextUrl.pathname,
-    cookies: {},
-    token: null,
+    cookies: {} as Record<string, string>,
+    token: null as string | null,
     tokenValid: false,
-    verificationError: null,
+    verificationError: null as string | null,
     jwtSecretPrefix: process.env.JWT_SECRET?.substring(0, 10) + '...' || 'NOT SET',
   }
 
